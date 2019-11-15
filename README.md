@@ -15,7 +15,7 @@
 
 ### 元组类型（tuples）（等同于C的结构体）
 元组（tuples）把多个值组合成一个复合值
-``
+```
 /* 第一种：定义元组变量并指定初始值，但不声明类型，系统推断该元组类型为(Int, Int, String) */
 var game = (1, 2 , "tom")
 
@@ -36,23 +36,23 @@ print("test元组的第2个元素的第2个元素为：\(test.1.2)")
 var score : (java:Int , swift:Int , oc:String , ruby:Double)
 score = (99 , 60 , "及格" , 20.1) //简单为每个元素指定值，此时必须按顺序为每个元素指定值
 score = (oc:"及格" , swift:60 , java:99 , ruby:20.1) //通过key为元组的元素指定值，在这种方式下，元组内各元素的顺序可以调换
-``
+```
 
 ### 值缺失
 比如一个字符串"11"转换为Int类型为0x11，转换成功；但是一个字符串"abc"强行转换为Int类型，则会转化失败，无法返回Int值，这就是值缺失
 
 ### 可选类型
 任何数据类型跟?就是可选类型，比如`var num1:Int? = 3`，可选类型的变量可用于处理“值缺失”
-``
+```
 var str = "tom"
 var num :Int = str.toInt()//会报错
 var num1: Int? = str.toInt()//正确的代码
-``
+```
 上面代码第二行会报错，因为字符串"tom"无法转换为Int类型，转换失败，此时就会出现值缺失
 第三行num1是可选类型，出现值缺失，num1会储存转换结果nil，nil表示值缺失
 #### 强制解析
 Int?类型与Int类型不是相同的类型，直接=赋值会报错，赋值时需要在可选类型的值后面加`!`，这个叹号表示已知该可选变量有值，请提取其中的值，这种添加叹号进行解析的方法称之为强制解析。
-``
+```
 /* str是String?类型的，不能赋值给String类型的s变量 */
 var str : String? = "tom"
 var s : String = str//会报错
@@ -60,9 +60,9 @@ var s : String = str//会报错
 /* 正确写法见下 */
 var s : String = str!
 print(s)
-``
+```
 强制解析必须是可选类型的变量或者常量确实有值时才能够解析成功，否则会报错。为了去报强制解析不会导致运行是错误，Swift提供了if语句来判断可选类型是否有值，因此可选类型和强制解析的正确格式如下：
-``
+```
 var str : String? = "tom"
 if str != nil
 {
@@ -71,10 +71,10 @@ if str != nil
 }else{
     print("str为nil，不能强制解析")
 }
-``
+```
 #### 隐式可选类型
 隐式可选就是在任意的已有类型后面添加`!`，拿Int类型举例，Int?和Int!的区别就是：当程序获取Int?类型的值时，程序必须在变量名后添加`!`后缀来进行强制解析，而Int!则不需要，Swift会自动的执行隐式解析
-``
+```
 /* 对于String?可选类型，必须使用感叹号执行强制解析 */
 var s1: String? = "tom1"
 var tmp : String = s1!
@@ -82,9 +82,9 @@ var tmp : String = s1!
 /* 对于String!隐式可选类型，无需使用感叹号执行强制解析 */
 var s2 : String! = "tom2"
 var tmp2 : String = s2
-``
+```
 需要注意的是隐式可选类型的值如果没有值的情况下，如果程序尝试获取该值同样会导致运行时错误，和强制解析一样，我们用if语句来判断隐式可选类型是否有值，则隐式可选类型的标准格式如下：
-``
+```
 var str : String! = "tom"
 if str != nil {
 var s : String = str
@@ -92,10 +92,10 @@ print(s)
 }else{
    print("s为nil，不能强制解析")
 }
-``
+```
 #### 可选绑定
 可选绑定用来判断可选是否包含值，如果包含就把值赋给一个临时常量或者变量。可选绑定一般用在 if 和 while 语句中，对可选的值进行判断并把值赋给一个常量或者变量。
-``
+```
 var str : String! = "tom"
 
 if var tmp = str // 如果可选变量str有值，将值赋值给tmp变量。
@@ -104,8 +104,7 @@ if var tmp = str // 如果可选变量str有值，将值赋值给tmp变量。
 }else{
     print("str的值为nil，不能解析！")
 }
-
-``
+```
 
 # 明天研究Swift的字符和字符串
 https://www.kancloud.cn/digest/iosdeveloper/124926
