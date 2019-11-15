@@ -6,10 +6,10 @@
 
 ## Swift语法
 * Swift源文件的第一行可执行的代码就是Swift的程序的入口
-* Swift把每行代码作为了一个语句，无须任何符号作为结束。但是如果2句代码写在同一行需要以' ; '分隔。
+* Swift把每行代码作为了一个语句，无须任何符号作为结束。但是如果2句代码写在同一行需要以`;`分隔。
 * Swift要求所有的变量和常量必须先声明后使用，声明变量需要使用var，声明常量则需要使用let；形如：var 变量名[:类型] =初始值
-* Swift 用字符串print打印，使用`\()`的方式打印变量，如tom=88，print("the value=\(tom)")，输出值为the value=88
-* 变量申明尽可能使用Int，可以提高代码复用性，不同数据类型转换使用Int(tom)，和C类似
+* Swift 用字符串print打印，使用`\()`的方式打印变量，如`tom=88，print("the value=\(tom)")`，输出值为`the value=88`
+* 变量申明尽可能使用Int，可以提高代码复用性，不同数据类型转换使用`Int(tom)`，和C类似
 * 编译：新建源程序hello.swift，在终端使用`swiftc -o hello.out hello.swift`生成hello.out，执行`./hello.out`
 * 只有可选类型的变量和常量才能接收nil，非可选类型的变量和常量不能接收nil。
 
