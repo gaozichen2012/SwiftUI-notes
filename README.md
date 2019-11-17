@@ -166,10 +166,11 @@ let str1="tom1"
 var str2:String?
 print(str2 ?? str1)// 输出"tom1"
 ```
-### if&switch
+### if&switch&while&for
 * if没有括号
 * Swift的任意一个case块执行完成后会自动终止该switch语句，因此要求每个case块至少要包含一条语句，否则会导致编译错误。
 几个例子：
+* if&switch&while&for几个关键字用法和C基本一致，只是没有了括号
 ```
 /* if用法 */
 var age = 30
@@ -199,6 +200,155 @@ switch score
     default: 
         break
 }
+
+/* while用法 */
+var count = 0
+while count < 10
+{
+    print("count:\(count)")
+    // 迭代语句
+    count++
+}
+
+/* for用法 */
+for var count = 0 ; count < 10 ; count++
+{
+    print("count: \(count)")
+}
+
+/* for-in用法 */
+for number in 1..3
+{
+    print(number)
+}
+```
+### 数组
+声明数组有两种语法：
+1. 使用泛型语法。格式为：Array
+2. 使用简化语法。格式为：[类型]
+创建数组也有两种方式： 
+1. 使用Array的构造器创建数组 
+2. 使用简化语法创建数组
+```
+/* 使用泛型语法声明数组 */ 
+var arr : Array<String>
+/* 使用简化语法声明数组 */ 
+var names : [String]
+
+/* 创建一个空数组，并将该空数组赋值给myArr变量 */ 
+arr= Array<String>()
+
+/* 创建一个包含10个"moon"元素的数组，并将该数组赋值给names变量 */ 
+names = Array<String>(count: 10, repeatedValue: "moon")
+
+/* 使用简化语法创建数组，并将数组赋值给values变量 */ 
+var values = ["2" , "3" , "3" , "4" , "5" , "6"] 
+
+/* for循环遍历数组 */
+for var i = 0; i < values .count ; i++
+{
+    print(values[i])
+}
+
+/* Array提供了append()方法来添加元素，或者用+加号直接添加 */
+var languages = ["Swift"]
+languages.append("Java")// 添加元素,输出为["Swift","Java"]
+languages=languages+["Ruby"]
+
+/* Array提供了insert()方法来添加元素 */
+languages.insert("Go" , atIndex:0)// 插入元素，这时数组第一个元素为"Go"
+```
+Array支持在”[]”中使用Range，这样可以一次性获取和赋值多个数组元素：
+```
+var languages = ["Swift", "OC", "PHP", "Perl" , "Ruby" , "Go"]
+
+let subRange = languages[1..<4]// 获取languages中数组中索引为1~4的元素
+print(subRange)  // 输出[OC, PHP, Perl]
+
+languages[2...4] = ["C/C++" , "Python"]// 将languages中数组中索引为2~4的元素替换成"C/C++" , "Python"
+print(languages)  // 输出[Swift, OC, C/C++, Python, Go]
+
+languages[0..<languages.count] = []// 清空数组
+print(languages)  // 输出[]
+```
+Array提供了removeAtIndex()、removeLast()和removeAll()方法来进行删除：
+```
+var languages = ["Swift", "OC", "PHP", "Perl" , "Ruby" , "Go"]
+
+languages.removeAtIndex(2)// 删除索引为2的元素，删除"PHP"
+print(languages)  // 输出[Swift,Perl,OC, Ruby, Go]
+
+languages.removeLast()// 删除最后一个元素，删除"Go"
+print(languages)  // 输出[Swift, Perl,OC, Ruby]
+
+languages.removeAll()// 删除所有元素
+print(languages)  // 输出[]
+print(languages.count)  // 输出0
+```
+### 字典
+创建字典也有两种方式：
+1. 使用Dictionary的构造器
+2. 使用简化语法
+```
+/* 创建一个Dictionary结构体，使用默认的参数 */ 
+dict = Dictionary<String, String>()
+scores = Dictionary<String, Int>(minimumCapacity:5)// minimumCapacity至少包含键值对的个数，默认值为2
+
+// 使用简化语法创建字典
+var health = ["身高":"178" , "体重":"75"]
+```
+访问字典的value需要在字典变量后紧跟一个方括号”[]”就可以了，方括号里是字典value对应的key值。
+```
+var height = health["身高"]//将key值赋值给height 
+print(height) // 输出Optional("178")
+
+var energy = health["能量"]// 访问并不存在的key对应的value时，将会返回nil
+print(energy)  // 输出nil
+```
+根据key值访问字典对应的value时，因为字典不确定是否这个键值对存在，当键值对存在时则返回key对应的value，否则就返回nil。这时我们可以通过强制解析来解决这个问题：
+```
+var height : String? = health["身高"]//height的类型是String?,而不是String
+if height != nil
+{
+    print(height!)// 使用!执行强制解析，输出为178
+}
+```
+for-in循环同样可以用来遍历字典：
+```
+for heal in health
+{
+ print(heal) //输出 ("身高",178) ("体重",75)
+}
+```
+字典提供了updataValue()方法来修改字典的value值，该方法会返回一个Sting?类型的值，如果key值存在则修改成功，如果key值不存在则返回nil，但会新增一个key-value值
+```
+var healths = ["身高":"178" , "体重":"75"]
+var result=healths.updateValue("68",forKey:"体重")
+print(result) // 输出Optional("75")
+print(health) // 输出["身高":"178" , "体重":"68"]
+var result=healths.updateValue("A",forKey:"血型")
+print(health) // 输出["血型":"A","身高":"178" , "体重":"68"]
+```
+删除元素：
+```
+/* 使用removeValueForKey：删除指定key对应的value */
+var languages = ["Swift":9000, "OC":8600, "PHP":3400, 
+    "Perl":4300 , "Ruby":5600 , "Go": 5600]
+
+languages.removeValueForKey("PHP")// 删除key为"PHP"的key-value对
+languages.removeValueForKey("Perl")// 删除key为"Perl"的key-value对
+
+print(languages)// 输出：[Go: 5600, OC: 8600, Ruby: 5600, Swift: 9000]
+print(languages.count)  // 输出4
+
+/* 将Key对应的Value值赋值为nil来删除该key-value对 */
+languages["Go"] = nil// 删除key为"Go"的key-value对
+print(languages)  // 输出[OC: 8600, Ruby: 5600, Swift: 9000]
+
+/* 使用removeALL删除所有元素 */ 
+languages.removeAll()
+print(languages)  // 输出[:]
+print(languages.count)  // 输出0
 ```
 
 # 明天研究Swift的字符和字符串
