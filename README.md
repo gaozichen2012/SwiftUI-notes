@@ -12,6 +12,8 @@
 * 变量申明尽可能使用Int，可以提高代码复用性，不同数据类型转换使用`Int(tom)`，和C类似
 * 编译：新建源程序hello.swift，在终端使用`swiftc -o hello.out hello.swift`生成hello.out，执行`./hello.out`
 * 只有可选类型的变量和常量才能接收nil，非可选类型的变量和常量不能接收nil。
+* 使用if和switch没有括号，比如`if a==true`
+
 
 ### 元组类型（tuples）（等同于C的结构体）
 元组（tuples）把多个值组合成一个复合值
@@ -157,13 +159,48 @@ for num in 1..<5 {
 }
 ```
 
-### nil合并运算符
+#### nil合并运算符
 nil合并运算符`??`，它的格式为`a ?? b`，就是如果a为nil，则程序会返回b的值
 ```
 let str1="tom1"
 var str2:String?
 print(str2 ?? str1)// 输出"tom1"
 ```
+### if&switch
+* if没有括号
+* Swift的任意一个case块执行完成后会自动终止该switch语句，因此要求每个case块至少要包含一条语句，否则会导致编译错误。
+几个例子：
+```
+/* if用法 */
+var age = 30
+if age > 20
+{
+    print("年龄大于20岁")
+}
+else
+{
+    print("年龄小于等于20岁")
+}
+
+/* switch用法 */
+var score = 78
+switch score
+{
+    case 91...100:
+        print("优秀")
+    case 81...90: 
+        print("良好")
+    case 71...80: 
+        print("中")
+    case 60...70: 
+        print("及格")
+    case 0..<60: 
+        print("不及格")
+    default: 
+        break
+}
+```
+
 # 明天研究Swift的字符和字符串
 https://www.kancloud.cn/digest/iosdeveloper/124926
 
