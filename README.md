@@ -18,8 +18,12 @@ https://github.com/SwiftGGTeam/the-swift-programming-language-in-chinese
 https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
 ### SwiftUI官方开发教程（中文）
 https://github.com/WillieWangWei/SwiftUI-Tutorials
-### 哔哩视频：用SwiftUI构建完整应用
+### 哔哩视频1：用SwiftUI构建完整应用
 https://www.bilibili.com/video/av64681507/
+### 哔哩视频2：从零开发苹果手机App
+https://www.bilibili.com/video/av61957676/
+### 博客1：SwiftUI 的一些初步探索 (一)
+https://onevcat.com/2019/06/swift-ui-firstlook/
 
 ## Swift语法
 * Swift源文件的第一行可执行的代码就是Swift的程序的入口
@@ -30,6 +34,7 @@ https://www.bilibili.com/video/av64681507/
 * 编译：新建源程序hello.swift，在终端使用`swiftc -o hello.out hello.swift`生成hello.out，执行`./hello.out`
 * 只有可选类型的变量和常量才能接收nil，非可选类型的变量和常量不能接收nil。
 * 使用if和switch没有括号，比如`if a==true`
+* 刷新 preview 的快捷键：Option + Command + P
 
 
 ### 元组类型（tuples）（等同于C的结构体）
