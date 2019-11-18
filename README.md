@@ -5,14 +5,21 @@
 * Swift，苹果于2014年WWDC（苹果开发者大会）发布的新开发语言，可与Objective-C共同运行于Mac OS和iOS平台，用于搭建基于苹果平台的应用程序。Swift吸收了众多现代编程语言的优点，尽力的提供简洁的编程语言和强大的功能。
 
 ## 相关资源
+### Swift官网
+https://Swift.org/
 ### Xcode官方介绍（英文）
 https://help.apple.com/xcode/mac/current/#/devc8c2a6be1
 ### Swift编程语言文档（英文，官方参考文档）
 https://swift.org/documentation/#the-swift-programming-language
 ### Swift编程语言文档（中文，官方中文参考文档）
 https://github.com/SwiftGGTeam/the-swift-programming-language-in-chinese
-### SwiftUI官方开发教程
+
+### SwiftUI官方开发教程（英文原版）
 https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
+### SwiftUI官方开发教程（中文）
+https://github.com/WillieWangWei/SwiftUI-Tutorials
+### 哔哩视频：用SwiftUI构建完整应用
+https://www.bilibili.com/video/av64681507/
 
 ## Swift语法
 * Swift源文件的第一行可执行的代码就是Swift的程序的入口
@@ -373,3 +380,8 @@ Playground是Xcode的一个简单的测试环境，主要是用于快速测试Sw
 * SwiftUI在Xcode11中可以使用图形化界面拖拽，并实时在代码中更改
 * SwiftUI支持所有苹果设备ios/pados/watch os
 
+### CocoaPods
+CocoaPods应该是iOS最常用最有名的类库管理工具了，通过CocoaPods工具我们可以为项目添加被称为“Pods”的依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。（基本所有公司都在使用）
+
+### Mockplus
+Mockplus（摹客）是一款简洁快速的原型图设计工具
