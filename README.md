@@ -4,6 +4,16 @@
 ## Swift简介
 * Swift，苹果于2014年WWDC（苹果开发者大会）发布的新开发语言，可与Objective-C共同运行于Mac OS和iOS平台，用于搭建基于苹果平台的应用程序。Swift吸收了众多现代编程语言的优点，尽力的提供简洁的编程语言和强大的功能。
 
+## 相关资源
+### Xcode官方介绍（英文）
+https://help.apple.com/xcode/mac/current/#/devc8c2a6be1
+### Swift编程语言文档（英文，官方参考文档）
+https://swift.org/documentation/#the-swift-programming-language
+### Swift编程语言文档（中文，官方中文参考文档）
+https://github.com/SwiftGGTeam/the-swift-programming-language-in-chinese
+### SwiftUI官方开发教程
+https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
+
 ## Swift语法
 * Swift源文件的第一行可执行的代码就是Swift的程序的入口
 * Swift把每行代码作为了一个语句，无须任何符号作为结束。但是如果2句代码写在同一行需要以`;`分隔。
@@ -357,3 +367,9 @@ https://www.kancloud.cn/digest/iosdeveloper/124926
 ## Playground工具介绍
 ![Xcode截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/1-Xcode%E6%88%AA%E5%9B%BE.jpg)
 Playground是Xcode的一个简单的测试环境，主要是用于快速测试Swift语法功能和验证API功能，并不是用来进行实际开发应用。如果开发者对Swift语法功能不太确定，则可以用Playground来测试代码，其次Playground也可以用来验证某个函数，类的功能。
+
+## SwiftUI
+* 苹果基于Swift开发出的一套通用UI，SwiftUI 原生支持“动态字体”、“深色模式”、本地化和辅助功能
+* SwiftUI在Xcode11中可以使用图形化界面拖拽，并实时在代码中更改
+* SwiftUI支持所有苹果设备ios/pados/watch os
+
