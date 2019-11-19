@@ -25,6 +25,11 @@ https://www.bilibili.com/video/av61957676/
 ### 博客1：SwiftUI 的一些初步探索 (一)
 https://onevcat.com/2019/06/swift-ui-firstlook/
 
+## 常用术语及词汇含义
+| 1 | 2 |
+|---|---|
+| 3 | 4 |
+
 ## Swift语法
 * Swift源文件的第一行可执行的代码就是Swift的程序的入口
 * Swift把每行代码作为了一个语句，无须任何符号作为结束。但是如果2句代码写在同一行需要以`;`分隔。
