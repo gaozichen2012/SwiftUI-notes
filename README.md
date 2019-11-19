@@ -26,9 +26,9 @@ https://www.bilibili.com/video/av61957676/
 https://onevcat.com/2019/06/swift-ui-firstlook/
 
 ## 常用术语及词汇含义
-| 1 | 2 |
+| 术语及词汇 | 描述 |
 |---|---|
-| 3 | 4 |
+| 1 | 2 |
 
 ## Swift语法
 * Swift源文件的第一行可执行的代码就是Swift的程序的入口
@@ -395,3 +395,17 @@ CocoaPods应该是iOS最常用最有名的类库管理工具了，通过CocoaPod
 
 ### Mockplus
 Mockplus（摹客）是一款简洁快速的原型图设计工具
+
+## Stack
+* 堆叠视图（Stack View）：使用 Stack 来组合和嵌入多个视图，让它们以水平、垂直或从后到前的顺序组合在一起。堆叠视图一个简化的介面元件，提供了不论是以栏或者以列为布局方式的集合视图。可以在另一个堆叠视图来嵌入一个堆叠视图
+* VStack：堆栈垂直排列 
+* HStack：堆栈水平排列
+* Spacer()：是一个灵活的空间视图，它可以沿着包含堆栈布局的主轴进行扩展，从而实现不同尺寸屏幕自适应，在两个内容中间添加`Spacer()`
+* padding():填充，给目标一些填充空间，不至于贴边
+
+## asset catalog（资源目录）
+* asset catalog是 iOS app 开发必不可少的组成部分。我们一般将图片存放其中，但其用途远不止于此。
+![asset catalog截图]()
+* asset catalog是 Xcode 提供的项目资源管理工具，其核心理念在于：以设备特征（traits）为单位配置资源，包括但不限于图片，颜色，材质，数据。既让开发者免于代码配置资源的烦恼，也让苹果能够更好的控制 .ipa 包。
+* asset catalog 本质是一个文件目录。
+
