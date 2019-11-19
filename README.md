@@ -405,7 +405,7 @@ Mockplus（摹客）是一款简洁快速的原型图设计工具
 
 ## asset catalog（资源目录）
 * asset catalog是 iOS app 开发必不可少的组成部分。我们一般将图片存放其中，但其用途远不止于此。
-![asset catalog截图]()
+![asset catalog截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/3-asset%20catalog.jpg)
 * asset catalog是 Xcode 提供的项目资源管理工具，其核心理念在于：以设备特征（traits）为单位配置资源，包括但不限于图片，颜色，材质，数据。既让开发者免于代码配置资源的烦恼，也让苹果能够更好的控制 .ipa 包。
 * asset catalog 本质是一个文件目录。
 
