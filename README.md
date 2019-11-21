@@ -1,36 +1,23 @@
-# Swift-notes
- 苹果开发学习笔记
-
-## Swift简介
+# Swift简介
 * Swift，苹果于2014年WWDC（苹果开发者大会）发布的新开发语言，可与Objective-C共同运行于Mac OS和iOS平台，用于搭建基于苹果平台的应用程序。Swift吸收了众多现代编程语言的优点，尽力的提供简洁的编程语言和强大的功能。
 
-## 相关资源
-### Swift官网
+# 相关资源
+## Swift官网
 https://Swift.org/
-### Xcode官方介绍（英文）
+## Xcode官方介绍（英文）
 https://help.apple.com/xcode/mac/current/#/devc8c2a6be1
-### Swift编程语言文档（英文，官方参考文档）
+## Swift编程语言文档（英文，官方参考文档）
 https://swift.org/documentation/#the-swift-programming-language
-### Swift编程语言文档（中文，官方中文参考文档）
+## Swift编程语言文档（中文，官方中文参考文档）
 https://github.com/SwiftGGTeam/the-swift-programming-language-in-chinese
-
-### SwiftUI官方开发教程（英文原版）
-https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
-### SwiftUI官方开发教程（中文）
-https://github.com/WillieWangWei/SwiftUI-Tutorials
-### 哔哩视频1：用SwiftUI构建完整应用
-https://www.bilibili.com/video/av64681507/
-### 哔哩视频2：从零开发苹果手机App
-https://www.bilibili.com/video/av61957676/
-### 博客1：SwiftUI 的一些初步探索 (一)
-https://onevcat.com/2019/06/swift-ui-firstlook/
-
-## 常用术语及词汇含义
+## Swift教程（不了解Swift语法概念可查阅此文档）
+https://swiftgg.gitbook.io/swift/swift-jiao-cheng
+# 常用术语及词汇含义
 | 术语及词汇 | 描述 |
 |---|---|
 | 1 | 2 |
 
-## Swift语法
+# Swift语法
 * Swift源文件的第一行可执行的代码就是Swift的程序的入口
 * Swift把每行代码作为了一个语句，无须任何符号作为结束。但是如果2句代码写在同一行需要以`;`分隔。
 * Swift要求所有的变量和常量必须先声明后使用，声明变量需要使用var，声明常量则需要使用let；形如：var 变量名[:类型] =初始值
@@ -42,7 +29,7 @@ https://onevcat.com/2019/06/swift-ui-firstlook/
 * 刷新 preview 的快捷键：Option + Command + P
 
 
-### 元组类型（tuples）（等同于C的结构体）
+## 元组类型（tuples）（等同于C的结构体）
 元组（tuples）把多个值组合成一个复合值
 ```
 /* 第一种：定义元组变量并指定初始值，但不声明类型，系统推断该元组类型为(Int, Int, String) */
@@ -67,10 +54,10 @@ score = (99 , 60 , "及格" , 20.1) //简单为每个元素指定值，此时必
 score = (oc:"及格" , swift:60 , java:99 , ruby:20.1) //通过key为元组的元素指定值，在这种方式下，元组内各元素的顺序可以调换
 ```
 
-### 值缺失
+## 值缺失
 比如一个字符串"11"转换为Int类型为0x11，转换成功；但是一个字符串"abc"强行转换为Int类型，则会转化失败，无法返回Int值，这就是值缺失
 
-### 可选类型
+## 可选类型
 任何数据类型跟?就是可选类型，比如`var num1:Int? = 3`，可选类型的变量可用于处理“值缺失”
 ```
 var str = "tom"
@@ -79,7 +66,7 @@ var num1: Int? = str.toInt()//正确的代码
 ```
 上面代码第二行会报错，因为字符串"tom"无法转换为Int类型，转换失败，此时就会出现值缺失
 第三行num1是可选类型，出现值缺失，num1会储存转换结果nil，nil表示值缺失
-#### 强制解析
+### 强制解析
 Int?类型与Int类型不是相同的类型，直接=赋值会报错，赋值时需要在可选类型的值后面加`!`，这个叹号表示已知该可选变量有值，请提取其中的值，这种添加叹号进行解析的方法称之为强制解析。
 ```
 /* str是String?类型的，不能赋值给String类型的s变量 */
@@ -101,7 +88,7 @@ if str != nil
     print("str为nil，不能强制解析")
 }
 ```
-#### 隐式可选类型
+### 隐式可选类型
 隐式可选就是在任意的已有类型后面添加`!`，拿Int类型举例，Int?和Int!的区别就是：当程序获取Int?类型的值时，程序必须在变量名后添加`!`后缀来进行强制解析，而Int!则不需要，Swift会自动的执行隐式解析
 ```
 /* 对于String?可选类型，必须使用感叹号执行强制解析 */
@@ -134,11 +121,11 @@ if var tmp = str // 如果可选变量str有值，将值赋值给tmp变量。
     print("str的值为nil，不能解析！")
 }
 ```
-###字符串
+##字符串
 * 单个字符用`"A"`,而不是单引号
 * 创建字符串可以用`var str1:String="tom1"`，也可以使用结构体创建`var str1=String("tom")`
 * 区分可变与不可变字符串使用var和let，比如：`var str1="可变字符串"`和`let str1="不可变字符串"`
-#### 字符串比较(常用)
+### 字符串比较(常用)
 Swift提供了3种方式来比较字符串：
 1.字符串相等`==`
 2.前缀相等`hasPrefix()`
@@ -149,9 +136,9 @@ var hasPrefix:Bool=str1.hasPrefix("tomi")
 print(hasPrefix)//结果为true
 ```
 
-### 运算符
+## 运算符
 Swift的赋值运算符`=`、算数运算符`+ - * /`、位运算符`& | ^ ~ << >>`、比较运算符`== != > < >= <=`、逻辑运算符`! && ||`和C语言的使用保持一致，下面这些是有区别的地方：
-### 溢出运算符ß
+## 溢出运算符
 Swift不允许整型变量或者常量溢出，所以提供以&开头的5个溢出运算符
 * 溢出加法 &+
 * 溢出减法 &-
@@ -168,9 +155,9 @@ max1= max1&+ 1 // 这时候max1等于0
 max用UInt8最大值255(二进制11111111)，然后用&+加1，数据溢出为二进制100000000，取后取后8位（UInt8），即0。见下图解释：
 ![溢出运算符](https://github.com/gaozichen2012/Swift-notes/blob/master/img/2-%E6%BA%A2%E5%87%BA%E8%BF%90%E7%AE%97%E7%AC%A6.jpg)
 同理还有下溢出，所以上溢=0，下溢=最大值
-### 范围运算符
+## 范围运算符
 Swift包括两个范围的运算符，用于表达值的范围。第一个是闭范围运算符，第二个是半开范围运算符
-#### 闭范围运算符
+### 闭范围运算符
 闭范围运算符`a…b`定义一个包含从a到b(包括ab)的所有值的范围，其中a不能大于b。
 闭范围运算符在迭代一个范围的所有值时是非常有用的，如在for-in循环中
 ```
@@ -178,7 +165,7 @@ for num in 1...5 {
     print(num) //打印1-5
 }
 ```
-#### 半开范围运算符
+### 半开范围运算符
 半开范围运算符`a..<b`用于定义一个从a到b(包括a边界不包括b边界)，其中a不能大于b。
 ```
 for num in 1..<5 {
@@ -186,14 +173,14 @@ for num in 1..<5 {
 }
 ```
 
-#### nil合并运算符
+### nil合并运算符
 nil合并运算符`??`，它的格式为`a ?? b`，就是如果a为nil，则程序会返回b的值
 ```
 let str1="tom1"
 var str2:String?
 print(str2 ?? str1)// 输出"tom1"
 ```
-### if&switch&while&for
+## if&switch&while&for
 * if没有括号
 * Swift的任意一个case块执行完成后会自动终止该switch语句，因此要求每个case块至少要包含一条语句，否则会导致编译错误。
 几个例子：
@@ -249,7 +236,7 @@ for number in 1..3
     print(number)
 }
 ```
-### 数组
+## 数组
 声明数组有两种语法：
 1. 使用泛型语法。格式为：Array
 2. 使用简化语法。格式为：[类型]
@@ -312,7 +299,7 @@ languages.removeAll()// 删除所有元素
 print(languages)  // 输出[]
 print(languages.count)  // 输出0
 ```
-### 字典
+## 字典
 创建字典也有两种方式：
 1. 使用Dictionary的构造器
 2. 使用简化语法
@@ -377,35 +364,181 @@ languages.removeAll()
 print(languages)  // 输出[:]
 print(languages.count)  // 输出0
 ```
+## 函数
+* 函数可以作为另一个函数的返回值，也可以当做参数传入另一个函数
+使用`func`来声明一个函数，使用名字和参数来调用函数。使用`->`来指定函数返回值的类型。
+```
+func greet(person: String, day: String) -> String {
+    return "Hello \(person), today is \(day)."
+}
+greet(person:"Bob", day: "Tuesday")
+```
+默认情况下，函数使用它们的参数名称作为它们参数的标签，在参数名称前可以自定义参数标签，或者使用 _ 表示不使用参数标签。
+```
+func greet(_ person: String, on day: String) -> String {
+    return "Hello \(person), today is \(day)."
+}
+greet("John", on: "Wednesday")
+```
+使用元组来生成复合值，比如让一个函数返回多个值。该元组的元素可以用名称或数字来获取。
+```
+func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
+    var min = scores[0]
+    var max = scores[0]
+    var sum = 0
 
-# 明天研究Swift的字符和字符串
-https://www.kancloud.cn/digest/iosdeveloper/124926
+    for score in scores {
+        if score > max {
+            max = score
+        } else if score < min {
+            min = score
+        }
+        sum += score
+    }
 
-## Playground工具介绍
+    return (min, max, sum)
+}
+let statistics = calculateStatistics(scores:[5, 3, 100, 3, 9])
+print(statistics.sum)
+print(statistics.2)
+```
+函数可以嵌套。被嵌套的函数可以访问外侧函数的变量，你可以使用嵌套函数来重构一个太长或者太复杂的函数。
+```
+func returnFifteen() -> Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    add()
+    return y
+}
+returnFifteen()
+```
+## 闭包（使用方法未了解清楚，待了解）
+* 函数实际上是一种特殊的闭包
+* 有很多种创建更简洁的闭包的方法。如果一个闭包的类型已知，就可以忽略参数，返回值，甚至两个都忽略。
+* 涉及到函数作为参数的那些方法时,使用闭包很有用
+使用 {} 来创建一个匿名闭包。使用 in 将参数和返回值类型的声明与闭包函数体进行分离。
+```
+numbers.map({
+    (number: Int) -> Int in
+    let result = 3 * number
+    return result
+})
+```
+闭包概念研究：https://swiftgg.gitbook.io/swift/swift-jiao-cheng/07_closures
+
+## 对象和类（class未了解清楚，待了解）
+123
+
+
+# Playground工具介绍
 ![Xcode截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/1-Xcode%E6%88%AA%E5%9B%BE.jpg)
 Playground是Xcode的一个简单的测试环境，主要是用于快速测试Swift语法功能和验证API功能，并不是用来进行实际开发应用。如果开发者对Swift语法功能不太确定，则可以用Playground来测试代码，其次Playground也可以用来验证某个函数，类的功能。
 
-## SwiftUI
+
+
+## CocoaPods
+CocoaPods应该是iOS最常用最有名的类库管理工具了，通过CocoaPods工具我们可以为项目添加被称为“Pods”的依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。（基本所有公司都在使用）
+
+## Mockplus
+Mockplus（摹客）是一款简洁快速的原型图设计工具
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# SwiftUI
 * 苹果基于Swift开发出的一套通用UI，SwiftUI 原生支持“动态字体”、“深色模式”、本地化和辅助功能
 * SwiftUI在Xcode11中可以使用图形化界面拖拽，并实时在代码中更改
 * SwiftUI支持所有苹果设备ios/pados/watch os
+* 
 
-### CocoaPods
-CocoaPods应该是iOS最常用最有名的类库管理工具了，通过CocoaPods工具我们可以为项目添加被称为“Pods”的依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。（基本所有公司都在使用）
+# 相关资源
+## SwiftUI官网首页（英文原版）
+https://developer.apple.com/documentation/swiftui/
+## SwiftUI官方开发教程（英文原版）
+https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
+## SwiftUI官方开发教程（中文）
+https://github.com/WillieWangWei/SwiftUI-Tutorials
+## 哔哩视频1：用SwiftUI构建完整应用
+https://www.bilibili.com/video/av64681507/
+## 哔哩视频2：从零开发苹果手机App
+https://www.bilibili.com/video/av61957676/
+## 博客1：SwiftUI 的一些初步探索 (一)
+https://onevcat.com/2019/06/swift-ui-firstlook/
 
-### Mockplus
-Mockplus（摹客）是一款简洁快速的原型图设计工具
+# Views and Controls（视图和控件）
+视图`Views `用于显示自定义的内容`content`，控件`Controls`负责处理用户交互。
+视图`Views`包含文本`text`，图像`images`，形状`shapes`，自定义工程图`custom drawings`等。
+## 视图和控件实现
+* 控制视图的大小，位置和外观属性。
+* 响应点击，手势和其他用户交互。
+* 支持拖放操作。
+* 自定义动画和过渡。
+* 设置样式首选项和其他环境数据。
 
-## Stack
-* 堆叠视图（Stack View）：使用 Stack 来组合和嵌入多个视图，让它们以水平、垂直或从后到前的顺序组合在一起。堆叠视图一个简化的介面元件，提供了不论是以栏或者以列为布局方式的集合视图。可以在另一个堆叠视图来嵌入一个堆叠视图
-* VStack：堆栈垂直排列 
-* HStack：堆栈水平排列
+# Stack
+使用`Stack`来组合和嵌入多个视图`Views`，让它们以水平、垂直或从后到前的顺序组合在一起。堆叠视图提供了不论是以栏或者以列为布局方式的集合视图。可以在另一个堆叠视图来嵌入一个堆叠视图
+* Stack包括struct`VStack`、struct`HStack`、struct`ZStack`。其中VStack将视图垂直排列；HStack将视图水平排列；ZStack将视图叠加排列
+
+# Lists and Scroll Views（列表和滚动视图）
+列表和滚动视图包含struct`List`、protocol`DynamicViewContent`、protocol`Identifiable`、struct`ForEach`、struct`ScrollView`、enum`Axis`
+## list
+## DynamicViewContent
+## Identifiable
+## ForEach
+## ScrollView
+## Axis
+
+# Container Views（容器视图）
+容器视图包含struct`From`、struct`Group`、struct`GroupBox`、struct`Section`
+
+# Spacers and Dividers（空格和分割线）
 * Spacer()：是一个灵活的空间视图，它可以沿着包含堆栈布局的主轴进行扩展，从而实现不同尺寸屏幕自适应，在两个内容中间添加`Spacer()`
 * padding():填充，给目标一些填充空间，不至于贴边
 
-## asset catalog（资源目录）
+# asset catalog（资源目录）
 * asset catalog是 iOS app 开发必不可少的组成部分。我们一般将图片存放其中，但其用途远不止于此。
 ![asset catalog截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/3-asset%20catalog.jpg)
 * asset catalog是 Xcode 提供的项目资源管理工具，其核心理念在于：以设备特征（traits）为单位配置资源，包括但不限于图片，颜色，材质，数据。既让开发者免于代码配置资源的烦恼，也让苹果能够更好的控制 .ipa 包。
 * asset catalog 本质是一个文件目录。
-
