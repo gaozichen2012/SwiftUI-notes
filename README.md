@@ -12,10 +12,30 @@ https://swift.org/documentation/#the-swift-programming-language
 https://github.com/SwiftGGTeam/the-swift-programming-language-in-chinese
 ## Swift教程（不了解Swift语法概念可查阅此文档）
 https://swiftgg.gitbook.io/swift/swift-jiao-cheng
-# 常用术语及词汇含义
-| 术语及词汇 | 描述 |
-|---|---|
-| 1 | 2 |
+## SwiftUI官网首页（英文原版）
+https://developer.apple.com/documentation/swiftui/
+## SwiftUI官方开发教程（英文原版）
+https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
+## SwiftUI官方开发教程（中文）
+https://github.com/WillieWangWei/SwiftUI-Tutorials
+## 哔哩视频1：用SwiftUI构建完整应用
+https://www.bilibili.com/video/av64681507/
+## 哔哩视频2：从零开发苹果手机App
+https://www.bilibili.com/video/av61957676/
+## 博客1：SwiftUI 的一些初步探索 (一)
+https://onevcat.com/2019/06/swift-ui-firstlook/
+
+# 记忆点
+* `ctrl+i` 自动格式化代码（先选中一段代码）
+* `shift+command+L` 调出库Library
+
+# 需求点
+* Mac Windows多终端同步助手
+* 微博朋友圈qq空间insFacebook同步助手
+* 照片滤镜，摄影模板助手
+* 单词本助手
+* gif转换助手
+* 看iPhone MAC app store付费榜以半价策略攻击
 
 # Swift语法
 * Swift源文件的第一行可执行的代码就是Swift的程序的入口
@@ -506,19 +526,7 @@ Mockplus（摹客）是一款简洁快速的原型图设计工具
 * SwiftUI支持所有苹果设备ios/pados/watch os
 * 
 
-# 相关资源
-## SwiftUI官网首页（英文原版）
-https://developer.apple.com/documentation/swiftui/
-## SwiftUI官方开发教程（英文原版）
-https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
-## SwiftUI官方开发教程（中文）
-https://github.com/WillieWangWei/SwiftUI-Tutorials
-## 哔哩视频1：用SwiftUI构建完整应用
-https://www.bilibili.com/video/av64681507/
-## 哔哩视频2：从零开发苹果手机App
-https://www.bilibili.com/video/av61957676/
-## 博客1：SwiftUI 的一些初步探索 (一)
-https://onevcat.com/2019/06/swift-ui-firstlook/
+
 
 # Views and Controls（视图和控件）
 视图`Views `用于显示自定义的内容`content`，控件`Controls`负责处理用户交互。
