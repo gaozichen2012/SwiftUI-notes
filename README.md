@@ -595,4 +595,4 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 *  SF Symbols中的SF表示San Francisco，Symbols表示符号，SF Symbols对应的是San Francisco system font（苹果设计的一种系统字体应用于mac）
 ## 使用方法
 在程序中直接使用`Image(systemName: house)`调用，其中`house`是从SF Symbols中获取到的icons的名字
-![SF Symbols]()
+![SF Symbols](https://github.com/gaozichen2012/Swift-notes/blob/master/img/4-SF-Symbols.jpg)
