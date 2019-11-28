@@ -588,3 +588,11 @@ Mockplus（摹客）是一款简洁快速的原型图设计工具
 ![asset catalog截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/3-asset%20catalog.jpg)
 * asset catalog是 Xcode 提供的项目资源管理工具，其核心理念在于：以设备特征（traits）为单位配置资源，包括但不限于图片，颜色，材质，数据。既让开发者免于代码配置资源的烦恼，也让苹果能够更好的控制 .ipa 包。
 * asset catalog 本质是一个文件目录。
+
+# SF Symbols
+WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图标库, 大概有 1500 个内置图标, 并且提供了相关的 API 让我们更方便的使用，这些内置图标不仅仅是简单的图片, 他们可以像文字一样, 支持放大缩小加粗操作
+* 
+*  SF Symbols中的SF表示San Francisco，Symbols表示符号，SF Symbols对应的是San Francisco system font（苹果设计的一种系统字体应用于mac）
+## 使用方法
+在程序中直接使用`Image(systemName: house)`调用，其中`house`是从SF Symbols中获取到的icons的名字
+![SF Symbols](https://github.com/gaozichen2012/Swift-notes/blob/master/img/4-SF-Symbols.jpg)
