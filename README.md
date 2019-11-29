@@ -615,3 +615,9 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 1. https://blog.csdn.net/kmyhy/article/details/97176972
 2. 英文原版：https://swiftwithmajid.com/2019/06/12/understanding-property-wrappers-in-swiftui/
 3. https://www.cnblogs.com/xiaoniuzai/p/11417123.html
+
+学习点：
+* 声明结构体要遵循Identifiable协议，有什么用？UUID必须搭配Identifiable使用？
+* 整理历询ForEach的使用
+* ZStack的.topBl
+
