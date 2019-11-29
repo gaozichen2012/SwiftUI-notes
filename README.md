@@ -602,11 +602,11 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 * SwiftUI 提供的属性包装器包括 @State, @Binding, @ObjectBinding, @EnvironmentObject, 和 @Environment 。
 ## @State
 通过使用 @State 修饰器我们可以关联出 View 的状态。 SwiftUI 将会把使用过 @State 修饰器的属性存储到一个特殊的内存区域，并且这个区域和 View struct 是隔离的，只有关联的视图及其子视图能够访问它。当@State 属性值改变，SwiftUI 会重构与之相关的视图。
-![使用State截图]()
+![使用State截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/5-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8state.jpg)
 ## @Binding （捆绑）
 有时候我们会把一个视图的属性传至子节点中，但是又不能直接的传递给子节点，因为在 Swift 中值的传递形式是值类型传递方式，也就是传递给子节点的是一个拷贝过的值。但是通过 @Binding 修饰器修饰后，属性变成了一个引用类型，传递变成了引用传递，这样父子视图的状态就能关联起来了。
 * 在子视图中使用@Binding修饰，在父视图中使用关键字`$`传递一个绑定引用
-![使用Binding截图]()
+![使用Binding截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/6-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8Binding.jpg)
 ## @ObjectBinding
 ## @EnvironmentObject
 ## @Environment
