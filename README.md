@@ -619,5 +619,7 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 学习点：
 * 声明结构体要遵循Identifiable协议，有什么用？UUID必须搭配Identifiable使用？
 * 整理历询ForEach的使用
-* ZStack的.topBl
+* Button-sheet组合使用，实现点击按钮跳出指定View
+* 了解滚动视图及相关参数的使用ScrollView
+* 
 
