@@ -9,14 +9,17 @@
 import SwiftUI
 
 struct Home : View {
-    @State var show = false
-    @State var showProfile = false
+    @State var show = false //识别点击左上角按钮
+    @State var showProfile = false //识别右上角按钮
     
     var body: some View {
         ZStack {
-            
+            HomeList()
+                .blur(radius: show ? 20 : 0)
+                .scaleEffect(showProfile ? 0.9 : 1)
+                .animation(.default)
             ContentView()
-                .background(Color.white)
+//                .background(Color.white)
                 .cornerRadius(30)
                 .shadow(radius: 20)
                 .animation(.spring())

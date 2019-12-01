@@ -12,23 +12,40 @@ struct HomeList: View {
     @State var showContent = false
     var courses = courseData
     var body: some View {
-        /* ScrollView中horizontal是让view水平滚动，showsIndicators=false是为了不现实滚动条 */
-        ScrollView (.horizontal,showsIndicators: false) {
-            HStack(spacing: 30) {
-                ForEach(courses) { item in
-                    Button(action: { self.showContent.toggle() }){
-                        CourceView(
-                            titile: item.title,
-                            image: item.image,
-                            color: item.color,
-                            shadowColor: item.shadowColor)
-                    }
-                    .sheet(isPresented: self.$showContent) { ContentView() }//Button-sheet组合使用，实现点击按钮跳出指定View
+        
+        VStack() {
+            HStack {
+                VStack {
+                    Text("Courses")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                    Text("22 courses")
+                        .foregroundColor(Color.gray)
+                    
                 }
-                .padding(.leading, 30)
-                .padding(.trailing,30)
+                Spacer()
+            }
+            .padding(.leading, 70.0)
+            .padding(.bottom, 40)
+            /* ScrollView中horizontal是让view水平滚动，showsIndicators=false是为了不现实滚动条 */
+            ScrollView (.horizontal,showsIndicators: false) {
+                HStack(spacing: 30) {
+                    ForEach(courses) { item in
+                        Button(action: { self.showContent.toggle() }){
+                            CourceView(
+                                titile: item.title,
+                                image: item.image,
+                                color: item.color,
+                                shadowColor: item.shadowColor)
+                        }
+                        .sheet(isPresented: self.$showContent) { ContentView() }//Button-sheet组合使用，实现点击按钮跳出指定View
+                    }
+                    .padding(.leading, 40)
+                    .padding(.trailing,40)
+                }
             }
         }
+        .padding(.bottom, 170)
     }
 }
 
@@ -50,7 +67,7 @@ struct CourceView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(Color.white)
-                .padding(20)
+                .padding(30)
                 .lineLimit(4)
                 .padding(.trailing, 50)
             Spacer()
