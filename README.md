@@ -629,6 +629,25 @@ class定义了一个UpdateStore类，这个类可以给不同的 View 使用，S
 * 了解整理Combine包和ObservableObject @ObservedObject 相关概念
 * 了解掌握导航列表的使用NavigationView-NavigationLink通用框架
 * 了解掌握导航列表的相关编辑/删除/移动/添加的使用，及数据的修改（原来是定义只读数据，实际运用中大部门都是可编辑的列表和数据）
-* 整理图片设置三部曲：1尺寸可调 2自动填充 3设置框架
 
+# Wartime preparation
+## 设置图片步骤
+```
+Image(item.image)
+    .resizable() //让图像尺寸可调 
+    .aspectRatio(contentMode: .fit) //将图片设置为填充
+    .frame(width: 80 ,height: 80) //设置图片框架大小
+    .background(Color("background")) //设置图片背景
+    .cornerRadius(20) //设置圆角
+```
+## Button-sheet组合，实现点击按钮跳出指定View
+```
+@State var show = false
+
+Button(action: { self.show.toggle() }){
+    //此处为按钮显示的内容或界面
+    }
+    .sheet(isPresented: self.$show) { ContentView() } //ContentView为要跳出来的目标视图
+```
+![Button-sheet实例1]()
 
