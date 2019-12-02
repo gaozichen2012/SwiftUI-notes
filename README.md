@@ -624,13 +624,17 @@ class定义了一个UpdateStore类，这个类可以给不同的 View 使用，S
 学习点：
 * 声明结构体要遵循Identifiable协议，有什么用？UUID必须搭配Identifiable使用？
 * 整理历询ForEach的使用
-* Button-sheet组合使用，实现点击按钮跳出指定View
 * 了解滚动视图及相关参数的使用ScrollView
 * 了解整理Combine包和ObservableObject @ObservedObject 相关概念
 * 了解掌握导航列表的使用NavigationView-NavigationLink通用框架
 * 了解掌握导航列表的相关编辑/删除/移动/添加的使用，及数据的修改（原来是定义只读数据，实际运用中大部门都是可编辑的列表和数据）
 
 # Wartime preparation
+
+## ForEach历询
+* 在Xcode中按住`cmd`+指定View或元素，调出选择框，选择repeat，即可添加ForEach语法
+![foreach]()
+
 ## 设置图片步骤
 ```
 Image(item.image)
@@ -649,5 +653,5 @@ Button(action: { self.show.toggle() }){
     }
     .sheet(isPresented: self.$show) { ContentView() } //ContentView为要跳出来的目标视图
 ```
-![Button-sheet实例1]()
+![Button-sheet实例1](https://github.com/gaozichen2012/Swift-notes/blob/master/img/7-Button-sheet1.jpg)
 
