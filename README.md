@@ -591,11 +591,17 @@ Mockplus（摹客）是一款简洁快速的原型图设计工具
 
 # SF Symbols
 WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图标库, 大概有 1500 个内置图标, 并且提供了相关的 API 让我们更方便的使用，这些内置图标不仅仅是简单的图片, 他们可以像文字一样, 支持放大缩小加粗操作
-* 
 *  SF Symbols中的SF表示San Francisco，Symbols表示符号，SF Symbols对应的是San Francisco system font（苹果设计的一种系统字体应用于mac）
 ## 使用方法
 在程序中直接使用`Image(systemName: house)`调用，其中`house`是从SF Symbols中获取到的icons的名字
 ![SF Symbols](https://github.com/gaozichen2012/Swift-notes/blob/master/img/4-SF-Symbols.jpg)
+
+# Combine（先了解概念，后续继续研究）
+SwiftUI和Combine是WWDC2019发布的两大新框架，与SwiftUI配套的响应式编程框架Combine是一套通过组合变换事件操作来处理异步事件的标准库。
+SwiftUI与Combine结合来控制业务数据的单向流动，让开发者无需关心数据流向，一些原来需要费时费力的处理工作由Combine包自动化处理，让开发复杂度大大降低
+
+* 事件执行过程的关系包括：被观察者Observable和观察者Observer，在Combine中对应着Publisher和Subscriber
+
 
 # Property Wrappers（属性包装器）
 属性包装器的概念首先是从 SE-0258 提议中提出的。主要目的是将一些封装属性的逻辑从不同的结构中抽离出来，并复用到整个代码库中。这个提议苹果并未接受，但在 Xcode beta 的 Swift 5.1 快照中就有它了。
@@ -622,14 +628,64 @@ class定义了一个UpdateStore类，这个类可以给不同的 View 使用，S
 3. https://www.cnblogs.com/xiaoniuzai/p/11417123.html
 
 学习点：
-* 声明结构体要遵循Identifiable协议，有什么用？UUID必须搭配Identifiable使用？
-* 整理历询ForEach的使用
 * 了解滚动视图及相关参数的使用ScrollView
 * 了解整理Combine包和ObservableObject @ObservedObject 相关概念
 * 了解掌握导航列表的使用NavigationView-NavigationLink通用框架
 * 了解掌握导航列表的相关编辑/删除/移动/添加的使用，及数据的修改（原来是定义只读数据，实际运用中大部门都是可编辑的列表和数据）
 
 # Wartime preparation
+## 创建和使用结构体
+声明结构体要遵循Identifiable协议，此协议中只有一个必须的属性：id，它用来让SwiftUI区分不同的item
+* 一般默认`id=UUID()`，UUID是Swift用来标识协议类型、接口和一些其他item
+```
+//创建一个数据结构体Course存放标题、图片相关信息
+struct Course : Identifiable {
+    var id = UUID()
+    var title: String
+    var image: String
+    var color: Color
+    var shadowColor: Color
+}
+
+//用Course数据结构创建一组新数据courseData
+let courseData = [
+    Course(
+        title: "Build an app on SwiftUI",
+        image: "Illustration1",
+        color: Color("background3"),
+        shadowColor: Color("backgroundShadow3")
+    ),
+    Course(
+        title: "Design Courcse",
+        image: "Illustration2",
+        color: Color("background4"),
+        shadowColor: Color("backgroundShadow4")
+    )
+
+//在HomeList视图中使用courseData数据
+struct HomeList: View {
+    @State var showContent = false
+    var courses = courseData
+    var body: some View {
+        HStack(spacing: 30) {
+            ForEach(courses) { item in
+            CourceView(
+                titile: item.title,
+                image: item.image,
+                color: item.color,
+                shadowColor: item.shadowColor)
+            }
+        }
+    }
+}
+
+```
+## 创建可操作的数据（添加、删除）
+ObservableObject @ObservedObject 相关概念
+（明天继续）
+## 导航列表NavigationView-NavigationLink通用组件
+苹果提供NavigationView-NavigationLink框架让列表及列表相关操作变得简单
+（明天继续）
 
 ## ForEach历询
 * 在Xcode中按住`cmd`+指定View或元素，调出选择框，选择repeat，即可添加ForEach语法
