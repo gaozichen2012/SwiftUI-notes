@@ -633,7 +633,7 @@ class定义了一个UpdateStore类，这个类可以给不同的 View 使用，S
 
 ## ForEach历询
 * 在Xcode中按住`cmd`+指定View或元素，调出选择框，选择repeat，即可添加ForEach语法
-![foreach]()
+![foreach](https://github.com/gaozichen2012/Swift-notes/blob/master/img/8-ForEach.jpg)
 
 ## 设置图片步骤
 ```
