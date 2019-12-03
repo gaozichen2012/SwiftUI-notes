@@ -784,8 +784,7 @@ Button(action: { self.show.toggle() }){
 ## 模糊视图BlurView
 SwiftUI中暂时无模糊视图的方法，所以使用Uikit做了一个模糊的方法在`BlurView.swift`文件中，不需细研究，直接调用即可
 例1：
-![]()
-
+![BlurView](https://github.com/gaozichen2012/Swift-notes/blob/master/img/10-BlurView.jpg)
 
 # 学习点：
 * 在`xxxDelegate.swift`文件中修改``确定打开app默认显示的界面
