@@ -786,5 +786,40 @@ SwiftUI中暂时无模糊视图的方法，所以使用Uikit做了一个模糊�
 例1：
 ![BlurView](https://github.com/gaozichen2012/Swift-notes/blob/master/img/10-BlurView.jpg)
 
+## TabBar（底部栏）
+```
+添加底部栏使用`TabView()`,下面例子中Home、contentView、UpdateList为各个View
+import SwiftUI
+
+struct TabBar: View {
+    var body: some View {
+        TabView() {
+            Home().tabItem({
+                VStack {
+                    Image(systemName: "house")
+                    Text("home")
+                }
+            })
+                .tag(1) //constant(1)与.tag()相对应，constant选中那个，对应默认主界面就是tag()对应的界面
+            ContentView().tabItem({
+                VStack {
+                    Image(systemName: "creditcard")
+                    Text("Certificates")
+                }
+            })
+                .tag(2)
+            UpdateList().tabItem({
+                VStack {
+                    Image(systemName: "square.and.pencil")
+                    Text("Updates")
+                }
+            })
+            .tag(3)
+        }
+    }
+}
+```
+
+
 # 学习点：
 * 在`xxxDelegate.swift`文件中修改``确定打开app默认显示的界面
