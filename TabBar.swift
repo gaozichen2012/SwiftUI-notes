@@ -25,10 +25,10 @@ struct TabBar: View {
                 }
             })
                 .tag(2)
-            UpdateList().tabItem({
+            Settings().tabItem({
                 VStack {
                     Image(systemName: "square.and.pencil")
-                    Text("Updates")
+                    Text("Settings")
                 }
             })
             .tag(3)
@@ -38,6 +38,11 @@ struct TabBar: View {
 
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar()
+        Group {
+            TabBar()
+            TabBar()
+                .environment(\.colorScheme, .dark)//以dark模式预览
+                .environment(\.sizeCategory, .extraExtraExtraLarge)//以指定字体大小预览
+        }
     }
 }

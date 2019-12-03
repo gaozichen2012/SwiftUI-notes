@@ -92,7 +92,7 @@ struct MenuView : View {
         .padding(.top, 20)
         .padding(30)
         .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.white)
+        .background(BlurView(style: .systemMaterial))
         .cornerRadius(30)
         .padding(.trailing, 60)
         .shadow(radius: 20)
@@ -110,10 +110,10 @@ struct CircleButton : View {
     var body: some View {
         return HStack {
             Image(systemName: icon)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)//primary对白天模式是黑色，对于dark模式为白色
         }
         .frame(width: 44, height: 44)
-        .background(Color.white)
+        .background(BlurView(style: .systemThinMaterial))
         .cornerRadius(30)
         .shadow(color: Color("buttonShadow"), radius: 10, x: 0, y: 10)
 }
@@ -128,11 +128,12 @@ struct MenuButton : View {
                     HStack {
                         Spacer()
                         Image(systemName: "list.dash")
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)//primary对白天模式是黑色，对于dark模式为白色
                     }
                     .padding(.trailing, 20)
                     .frame(width: 90, height: 60)
-                    .background(Color.white)
+//                    .background(Color.white)
+                        .background(BlurView(style: .systemThinMaterial))
                     .cornerRadius(30)
                     .shadow(color: Color("buttonShadow"), radius: 10, x: 0, y: 10)
                 }

@@ -13,39 +13,52 @@ struct HomeList: View {
     var courses = courseData
     var body: some View {
         
-        VStack() {
-            HStack {
-                VStack {
-                    Text("Courses")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                    Text("22 courses")
-                        .foregroundColor(Color.gray)
-                    
-                }
-                Spacer()
-            }
-            .padding(.leading, 70.0)
-            .padding(.bottom, 40)
-            /* ScrollView中horizontal是让view水平滚动，showsIndicators=false是为了不现实滚动条 */
-            ScrollView (.horizontal,showsIndicators: false) {
-                HStack(spacing: 30) {
-                    ForEach(courses) { item in
-                        Button(action: { self.showContent.toggle() }){
-                            CourceView(
-                                titile: item.title,
-                                image: item.image,
-                                color: item.color,
-                                shadowColor: item.shadowColor)
-                        }
-                        .sheet(isPresented: self.$showContent) { ContentView() }//Button-sheet组合使用，实现点击按钮跳出指定View
+        ScrollView {
+            VStack() {
+                HStack {
+                    VStack {
+                        Text("Courses")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                        Text("22 courses")
+                            .foregroundColor(Color.gray)
+                        
                     }
-                    .padding(.leading, 40)
-                    .padding(.trailing,40)
+                    Spacer()
                 }
+                .padding(.leading, 70.0)
+                Spacer()
+                /* ScrollView中horizontal是让view水平滚动，showsIndicators=false是为了不现实滚动条 */
+                ScrollView (.horizontal,showsIndicators: false) {
+                    HStack(spacing: -80) {
+                        ForEach(courses) { item in
+                            Button(action: { self.showContent.toggle() }){
+                                GeometryReader { geometry in //用GeometryReader实现3D滚动
+                                    CourceView(
+                                        titile: item.title,
+                                        image: item.image,
+                                        color: item.color,
+                                        shadowColor: item.shadowColor
+                                    )
+                                        .rotation3DEffect(Angle(degrees: Double(geometry.frame(in: .global).minX - 40) / -20), axis: (x: 0, y: 10, z: 0))
+                                }
+                                .frame(width: 246, height: 150)
+                            }
+                                .sheet(isPresented: self.$showContent) { ContentView() }//Button-sheet组合使用，实现点击按钮跳出指定View
+                        }
+                        .padding(.leading, 40)
+                        .padding(.trailing,40)
+                        .padding(.top, 30)
+                        
+                    }
+                    .padding(.top)
+                    Spacer()
+                }
+                .frame(height: 450)
+                CertificateRow()
             }
+            .padding(.top, 78)
         }
-        .padding(.bottom, 170)
     }
 }
 
@@ -95,17 +108,24 @@ struct Course : Identifiable {
 }
 
 let courseData = [
-    Course(
-        title: "Build an app on SwiftUI",
-        image: "Illustration1",
-        color: Color("background3"),
-        shadowColor: Color("backgroundShadow3")
-    ),
-    Course(
-        title: "Design Courcse",
-        image: "Illustration2",
-        color: Color("background4"),
-        shadowColor: Color("backgroundShadow4")
-    )
-    
+    Course(title: "Build an app with SwiftUI",
+           image: "Illustration1",
+           color: Color("background3"),
+           shadowColor: Color("backgroundShadow3")),
+    Course(title: "Design and animate your UI",
+           image: "Illustration2",
+           color: Color("background4"),
+           shadowColor: Color("backgroundShadow4")),
+    Course(title: "Swift UI Advanced",
+           image: "Illustration3",
+           color: Color("background7"),
+           shadowColor: Color(hue: 0.677, saturation: 0.701, brightness: 0.788, opacity: 0.5)),
+    Course(title: "Framer Playground",
+           image: "Illustration4",
+           color: Color("background8"),
+           shadowColor: Color(hue: 0.677, saturation: 0.701, brightness: 0.788, opacity: 0.5)),
+    Course(title: "Flutter for Designers",
+           image: "Illustration5",
+           color: Color("background9"),
+           shadowColor: Color(hue: 0.677, saturation: 0.701, brightness: 0.788, opacity: 0.5)),
 ]

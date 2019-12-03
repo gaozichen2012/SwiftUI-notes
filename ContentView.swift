@@ -13,7 +13,8 @@ struct ContentView: View {
     @State var viewState = CGSize.zero
     var body: some View {
         ZStack {
-            BlurView(style: .extraLight)
+//            BlurView(style: .extraLight)
+            BlurView(style: .systemMaterial)//模糊视图的背景选为系统材料，为了用于兼容dark模式
             TitleView()
                 .blur(radius: show ? 20 : 0)
                 .animation(.default)
@@ -85,12 +86,13 @@ struct CardView: View {
 }
 
 struct CertificateView: View {
+    var item = Certificate(title: "UI", image: "Certificate1", width: 340, height: 220)
     var body: some View {
         VStack {
             HStack {
                 VStack {
                     VStack(alignment: .leading) {
-                        Text("UI Design")
+                        Text(item.title)
                             .font(.headline).fontWeight(.medium).foregroundColor(Color.green).padding(.top)
                         Text("Tom")
                             .foregroundColor(Color.white)
@@ -103,12 +105,14 @@ struct CertificateView: View {
             }
             .padding(.horizontal)
             Spacer()
-            Image("Background")
+            Image(item.image)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                .offset(y: 50)
         }
-        .frame(width: 340.0, height: 220.0)
+        .frame(width: CGFloat(item.width), height: CGFloat(item.height))
         .background(Color.black)
         .cornerRadius(20)
-        .shadow(radius: 20)
+        .shadow(radius: 10)
     }
 }
 
@@ -141,7 +145,8 @@ struct CardBottonView: View {
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding()
         .padding(.horizontal)
-        .background(Color.white)
+//        .background(Color.white)
+        .background(BlurView(style: .systemMaterial))
         .cornerRadius(30)
         .shadow(radius: 20)
         .offset(y: 600)
