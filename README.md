@@ -613,7 +613,7 @@ SwiftUI与Combine结合来控制业务数据的单向流动，让开发者无需
 有时候我们会把一个视图的属性传至子节点中，但是又不能直接的传递给子节点，因为在 Swift 中值的传递形式是值类型传递方式，也就是传递给子节点的是一个拷贝过的值。但是通过 @Binding 修饰器修饰后，属性变成了一个引用类型，传递变成了引用传递，这样父子视图的状态就能关联起来了。
 * 在子视图中使用@Binding修饰，在父视图中使用关键字`$`传递一个绑定引用
 ![使用Binding截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/6-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8Binding.jpg)
-## @ObservedObject （被观测的对象）
+## @ObservedObject （被观测的对象）（用于实现可操作数据，修改、添加、删除）
 @ObservedObject 的用处和 @State 非常相似，从名字看来它是来修饰一个对象的，这个对象可以给多个独立的 View 使用。如果你用 @ObservedObject 来修饰一个对象，那么那个对象必须要实现ObservableObject协议，然后用 @Published 修饰对象里属性，表示这个属性是需要被 SwiftUI 监听的
 ```
 import SwiftUI
@@ -626,7 +626,8 @@ class UpdateStore : ObservableObject {
 
 ```
 class定义了一个UpdateStore类，这个类可以给不同的 View 使用，SwiftUI 会追踪使用 View 里经过 ObservableObject 修饰过的对象里进过 @Published 修饰的属性变换，一旦发生了变换，SwiftUI 会自动更新相关联的 UI
-![ObservedObject的使用]()
+![ObservedObject的使用](https://github.com/gaozichen2012/Swift-notes/blob/master/img/9-%E8%A2%AB%E8%A7%82%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BD%BF%E7%94%A8.jpg)
+在声明时需要用@ObservedObject来修饰store，store.updates相当原来的固定数据updateData，使用方法一样相当于一个二维数组
 
 ## @ObjectBinding 
 ## @EnvironmentObject
@@ -637,13 +638,25 @@ class定义了一个UpdateStore类，这个类可以给不同的 View 使用，S
 2. 英文原版：https://swiftwithmajid.com/2019/06/12/understanding-property-wrappers-in-swiftui/
 3. https://www.cnblogs.com/xiaoniuzai/p/11417123.html
 
-学习点：
-* 了解滚动视图及相关参数的使用ScrollView
-* 了解整理Combine包和ObservableObject @ObservedObject 相关概念
-* 了解掌握导航列表的使用NavigationView-NavigationLink通用框架
-* 了解掌握导航列表的相关编辑/删除/移动/添加的使用，及数据的修改（原来是定义只读数据，实际运用中大部门都是可编辑的列表和数据）
-
 # Wartime preparation
+## 滚动视图
+```
+//horizontal是让view水平滚动，showsIndicators=false是为了不显示滚动条 
+ScrollView (.horizontal,showsIndicators: false) {
+    HStack(spacing: 30) {
+        ForEach(courses) { item in
+            CourceView(
+                titile: item.title,
+                image: item.image,
+                color: item.color,
+                shadowColor: item.shadowColor)
+        }
+        .padding(.leading, 40)
+        .padding(.trailing,40)//让滚动视图最左和最右的视图离边框的距离是40
+    }
+}
+```
+
 ## 创建和使用结构体
 声明结构体要遵循Identifiable协议，此协议中只有一个必须的属性：id，它用来让SwiftUI区分不同的item
 * 一般默认`id=UUID()`，UUID是Swift用来标识协议类型、接口和一些其他item
@@ -691,11 +704,58 @@ struct HomeList: View {
 
 ```
 ## 创建可操作的数据（添加、删除）
-ObservableObject @ObservedObject 相关概念
-（明天继续）
+见：ObservedObject （被观测的对象）
+
 ## 导航列表NavigationView-NavigationLink通用组件
 苹果提供NavigationView-NavigationLink框架让列表及列表相关操作变得简单
-（明天继续）
+```
+import SwiftUI
+
+struct UpdateList: View {
+    var updates = updateData
+    @ObservedObject var store = UpdateStore() //声明一个可操作的数据store
+    
+    /* 实现添加一组数据，供Button()使用 */
+    func addUpdate() { //
+        store.updates.append(Update(image: "Certificate1", title: "New Title", text: "New Text", date: "JUL 1"))
+    }
+    
+    /* 实现列表上下排序，获取移动list的值供onMove调用 */
+    func move(from source: IndexSet, to destination: Int) {
+        store.updates.swapAt(source.first!, destination)
+    }
+    
+    var body: some View {
+        /* 导航列表视图使用NavigationView-NavigationLink通用框架 */
+        NavigationView {
+            List {
+                ForEach(store.updates) { item in //创建foreach是为了增加滑动删除按钮
+                    NavigationLink(destination: UpdateDetail(title: item.title, text: item.text, image: item.image)) {
+                        HStack(spacing: 15.0) {
+                            Image(item.image)
+                            Text(item.title)
+                            }
+                        }
+                        .padding(.vertical)
+                    }
+                .onDelete{ index in
+                self.store.updates.remove(at: index.first!)
+                }//onDelete为删除控件，当左滑动作出现时，删除updates数据
+                .onMove(perform: move)
+            }
+            .navigationBarTitle(Text("Updates"))
+            //在导航列表界面创建按钮功能需要使用navigationBarItems
+            //如果是编辑按钮直接调用EditButton()
+            //如果是添加选项则使用Button模型即可
+            //如果是需要调出新页面则需要使用Button-sheet模型
+            .navigationBarItems(
+                leading: Button(action: addUpdate) { Text("Add Update") },
+                trailing: EditButton()
+            )
+        }
+    }
+}
+```
 
 ## ForEach历询
 * 在Xcode中按住`cmd`+指定View或元素，调出选择框，选择repeat，即可添加ForEach语法
@@ -721,3 +781,11 @@ Button(action: { self.show.toggle() }){
 ```
 ![Button-sheet实例1](https://github.com/gaozichen2012/Swift-notes/blob/master/img/7-Button-sheet1.jpg)
 
+## 模糊视图BlurView
+SwiftUI中暂时无模糊视图的方法，所以使用Uikit做了一个模糊的方法在`BlurView.swift`文件中，不需细研究，直接调用即可
+例1：
+![]()
+
+
+# 学习点：
+* 在`xxxDelegate.swift`文件中修改``确定打开app默认显示的界面
