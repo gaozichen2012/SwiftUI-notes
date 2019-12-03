@@ -614,10 +614,20 @@ SwiftUI与Combine结合来控制业务数据的单向流动，让开发者无需
 * 在子视图中使用@Binding修饰，在父视图中使用关键字`$`传递一个绑定引用
 ![使用Binding截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/6-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8Binding.jpg)
 ## @ObservedObject （被观测的对象）
-@ObservedObject 的用处和 @State 非常相似，从名字看来它是来修饰一个对象的，这个对象可以给多个独立的 View 使用。如果你用 @ObservedObject 来修饰一个对象，那么那个对象必须要实现 ObservableObject 协议，然后用 @Published 修饰对象里属性，表示这个属性是需要被 SwiftUI 监听的
-![]()
-![]()
-class定义了一个UpdateStore类，这个类可以给不同的 View 使用，SwiftUI 会追踪使用 View 里经过 @ObservableObject 修饰过的对象里进过 @Published 修饰的属性变换，一旦发生了变换，SwiftUI 会更新相关联的 UI
+@ObservedObject 的用处和 @State 非常相似，从名字看来它是来修饰一个对象的，这个对象可以给多个独立的 View 使用。如果你用 @ObservedObject 来修饰一个对象，那么那个对象必须要实现ObservableObject协议，然后用 @Published 修饰对象里属性，表示这个属性是需要被 SwiftUI 监听的
+```
+import SwiftUI
+import Combine  //结合，Combine允许我们创建储存数据，并且进行数据操作的框架
+
+//定义一个可被观测的数据类型，调用UpdateStore这个class就可以自动更新并储存updates
+class UpdateStore : ObservableObject {
+    @Published var updates: [Update] = updateData //定义一个可操作性的数据updates初始值为updateData
+}
+
+```
+class定义了一个UpdateStore类，这个类可以给不同的 View 使用，SwiftUI 会追踪使用 View 里经过 ObservableObject 修饰过的对象里进过 @Published 修饰的属性变换，一旦发生了变换，SwiftUI 会自动更新相关联的 UI
+![ObservedObject的使用]()
+
 ## @ObjectBinding 
 ## @EnvironmentObject
 ## @Environment
