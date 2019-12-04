@@ -597,10 +597,15 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 ![SF Symbols](https://github.com/gaozichen2012/Swift-notes/blob/master/img/4-SF-Symbols.jpg)
 
 # Combine（先了解概念，后续继续研究）
-SwiftUI和Combine是WWDC2019发布的两大新框架，与SwiftUI配套的响应式编程框架Combine是一套通过组合变换事件操作来处理异步事件的标准库。
-SwiftUI与Combine结合来控制业务数据的单向流动，让开发者无需关心数据流向，一些原来需要费时费力的处理工作由Combine包自动化处理，让开发复杂度大大降低
-
+* Combine是SwiftUI中处理数据的本体，响应式框架
+* SwiftUI和Combine是WWDC2019发布的两大新框架，与SwiftUI配套的响应式编程框架Combine是一套通过组合变换事件操作来处理异步事件的标准库。
+* SwiftUI与Combine结合来控制业务数据的单向流动，让开发者无需关心数据流向，一些原来需要费时费力的处理工作由Combine包自动化处理，让开发复杂度大大降低
 * 事件执行过程的关系包括：被观察者Observable和观察者Observer，在Combine中对应着Publisher和Subscriber
+## Combine中的三大支柱
+三大支柱为`publisher` `Operator` `subscribe`，这三个都是协议，且都是`@propertyWrapper`的具体应用
+* publisher：负责发布事件
+* Operator：负责转换事件和数据
+* subscribe：负责订阅事件
 
 
 # Property Wrappers（属性包装器）
@@ -653,7 +658,20 @@ struct TabBar_Previews: PreviewProvider {
     }
 }
 ```
-
+同时在SE、XS、iPad上预览
+```
+struct LandmarkList_Previews: PreviewProvider {
+    static var previews: some View {
+        ForEach(["iPhone SE", "iPhone XS Max", "iPad Pro"], id: \.self) { deviceName in
+            LandmarkList()
+                .previewDevice(PreviewDevice(rawValue: deviceName))
+                .previewDisplayName(deviceName)
+        }
+    }
+}
+```
+多设备预览效果如下图：
+![多设备预览]()
 ## 滚动视图
 ```
 //horizontal是让view水平滚动，showsIndicators=false是为了不显示滚动条 
@@ -892,8 +910,8 @@ struct TabBar: View {
 ```
 
 ## 使用模拟器或手机调试
-使用模拟器调试点击RUN即可模拟器调试，见下图
-使用手机调试，需要先将手机连写mac，在Xcode中选中手机设备，再点RUN
+* 使用模拟器调试点击RUN即可模拟器调试，见下图
+* 使用手机调试，需要先将手机连写mac，在Xcode中选中手机设备，再点RUN
 ![使用模拟器调试](https://raw.githubusercontent.com/gaozichen2012/Swift-notes/master/img/12-%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%B0%83%E8%AF%95.jpg)
 ## 设置APP默认界面
 在`SceneDelegate.swift`文件中修改`UIHostingController()`中的视图设置为进入app默认显示的界面
