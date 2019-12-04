@@ -900,7 +900,7 @@ struct TabBar: View {
 ![设置APP默认界面](https://github.com/gaozichen2012/Swift-notes/blob/master/img/13-%E8%AE%BE%E7%BD%AEAPP%E9%BB%98%E8%AE%A4%E7%95%8C%E9%9D%A2.jpg)
 
 ## Swift注释支持markdown语法（待测试）
-![MARK-TODO]()
+![MARK-TODO](https://github.com/gaozichen2012/Swift-notes/blob/master/img/14-%E6%B3%A8%E9%87%8A.jpg)
 ```
      /**
      # 支持markdown
@@ -929,7 +929,7 @@ struct TabBar: View {
     }
 ```
 ## 创建自定义代码段（code snippets）
-![自定义代码段]()
+![自定义代码段](https://github.com/gaozichen2012/Swift-notes/blob/master/img/15-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81%E6%AE%B5.jpg)
 https://help.apple.com/xcode/mac/current/#/dev2b24f6f93
 
 # 学习点：
