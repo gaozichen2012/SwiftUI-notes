@@ -843,9 +843,18 @@ Button(action: { self.show.toggle() }){
 ```
 ![Button-sheet实例1](https://github.com/gaozichen2012/Swift-notes/blob/master/img/7-Button-sheet1.jpg)
 
-## 模糊视图BlurView
+## 模糊视图BlurView和Dark模式
 SwiftUI中暂时无模糊视图的方法，所以使用Uikit做了一个模糊的方法在`BlurView.swift`文件中，不需细研究，直接调用即可
-例1：
+* Dark模式和BlurView放在一起讲，是因为dark模式中大量用到模糊视角，有一些设置是重复的
+* 模糊视图BlurView的背景选为系统材料systemMaterial，为了用于兼容dark 
+* 设置背景色为自适应白天和dark模式，那么前景色foregroundColor也需要自适应：如primary
+```
+ BlurView(style: .systemMaterial)//作为一个View呈现
+ .background(BlurView(style: .systemMaterial))//作为View的修饰语呈现
+ .background(BlurView(style: .systemThinMaterial))//systemThinMaterial是加厚渲染，比如一些按钮或处于顶部的视图需要做强对比
+ .foregroundColor(.primary)//primary对白天模式是黑色，对于dark模式为白色
+
+```
 ![BlurView](https://github.com/gaozichen2012/Swift-notes/blob/master/img/10-BlurView.jpg)
 
 ## TabBar（底部栏）
@@ -889,5 +898,38 @@ struct TabBar: View {
 ## 设置APP默认界面
 在`SceneDelegate.swift`文件中修改`UIHostingController()`中的视图设置为进入app默认显示的界面
 ![设置APP默认界面](https://github.com/gaozichen2012/Swift-notes/blob/master/img/13-%E8%AE%BE%E7%BD%AEAPP%E9%BB%98%E8%AE%A4%E7%95%8C%E9%9D%A2.jpg)
+
+## Swift注释支持markdown语法（待测试）
+![MARK-TODO]()
+```
+     /**
+     # 支持markdown
+     # 一级标题
+     ## 二级标题也可以的
+     注释参考2
+     隔一行表示换行d
+     
+     三个”***"代表一条分割线
+     ***
+     ## 使用示例
+     ```
+     let result = testComment2(pram: "参数1", param2: true))
+     ```
+     
+     ****
+     - important:这个很重要
+     - returns: 有返回值
+     - parameter pram: The cubes available for allocation
+     - parameter param2: The people that require cubes
+    
+     */
+    func testComment2(pram:String, param2:Bool) -> Bool {
+        print("markdown支持")
+        return true
+    }
+```
+## 创建自定义代码段（code snippets）
+![自定义代码段]()
+https://help.apple.com/xcode/mac/current/#/dev2b24f6f93
 
 # 学习点：
