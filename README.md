@@ -671,7 +671,7 @@ struct LandmarkList_Previews: PreviewProvider {
 }
 ```
 多设备预览效果如下图：
-![多设备预览]()
+![多设备预览](https://github.com/gaozichen2012/Swift-notes/blob/master/img/16-%E5%A4%9A%E8%AE%BE%E5%A4%87%E9%A2%84%E8%A7%88.jpg)
 ## 滚动视图
 ```
 //horizontal是让view水平滚动，showsIndicators=false是为了不显示滚动条 
@@ -836,6 +836,20 @@ struct Settings: View {
     }
 }
 ```
+另一种形式的Picker使用（常用）
+```
+ VStack(alignment: .leading, spacing: 20) {
+                Text("Seasonal Photo").bold()
+                
+                Picker("Seasonal Photo", selection: $profile.seasonalPhoto) {
+                    ForEach(Profile.Season.allCases, id: \.self) { season in
+                        Text(season.rawValue).tag(season)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+            }
+```
+![另一种Picker使用]()
 
 ## ForEach历询
 * 在Xcode中按住`cmd`+指定View或元素，调出选择框，选择repeat，即可添加ForEach语法
