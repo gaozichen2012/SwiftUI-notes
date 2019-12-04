@@ -31,8 +31,9 @@ struct TabBar: View {
                     Text("Settings")
                 }
             })
-            .tag(3)
+                .tag(3)
         }
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
@@ -40,9 +41,13 @@ struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             TabBar()
+                .previewDevice("iPhone SE")
             TabBar()
+                .previewDevice("iPhone Xr")
+            TabBar()
+                .previewDevice("iPad Pro (12.9-inch)")
                 .environment(\.colorScheme, .dark)//以dark模式预览
-                .environment(\.sizeCategory, .extraExtraExtraLarge)//以指定字体大小预览
+//                .environment(\.sizeCategory, .extraExtraExtraLarge)//以指定字体大小预览
         }
     }
 }

@@ -888,7 +888,7 @@ SwiftUI中暂时无模糊视图的方法，所以使用Uikit做了一个模糊�
  .background(BlurView(style: .systemMaterial))//作为View的修饰语呈现
  .background(BlurView(style: .systemThinMaterial))//systemThinMaterial是加厚渲染，比如一些按钮或处于顶部的视图需要做强对比
  .foregroundColor(.primary)//primary对白天模式是黑色，对于dark模式为白色
-
+ .foregroundColor(.clear)//与primary相反
 ```
 ![BlurView](https://github.com/gaozichen2012/Swift-notes/blob/master/img/10-BlurView.jpg)
 

@@ -40,21 +40,19 @@ struct HomeList: View {
                                         color: item.color,
                                         shadowColor: item.shadowColor
                                     )
-                                        .rotation3DEffect(Angle(degrees: Double(geometry.frame(in: .global).minX - 40) / -20), axis: (x: 0, y: 10, z: 0))
+                                        .rotation3DEffect(Angle(degrees: Double(geometry.frame(in: .global).minX - 40) / -40), axis: (x: 0, y: 10, z: 0))
                                 }
-                                .frame(width: 246, height: 150)
+                                .frame(width: 246, height: 360)
                             }
                                 .sheet(isPresented: self.$showContent) { ContentView() }//Button-sheet组合使用，实现点击按钮跳出指定View
                         }
                         .padding(.leading, 40)
                         .padding(.trailing,40)
-                        .padding(.top, 30)
-                        
                     }
-                    .padding(.top)
+                    .padding(.top, 30)
+                    .padding(.bottom, 70)
                     Spacer()
                 }
-                .frame(height: 450)
                 CertificateRow()
             }
             .padding(.top, 78)

@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+
 struct Home : View {
     @State var show = false //识别点击左上角按钮
     @State var showProfile = false //识别右上角按钮
@@ -19,7 +20,7 @@ struct Home : View {
                 .scaleEffect(showProfile ? 0.9 : 1)
                 .animation(.default)
             ContentView()
-//                .background(Color.white)
+                .frame(minWidth: 0, maxWidth: 712)
                 .cornerRadius(30)
                 .shadow(radius: 20)
                 .animation(.spring())
@@ -35,6 +36,8 @@ struct Home : View {
             
             MenuView(show: $show)
         }
+        .background(Color.clear)//与primary相反，白天模式为白，dark模式为黑
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -70,6 +73,7 @@ struct Menu : Identifiable {
 
 let menuData = [
     Menu(title: "My Account", icon: "person.crop.circle"),
+    Menu(title: "Settings", icon: "creditcard"),
     Menu(title: "Billing", icon: "creditcard"),
     Menu(title: "Team", icon: "person.2.square.stack"),
     Menu(title: "Sign out", icon: "arrow.uturn.down")
@@ -81,26 +85,29 @@ struct MenuView : View {
     @Binding var show : Bool
     
     var body: some View {
-        return VStack(alignment: .leading, spacing: 20) {
-            
-            ForEach(menu) { item in
-                MenuRow(image: item.icon, text: item.title)
+        return HStack {
+            VStack(alignment: .leading, spacing: 20) {
+                
+                ForEach(menu) { item in
+                    MenuRow(image: item.icon, text: item.title)
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
-        }
-        .padding(.top, 20)
-        .padding(30)
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .background(BlurView(style: .systemMaterial))
-        .cornerRadius(30)
-        .padding(.trailing, 60)
-        .shadow(radius: 20)
-        .rotation3DEffect(Angle(degrees: show ? 0 : 60), axis: (x: 0, y: 10.0, z: 0))
-        .animation(.default)
-        .offset(x: show ? 0 : -UIScreen.main.bounds.width)
-        .onTapGesture {
-            self.show.toggle()
+            .padding(.top, 20)
+            .padding(30)
+            .frame(minWidth: 0, maxWidth: 360)
+            .background(BlurView(style: .systemMaterial))
+            .cornerRadius(30)
+            .padding(.trailing, 60)
+            .shadow(radius: 20)
+            .rotation3DEffect(Angle(degrees: show ? 0 : 60), axis: (x: 0, y: 10.0, z: 0))
+            .animation(.default)
+            .offset(x: show ? 0 : -UIScreen.main.bounds.width)
+            .onTapGesture {
+                self.show.toggle()
+            }
+        Spacer()
         }
     }
 }
@@ -145,6 +152,7 @@ struct MenuButton : View {
 }
 
 struct MenuRight : View {
+    @State var showUpdateList = false
     @Binding var show : Bool
     var body: some View {
         return VStack {
@@ -153,8 +161,11 @@ struct MenuRight : View {
                 Button(action: { self.show.toggle() }) {
                     CircleButton(icon: "person.crop.circle")
                 }
-                Button(action: { self.show.toggle() }) {
+                Button(action: { self.showUpdateList.toggle() }) {
                     CircleButton(icon: "bell")
+                }
+                .sheet(isPresented: $showUpdateList) {
+                UpdateList()
                 }
             }
             Spacer()
