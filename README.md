@@ -882,8 +882,12 @@ struct TabBar: View {
 }
 ```
 
+## 使用模拟器或手机调试
+使用模拟器调试点击RUN即可模拟器调试，见下图
+使用手机调试，需要先将手机连写mac，在Xcode中选中手机设备，再点RUN
+![使用模拟器调试](https://raw.githubusercontent.com/gaozichen2012/Swift-notes/master/img/12-%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%B0%83%E8%AF%95.jpg)
 ## 设置APP默认界面
 在`SceneDelegate.swift`文件中修改`UIHostingController()`中的视图设置为进入app默认显示的界面
-![]()
+![设置APP默认界面](https://github.com/gaozichen2012/Swift-notes/blob/master/img/13-%E8%AE%BE%E7%BD%AEAPP%E9%BB%98%E8%AE%A4%E7%95%8C%E9%9D%A2.jpg)
 
 # 学习点：
