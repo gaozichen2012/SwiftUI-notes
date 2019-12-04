@@ -773,6 +773,10 @@ struct UpdateList: View {
 ```
 ## Settings列表小控件
 Settings列表用到了导航列表NavigationView框架，以表格Form作为载体，用到的小控件有开关Toggle、步进Stepper、选择器Picker、日期选择器DatePicker、文本输入TextField、警报Alert
+* 比如Settings这种列表总数量固定的用Form，涉及添加或删除选项的用List
+* 各个小控件都用了@State修饰的数据，使用$符号是因为需要向小控件传递数据
+* TextField用到了Section作为载体，Section相当于一个集合，目的是与上下文区分，见下图
+![Settings截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/11-Settings%E6%88%AA%E5%9B%BE.jpg)
 ```
 import SwiftUI
 
@@ -787,7 +791,7 @@ struct Settings: View {
     var body: some View {
         NavigationView {
             Form { //表格，Form功能相当于list，但是不要提交数据
-                Toggle(isOn: $receive) { //使用$符号是因为使用了form
+                Toggle(isOn: $receive) { 
                     Text("Receive notification")
                 }
                 Stepper(value: $number, in: 1...10) {
@@ -814,7 +818,6 @@ struct Settings: View {
     }
 }
 ```
-
 
 ## ForEach历询
 * 在Xcode中按住`cmd`+指定View或元素，调出选择框，选择repeat，即可添加ForEach语法
