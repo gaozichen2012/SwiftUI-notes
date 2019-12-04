@@ -882,6 +882,8 @@ struct TabBar: View {
 }
 ```
 
+## 设置APP默认界面
+在`SceneDelegate.swift`文件中修改`UIHostingController()`中的视图设置为进入app默认显示的界面
+![]()
 
 # 学习点：
-* 在`xxxDelegate.swift`文件中修改``确定打开app默认显示的界面
