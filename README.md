@@ -35,6 +35,9 @@ https://onevcat.com/2019/06/swift-ui-firstlook/
 * 照片滤镜，摄影模板助手
 * 单词本助手
 * gif转换助手
+* 番茄钟（mac+iphone+watch）
+* 睡眠钟
+* 时间倒计时（iphone+watch+mac）
 * 看iPhone MAC app store付费榜以半价策略攻击
 
 # Swift语法
@@ -849,7 +852,7 @@ struct Settings: View {
                 .pickerStyle(SegmentedPickerStyle())
             }
 ```
-![另一种Picker使用]()
+![另一种Picker使用](https://github.com/gaozichen2012/Swift-notes/blob/master/img/17-%E5%8F%A6%E4%B8%80%E7%A7%8DPicker%E4%BD%BF%E7%94%A8.jpg)
 
 ## ForEach历询
 * 在Xcode中按住`cmd`+指定View或元素，调出选择框，选择repeat，即可添加ForEach语法
