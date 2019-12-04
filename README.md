@@ -639,6 +639,21 @@ class定义了一个UpdateStore类，这个类可以给不同的 View 使用，S
 3. https://www.cnblogs.com/xiaoniuzai/p/11417123.html
 
 # Wartime preparation
+## Xcode添加不同的预览视角
+默认1个预览视角，想要2个以上用Group重复即可；用environment可配置dark模式或字体大小预览
+```
+struct TabBar_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            TabBar()
+            TabBar()
+                .environment(\.colorScheme, .dark)//以dark模式预览
+                .environment(\.sizeCategory, .extraExtraExtraLarge)//以指定字体大小预览
+        }
+    }
+}
+```
+
 ## 滚动视图
 ```
 //horizontal是让view水平滚动，showsIndicators=false是为了不显示滚动条 
@@ -756,6 +771,50 @@ struct UpdateList: View {
     }
 }
 ```
+## Settings列表小控件
+Settings列表用到了导航列表NavigationView框架，以表格Form作为载体，用到的小控件有开关Toggle、步进Stepper、选择器Picker、日期选择器DatePicker、文本输入TextField、警报Alert
+```
+import SwiftUI
+
+struct Settings: View {
+    @State var receive = false
+    @State var number = 1
+    @State var selection = 1
+    @State var date = Date()
+    @State var email = ""
+    @State var submit = false
+    
+    var body: some View {
+        NavigationView {
+            Form { //表格，Form功能相当于list，但是不要提交数据
+                Toggle(isOn: $receive) { //使用$符号是因为使用了form
+                    Text("Receive notification")
+                }
+                Stepper(value: $number, in: 1...10) {
+                    Text("\(number) Notification\(number > 1 ? "s" : "") per week")
+                }
+                Picker(selection: $selection, label: Text("Favorite")) {
+                    Text("SwiftUI").tag(1)
+                    Text("React").tag(2)
+                }
+                DatePicker(selection: $date, label: { Text("Date") })
+                Section(header: Text("Email")) {
+                    TextField("Your email", text: $email)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+                Button(action: {self.submit.toggle()}){
+                    Text("Submit")
+                }
+            .alert(isPresented: $submit, content: {
+                Alert(title: Text("Thanks!"), message: Text("Email:\(email)"))
+            })
+            }
+            .navigationBarTitle("Settings")
+        }
+    }
+}
+```
+
 
 ## ForEach历询
 * 在Xcode中按住`cmd`+指定View或元素，调出选择框，选择repeat，即可添加ForEach语法
