@@ -968,3 +968,6 @@ struct TabBar: View {
 https://help.apple.com/xcode/mac/current/#/dev2b24f6f93
 
 # 学习点：
+* 了解样本数据格式.json
+* 预览没有显示，请选择 Editor > Canvas , 然后单击 Get Started 。
+* 查看苹果SwiftUI教程第二节的Section 7：父视图给子视图传递数据的逻辑，并做笔记
