@@ -971,3 +971,7 @@ https://help.apple.com/xcode/mac/current/#/dev2b24f6f93
 * 了解样本数据格式.json
 * 预览没有显示，请选择 Editor > Canvas , 然后单击 Get Started 。
 * 查看苹果SwiftUI教程第二节的Section 7：父视图给子视图传递数据的逻辑，并做笔记
+* 了解哪些是用.color哪些是用Color.color
+* 通过苹果SwiftUI教程第三节的Section 3：了解List/group/forEach等的作用区别
+* 通过苹果SwiftUI教程第三节的Section 4：了解此节使用ObservableObject的方式与bilibili教程的区别异同（重要）
+* 通过苹果SwiftUI教程第三节的Section 6: 了解父子视图的ObservableObject类型数据传递（重要）
