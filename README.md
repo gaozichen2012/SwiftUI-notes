@@ -49,8 +49,6 @@ https://onevcat.com/2019/06/swift-ui-firstlook/
 * 编译：新建源程序hello.swift，在终端使用`swiftc -o hello.out hello.swift`生成hello.out，执行`./hello.out`
 * 只有可选类型的变量和常量才能接收nil，非可选类型的变量和常量不能接收nil。
 * 使用if和switch没有括号，比如`if a==true`
-* 刷新 preview 的快捷键：Option + Command + P
-
 
 ## 元组类型（tuples）（等同于C的结构体）
 元组（tuples）把多个值组合成一个复合值
@@ -548,13 +546,14 @@ Mockplus（摹客）是一款简洁快速的原型图设计工具
 
 
 
-# SwiftUI
+# SwiftUI介绍及技巧
 * 苹果基于Swift开发出的一套通用UI，SwiftUI 原生支持“动态字体”、“深色模式”、本地化和辅助功能
 * SwiftUI在Xcode11中可以使用图形化界面拖拽，并实时在代码中更改
 * SwiftUI支持所有苹果设备ios/pados/watch os
-* 
-
-
+* 刷新 preview 的快捷键：Option + Command + P
+* 重新编译command+b
+* 预览没有显示，请选择 Editor > Canvas , 然后单击 Get Started 。
+* background和foregroundColor对于.color和Color.color的使用没有区别
 
 # Views and Controls（视图和控件）
 视图`Views `用于显示自定义的内容`content`，控件`Controls`负责处理用户交互。
@@ -967,11 +966,31 @@ struct TabBar: View {
 ![自定义代码段](https://github.com/gaozichen2012/Swift-notes/blob/master/img/15-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81%E6%AE%B5.jpg)
 https://help.apple.com/xcode/mac/current/#/dev2b24f6f93
 
+## Codable和JSON数据格式
+* JSON（JavaScript Object Notation，JavaScript对象表示法），是一种轻量级的数据交换语言，该语言以易于让人阅读的文字为基础，用来传输由属性值或者序列性的值组成的数据对象。尽管JSON是JavaScript的一个子集，但JSON是独立于语言的文本格式，并且采用了类似于C语言家族的一些习惯。
+* Codable 是 Swift 4.0 以后推出的一个编解码协议，可以配合 JSONDecoder 和 JSONEncoder 用来进行 JSON 解码和编码。
+* JSONDecoder Apple 官方推出的基于 Codable 的 JSON 解析类
+* Codable提供了简洁的API，使Swift的编码与解析焕然一新。
+* Swift的Enum，Struct和Class都支持Codable
+
+### 对JSON数据的解析使用分析《SwiftUI教程中第三节》
+1.定义了一个`landmarkData.json`json数据，里面存放了用户数据
+2.在`Data.swift`中定义了函数方法`load`,对json数据进行了解析：`load("landmarkData.json")`,`load`方法内用到了`JSONDecoder()`和`.decode(T.self, from: data)`对json数据进行解码，解码后的数据以`Landmark`格式存在`landmarkData`
+3.在后续调用函数中声明`var landmark : Landmark`，再在预览视图中传入数据：`LandmarkRow(landmark: landmarkData[0])`
+
+菜鸟JSON教程：https://www.runoob.com/json/json-tutorial.html
+
+## List/Form/Group的区别
+* Form仅用于Picker、toggle这一类数据输入的控件
+* group仅在PreviewProvider预览多个视图时使用
+* 其他的列表都用List（涉及添加或删除选项的也用List）
+
+
 # 学习点：
-* 了解样本数据格式.json
-* 预览没有显示，请选择 Editor > Canvas , 然后单击 Get Started 。
-* 查看苹果SwiftUI教程第二节的Section 7：父视图给子视图传递数据的逻辑，并做笔记
-* 了解哪些是用.color哪些是用Color.color
-* 通过苹果SwiftUI教程第三节的Section 3：了解List/group/forEach等的作用区别
 * 通过苹果SwiftUI教程第三节的Section 4：了解此节使用ObservableObject的方式与bilibili教程的区别异同（重要）
 * 通过苹果SwiftUI教程第三节的Section 6: 了解父子视图的ObservableObject类型数据传递（重要）
+* 苹果SwiftUI教程第二节中使用了JSON数据格式，用Codable协议对JSON文件进行了编解码，后续再使用中来深究其使用方法
+
+iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
+
+SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=article&id=87003
