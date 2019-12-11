@@ -985,14 +985,55 @@ https://help.apple.com/xcode/mac/current/#/dev2b24f6f93
 * group仅在PreviewProvider预览多个视图时使用
 * 其他的列表都用List（涉及添加或删除选项的也用List）
 
+## 添加动画
+给视图添加动画直接使用.animation()和其他一些修饰词即可；要给状态的改变添加动画必须用withAnimation()
+* 比如点击一个按钮跳出一个界面，按钮的动画用.animation()，跳出的界面用withAnimation()
+```
+Button(action: {
+    withAnimation {
+        self.showDetail.toggle()
+        }
+    }) {
+            Image(systemName: "chevron.right.circle")
+            .imageScale(.large)
+            .rotationEffect(.degrees(showDetail ? 90 : 0))
+            .scaleEffect(showDetail ? 1.5 : 1)
+            .padding()
+            .animation(.default)
+        }
+```
+## animation常用动画效果
+```
+.animation(.default)
+.animation(.easeInOut(duration: 0.5))
+.animation(.spring())
+.animation(nil)
+
+/* 将动画封装起来，再以.animation(animation)方式调用 */
+struct GraphCapsule: View {
+    var animation: Animation {
+        Animation.spring(dampingFraction: 0.5)
+        	.speed(2)
+         	.delay(0.03 * Double(index))
+    }
+    
+    var body: some View {
+        Capsule()
+            .fill(Color.white)
+            .frame(height: height * heightRatio, alignment: .bottom)
+            .offset(x: 0, y: height * -offsetRatio)
+            .animation(animation)
+    }
+}
+
+```
+## extension（扩展）
+
 
 # 学习点：
 * 通过苹果SwiftUI教程第三节的Section 4：了解此节使用ObservableObject的方式与bilibili教程的区别异同（重要）
 * 通过苹果SwiftUI教程第三节的Section 6: 了解父子视图的ObservableObject类型数据传递（重要）
-* 苹果SwiftUI教程第二节中使用了JSON数据格式，用Codable协议对JSON文件进行了编解码，后续再使用中来深究其使用方法
-* 给视图添加动画直接使用.animation()和其他一些修饰词即可，但是要给状态的改变添加动画必须用withAnimation(),比如点击一个按钮跳出一个界面，按钮的动画用.animation()，跳出的界面用withAnimation()
 * 苹果SwiftUI教程第5节3.2使用extension自定义一个静态静态属性并使用（了解此用法，目的是为了保持代码清洁可读）对比4.2的用法
-* 整理动画的修饰词备用
 
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
 
