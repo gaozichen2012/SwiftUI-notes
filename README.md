@@ -551,8 +551,168 @@ default:
 }
 // 打印“Mostly harmless”
 ```
-# 枚举成员的遍历今晚看这里
+### 枚举成员的遍历
+令枚举遵循 CaseIterable 协议。Swift 会生成一个 allCases 属性，用于表示一个包含枚举所有成员的集合。下面是一个例子：
+```
+/* 通过 Beverage.allCases 可以访问到包含 Beverage 枚举所有成员的集合 */
+enum Beverage: CaseIterable {
+    case coffee, tea, juice
+}
+let numberOfChoices = Beverage.allCases.count
+print("\(numberOfChoices) beverages available")
+// 打印“3 beverages available”
+```
+allCases 的使用方法和其它一般集合一样——集合中的元素是枚举类型的实例，所以在上面的情况中，这些元素是 Beverage 值。在前面的例子中，统计了总共有多少个枚举成员。而在下面的例子中，则使用 for 循环来遍历所有枚举成员
+```
+for beverage in Beverage.allCases {
+    print(beverage)
+}
+// coffee
+// tea
+// juice
+```
+### 关联值
+Swift 枚举可以用来存储任意类型的关联值
+声明存储不同类型关联值的枚举成员(这个定义不提供任何Int或String类型的关联值)
+```
+//一个成员值是(Int，Int，Int)类型关联值的num
+//一个成员值是(String,String)类型关联值的str
+enum Code{
+    case num(Int,Int,Int)
+    case str(String,String)
+}
 
+//创建了一个名为 code 的变量，并将 Code.num 赋值给它，关联的元组值为 (2, 3, 3)
+var code = Code.num(2, 3, 3)
+
+//code被重新赋值为.str以后，原始的 Code.num 和其整数关联值被新的 Code.str 和其字符串关联值所替代
+code =  .str("A", "B")
+```
+Code 类型的常量和变量可以存储一个 .num 或者一个 .str（连同它们的关联值），但是在同一时间只能存储这两个值中的一个。
+
+使用switch语句检查不同类型
+```
+switch code {
+case .num(let num1, let num2, let num3):
+    print("\(num1),\(num2),\(num3)")
+case .str(let str1, let str2):
+    print("\(str1),\(str2)")
+}
+
+//如果枚举的所有关联值都被提取为常量或者变量，则可以在前面放置单个var或let注释，以简洁起见
+switch code {
+case let .num(num1,num2,num3):
+    print("\(num1),\(num2),\(num3)")
+case let .str(str1,str2):
+    print("\(str1),\(str2)")
+}
+```
+### 原始值
+枚举成员可以设置原始值，这些原始值的类型必须相同
+```
+enum Season:String {
+    case spring = "A"
+    case summer = "B"
+    case autumn = "C"
+    case winter = "D"
+}
+```
+>原始值和关联值是不同的。原始值是在定义枚举时被预先填充的值。对于一个特定的枚举成员，它的原始值始终不变。关联值是创建一个基于枚举成员的常量或变量时才设置的值，枚举成员的关联值可以变化。
+#### 原始值的隐式赋值
+当使用整数作为枚举成员的原始值时，隐式赋值的值依次递增1
+```
+enum Season:Int {
+    case spring = 1
+    case summer
+    case autumn
+    case winter
+}
+```
+当使用字符串作为枚举类型的原始值时，每个枚举成员的隐式原始值为该枚举成员的名称
+```
+enum Season:String {
+    case spring 
+    case summer
+    case autumn
+    case winter
+}
+```
+使用枚举成员的rawValue属性可以访问该枚举成员的原始值
+```
+print(Season.spring.rawValue)
+//"spring"
+```
+#### 使用原始值初始化枚举实例
+可以通过rawValue初始化一个枚举成员，返回值则是枚举成员或nil，可以通过这个来判断这个新枚举成员是否在枚举值中
+```
+enum Season:Int {
+    case spring
+    case summer
+    case autumn
+    case winter
+}
+if let season = Season(rawValue: 5){
+    switch season{
+    case .spring:
+        print("spring")
+    case .summer:
+        print("summer")
+    case .autumn:
+        print("autumn")
+    case .winter:
+        print("winter")
+    }
+}else{
+    print("rawValue: 5 not in season!")
+}
+```
+这个例子使用了可选绑定（optional binding），试图通过原始值 5 来访问Season。if let season = Season(rawValue: 5)语句创建了一个可选 Season，如果可选 Season 的值存在，就会赋值给 season。在这个例子中，无法检索到位置为 5的季节，所以 else 分支被执行。
+### 递归枚举
+* 递归枚举是一种枚举类型，它有一个或多个枚举成员使用该枚举类型的实例作为关联值。
+* 在枚举成员前加上indirect来表示该成员可递归
+
+下面的例子中，枚举类型存储了简单的算术表达式：
+```
+enum ArithmeticExpression {
+    case number(Int)
+    indirect case addition(ArithmeticExpression, ArithmeticExpression)
+    indirect case multiplication(ArithmeticExpression, ArithmeticExpression)
+}
+```
+也可以在枚举类型开头加上 indirect 关键字来表明它的所有成员都是可递归的：
+```
+indirect enum ArithmeticExpression {
+    case number(Int)
+    case addition(ArithmeticExpression, ArithmeticExpression)
+    case multiplication(ArithmeticExpression, ArithmeticExpression)
+}
+```
+上面定义的枚举类型可以存储三种算术表达式：纯数字、两个表达式相加、两个表达式相乘。枚举成员 addition 和 multiplication 的关联值也是算术表达式——这些关联值使得嵌套表达式成为可能。
+
+例如，表达式 (5 + 4) * 2，乘号右边是一个数字，左边则是另一个表达式。因为数据是嵌套的，因而用来存储数据的枚举类型也需要支持这种嵌套——这意味着枚举类型需要支持递归。下面的代码展示了使用 ArithmeticExpression 这个递归枚举创建表达式 (5 + 4) * 2
+```
+let five = ArithmeticExpression.number(5)
+let four = ArithmeticExpression.number(4)
+let sum = ArithmeticExpression.addition(five, four)
+let product = ArithmeticExpression.multiplication(sum, ArithmeticExpression.number(2))
+```
+要操作具有递归性质的数据结构，使用递归函数是一种直截了当的方式。例如，下面是一个对算术表达式求值的函数：
+```
+func evaluate(_ expression: ArithmeticExpression) -> Int {
+    switch expression {
+    case let .number(value):
+        return value
+    case let .addition(left, right):
+        return evaluate(left) + evaluate(right)
+    case let .multiplication(left, right):
+        return evaluate(left) * evaluate(right)
+    }
+}
+
+print(evaluate(product))
+// 打印“18”
+```
+该函数如果遇到纯数字，就直接返回该数字的值。如果遇到的是加法或乘法运算，则分别计算左边表达式和右边表达式的值，然后相加或相乘。
 ## 对象和类（class未了解清楚，待了解）
 123
 ## protocol（协议）
