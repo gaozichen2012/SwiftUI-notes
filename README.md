@@ -487,8 +487,147 @@ reversedNames = names.sorted { $0 > $1 }
 函数的传入参数中`_`表示什么意思？比如`func backward(_ s1: String, _ s2: String) -> Bool { return s1 > s2`}
 闭包概念研究：https://swiftgg.gitbook.io/swift/swift-jiao-cheng/07_closures
 
+##枚举
+* 
+
+### 枚举语法
+使用 enum 关键词来创建枚举并且把它们的整个定义放在一对大括号内：
+```
+enum SomeEnumeration {
+    // 枚举定义放在这里
+}
+```
+下面是用枚举表示指南针四个方向的例子：
+```
+enum CompassPoint {
+    case north
+    case south
+    case east
+    case west
+}
+```
+枚举中定义的值（如 north，south，east 和 west）是这个枚举的成员值（或成员）。你可以使用 case 关键字来定义一个新的枚举成员值。
+>与 C 和 Objective-C 不同，Swift 的枚举成员在被创建时不会被赋予一个默认的整型值。在上面的 CompassPoint 例子中，north，south，east 和 west 不会被隐式地赋值为 0，1，2 和 3。相反，这些枚举成员本身就是完备的值，这些值的类型是已经明确定义好的 CompassPoint 类型。
+多个成员值可以出现在同一行上，用逗号隔开：
+```
+enum Planet {
+    case mercury, venus, earth, mars, jupiter, saturn, uranus, neptune
+}
+```
+每个枚举定义了一个全新的类型。像 Swift 中其他类型一样，它们的名字（例如 CompassPoint 和 Planet）以一个大写字母开头。
+```
+var directionToHead = CompassPoint.west
+```
+directionToHead 的类型可以在它被 CompassPoint 的某个值初始化时推断出来。一旦 directionToHead 被声明为 CompassPoint 类型，你可以使用更简短的点语法将其设置为另一个 CompassPoint 的值：
+```
+directionToHead = .east
+```
+当 directionToHead 的类型已知时，再次为其赋值可以省略枚举类型名。在使用具有显式类型的枚举值时，这种写法让代码具有更好的可读性。
+### 使用 Switch 语句匹配枚举值
+使用 switch 语句匹配单个枚举值：
+```
+directionToHead = .south
+switch directionToHead {
+case .north:
+    print("Lots of planets have a north")
+case .south:
+    print("Watch out for penguins")
+case .east:
+    print("Where the sun rises")
+case .west:
+    print("Where the skies are blue")
+}
+// 打印“Watch out for penguins”
+```
+正如在 控制流 中介绍的那样，在判断一个枚举类型的值时，switch 语句必须穷举所有情况。如果忽略了 .west 这种情况，上面那段代码将无法通过编译，因为它没有考虑到 CompassPoint 的全部成员。强制穷举确保了枚举成员不会被意外遗漏。
+当不需要匹配每个枚举成员的时候，你可以提供一个 default 分支来涵盖所有未明确处理的枚举成员：（和C一样）
+```
+let somePlanet = Planet.earth
+switch somePlanet {
+case .earth:
+    print("Mostly harmless")
+default:
+    print("Not a safe place for humans")
+}
+// 打印“Mostly harmless”
+```
+# 枚举成员的遍历今晚看这里
+
 ## 对象和类（class未了解清楚，待了解）
 123
+## protocol（协议）
+* 协议可以要求遵循协议的类型提供特定名称和类型的实例属性或类型属性。
+* 协议不指定属性是存储属性还是计算属性，它只指定属性的名称和类型。
+* 协议还指定属性是可读的还是可读可写的。
+* 
+
+
+协议的定义方式与类、结构体和枚举的定义非常相似
+```
+protocol SomeProtocol {
+    // 这里是协议的定义部分
+}
+```
+要让自定义类型遵循某个协议，在定义类型时，需要在类型名称后加上协议名称，中间以冒号（:）分隔。遵循多个协议时，各协议之间用逗号（,）分隔
+```
+struct SomeStructure: FirstProtocol, AnotherProtocol {
+    // 这里是结构体的定义部分
+}
+```
+若是一个类拥有父类，应该将父类名放在遵循的协议名之前，以逗号分隔：
+```
+class SomeClass: SomeSuperClass, FirstProtocol, AnotherProtocol {
+    // 这里是类的定义部分
+}
+```
+协议总是用 var 关键字来声明变量属性，在类型声明后加上 { set get } 来表示属性是可读可写的，可读属性则用 { get } 来表示
+```
+protocol SomeProtocol {
+    var mustBeSettable: Int { get set }
+    var doesNotNeedToBeSettable: Int { get }
+}
+```
+在协议中定义类型属性时，总是使用 static 关键字作为前缀。当类类型遵循协议时，除了 static 关键字，还可以使用 class 关键字来声明类型属性：
+```
+protocol AnotherProtocol {
+    static var someTypeProperty: Int { get set }
+}
+```
+### 例子
+下面是一个只含有一个实例属性要求的协议
+```
+protocol FullyNamed {
+    var fullName: String { get }
+}
+```
+FullyNamed 协议除了要求遵循协议的类型提供 fullName 属性外，并没有其他特别的要求。这个协议表示，任何遵循 FullyNamed 的类型，都必须有一个可读的 String 类型的实例属性 fullName 。
+下面是一个遵循 FullyNamed 协议的简单结构体：
+```
+struct Person: FullyNamed {
+    var fullName: String
+}
+let john = Person(fullName: "John Appleseed")
+// john.fullName 为 "John Appleseed"
+```
+下面是一个更为复杂的类，它采纳并遵循了 FullyNamed 协议：(待研究CLASS)
+```
+class Starship: FullyNamed {
+    var prefix: String?
+    var name: String
+    init(name: String, prefix: String? = nil) {
+        self.name = name
+        self.prefix = prefix
+    }
+    var fullName: String {
+        return (prefix != nil ? prefix! + " " : "") + name
+    }
+}
+var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
+// ncc1701.fullName 为 "USS Enterprise"
+```
+Starship 类把 fullName 作为只读的计算属性来实现。每一个 Starship 类的实例都有一个名为 name 的非可选属性和一个名为 prefix 的可选属性。 当 prefix 存在时，计算属性 fullName 会将 prefix 插入到 name 之前，从而得到一个带有 prefix 的 fullName。
+（后续内容较多待研究）
+
 
 
 # Playground工具介绍
