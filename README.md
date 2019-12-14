@@ -41,6 +41,8 @@ https://onevcat.com/2019/06/swift-ui-firstlook/
 * 看iPhone MAC app store付费榜以半价策略攻击
 
 # Swift语法
+* 定义一个结构体或类时，命名使用首字母大写风格，如`SomeStructure`,`SomeClass`;（和Bool/Int一样属于类型）
+* 定义一个属性或方法命名使用首字母小写风格，以便与类型名区分，如`frameRate`和`incrementCount`；
 * Swift源文件的第一行可执行的代码就是Swift的程序的入口
 * Swift把每行代码作为了一个语句，无须任何符号作为结束。但是如果2句代码写在同一行需要以`;`分隔。
 * Swift要求所有的变量和常量必须先声明后使用，声明变量需要使用var，声明常量则需要使用let；形如：var 变量名[:类型] =初始值
@@ -487,9 +489,7 @@ reversedNames = names.sorted { $0 > $1 }
 函数的传入参数中`_`表示什么意思？比如`func backward(_ s1: String, _ s2: String) -> Bool { return s1 > s2`}
 闭包概念研究：https://swiftgg.gitbook.io/swift/swift-jiao-cheng/07_closures
 
-##枚举
-* 
-
+## 枚举
 ### 枚举语法
 使用 enum 关键词来创建枚举并且把它们的整个定义放在一对大括号内：
 ```
@@ -713,8 +713,182 @@ print(evaluate(product))
 // 打印“18”
 ```
 该函数如果遇到纯数字，就直接返回该数字的值。如果遇到的是加法或乘法运算，则分别计算左边表达式和右边表达式的值，然后相加或相乘。
-## 对象和类（class未了解清楚，待了解）
-123
+## 结构体和类 Structures and Classes
+* 与其他编程语言所不同的是，Swift 不要求你为自定义的结构体和类的接口与实现代码分别创建文件。你只需在单一的文件中定义一个结构体或者类，系统将会自动生成面向其它代码的外部接口。
+### 结构体和类对比
+* 定义属性用于存储值
+* 定义方法用于提供功能
+* 定义下标操作用于通过下标语法访问它们的值
+* 定义构造器用于设置初始值
+* 通过扩展以增加默认实现之外的功能
+* 遵循协议以提供某种标准功能
+与结构体相比，类还有如下的附加功能：
+* 继承允许一个类继承另一个类的特征
+* 类型转换允许在运行时检查和解释一个类实例的类型
+* 析构器允许一个类实例释放任何其所被分配的资源
+* 引用计数允许对一个类的多次引用
+>类支持的附加功能是以增加复杂性为代价的。作为一般准则，优先使用结构体，因为它们更容易理解，仅在适当或必要时才使用类。实际上，这意味着你的大多数自定义数据类型都会是结构体和枚举。
+### 结构体和类的命名
+定义一个新的结构体或者类时，都是定义了一个新的`Swift`类型。和`String`，`Int`和`Bool`一样要符合标准`Swift`类型的大写命名风格，如`SomeStructure`,`SomeClass`;属性和方法命名使用首字母小写风格，以便与类型名区分，如`frameRate`和`incrementCount`（结构体里的成员也是属性）
+### 类型定义的语法
+以下是定义结构体和定义类的示例：
+```
+struct Resolution {
+    var width = 0
+    var height = 0
+}
+class VideoMode {
+    var resolution = Resolution()
+    var interlaced = false
+    var frameRate = 0.0
+    var name: String?
+}
+```
+在上面的示例中定义了一个名为 Resolution 的结构体，用来描述基于像素的分辨率。
+还定义了一个名为 VideoMode 的类，用来描述视频显示器的某个特定视频模式。这个类包含了四个可变的存储属性。分别是：
+1. `resolution`被初始化为一个新的`Resolution`结构体的实例，属性类型被推断为`Resolution`。
+2. 初始值为 false 的 interlaced（意为“非隔行视频”）
+3. 初始值为 0.0 的 frameRate
+4. 值为可选 String 的 name。因为 name 是一个可选类型，它会被自动赋予一个默认值 nil，意为“没有 name 值”。
+
+Resolution 结构体和 VideoMode 类的定义仅描述了什么是 Resolution 和 VideoMode。它们并没有描述一个特定的分辨率（resolution）或者视频模式（video mode）。为此，你需要创建结构体或者类的一个实例。
+```
+let someResolution = Resolution()
+let someVideoMode = VideoMode()
+```
+结构体和类都使用构造器语法来创建新的实例。
+构造器语法的最简单形式是在结构体或者类的类型名称后跟随一对空括号，如 Resolution() 或 VideoMode()。通过这种方式所创建的类或者结构体实例，其属性均会被初始化为默认值。
+### 属性访问
+通过`.`访问，如`someResolution.width`,`someVideoMode.resolution.width`
+### 结构体类型的成员逐一构造器
+所有结构体都有一个自动生成的成员逐一构造器，用于初始化新结构体实例中成员的属性。新实例中各个属性的初始值可以通过属性的名称传递到成员逐一构造器之中：
+```
+let vga = Resolution(width: 640, height: 480)
+```
+与结构体不同，类实例没有默认的成员逐一构造器。
+### 结构体和枚举是值类型
+* 值类型是这样一种类型，当它被赋值给一个变量、常量或者被传递给一个函数的时候，其值会被拷贝。如Bool,Int,String,array,dictionary都是值类型，其底层也是使用结构体实现的。
+* Swift 中所有的结构体和枚举类型都是值类型。
+* 值类型表示在数据传递时，只发生数据拷贝，拷贝者与拷贝者没有关系
+### 类是引用类型
+* 引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，使用的是已存在实例的引用，而不是其拷贝。
+* 引用类型类似与c语言中直接调用指针，使用的是同一个内存区域
+
+见下面实例：
+```
+//声明了一个名为 tenEighty 的常量，并让其引用一个VideoMode类的新实例。并给tenEighty赋值
+let tenEighty = VideoMode()
+tenEighty.resolution = hd
+tenEighty.interlaced = true
+tenEighty.name = "1080i"
+tenEighty.frameRate = 25.0
+
+
+//将tenEighty赋值给一个名为alsoTenEighty的新常量，并修改 alsoTenEighty 的帧率
+let alsoTenEighty = tenEighty
+alsoTenEighty.frameRate = 30.0
+
+print(tenEighty.frameRate)
+// 打印 "30.0"
+```
+因为类是引用类型，所以 tenEighty 和 alsoTenEighty 实际上引用的是同一个 VideoMode 实例。
+
+>tenEighty 和 alsoTenEighty 被声明为常量。然而你依然可以改变 tenEighty.frameRate 和 alsoTenEighty.frameRate，这是因为 tenEighty 和 alsoTenEighty 这两个常量的值并未改变。它们并不“存储”这个 VideoMode 实例，而仅仅是对 VideoMode 实例的引用。所以，改变的是底层 VideoMode 实例的 frameRate 属性，而不是指向 VideoMode 的常量引用的值。
+
+### 恒等运算符
+因为类是引用类型，所以多个常量和变量可能在幕后同时引用同一个类实例。判定两个常量或者变量是否引用同一个类实例有时很有用。为了达到这个目的，Swift 提供了两个恒等运算符：相同`===`和不相同`！==`，使用这两个运算符检测两个常量或者变量是否引用了同一个实例
+```
+if tenEighty === alsoTenEighty {
+    print("tenEighty and alsoTenEighty refer to the same VideoMode instance.")
+}
+// 打印 "tenEighty and alsoTenEighty refer to the same VideoMode instance."
+```
+### 指针
+* Swift 中引用了某个引用类型实例的常量或变量，与 C 语言中的指针类似，不过它并不直接指向某个内存地址，也不要求你使用星号（*）来表明你在创建一个引用
+* Swift 中引用的定义方式与其它的常量或变量的一样。如果需要直接与指针交互，你可以使用标准库提供的指针和缓冲区类型
+
+## 属性
+* 属性将值与特定的类、结构体或枚举关联。
+* 存储属性会将常量和变量存储为实例的一部分，而计算属性则是直接计算（而不是存储）值。
+* 计算属性可以用于类、结构体和枚举，而存储属性只能用于类和结构体。
+* 存储属性和计算属性通常与特定类型的实例关联。但是，属性也可以直接与类型本身关联，这种属性称为类型属性。
+* 还可以定义属性观察器来监控属性值的变化，以此来触发自定义的操作。属性观察器可以添加到类本身定义的存储属性上，也可以添加到从父类继承的属性上。
+* 也可以利用属性包装器来复用多个属性的 getter 和 setter 中的代码
+### 存储属性
+一个存储属性就是存储在特定类或结构体实例里的一个常量或变量
+```
+struct FixedLengthRange {
+    var firstValue: Int
+    let length: Int
+}
+var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
+// 该区间表示整数 0，1，2
+rangeOfThreeItems.firstValue = 6
+// 该区间现在表示整数 6，7，8
+```
+`FixedLengthRange`的实例包含一个名为`firstValue`的变量存储属性和一个名为`length`的常量存储属性。
+#### 常量结构体实例的存储属性
+如果创建了一个结构体实例并将其赋值给一个常量，则无法修改该实例的任何属性，即使被声明为可变属性也不行:
+```
+let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4)
+// 该区间表示整数 0，1，2，3
+rangeOfFourItems.firstValue = 6
+// 尽管 firstValue 是个可变属性，但这里还是会报错
+```
+>当值类型的实例被声明为常量的时候，它的所有属性也就成了常量。引用类型的类则不一样。把一个引用类型的实例赋给一个常量后，依然可以修改该实例的可变属性。
+#### 延时加载存储属性
+>必须将延时加载属性声明成变量（使用 var 关键字）
+
+延时加载存储属性是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用 lazy 来标示一个延时加载存储属性。
+
+延时加载属性的应用场合：
+1. 当属性的值依赖于一些外部因素且这些外部因素只有在构造过程结束之后才会知道的时候
+2. 当获得属性的值因为需要复杂或者大量的计算，而采用需要的时候再计算的方式
+
+下面的例子使用了延时加载存储属性来避免复杂类中不必要的初始化工作。例子中定义了 DataImporter 和 DataManager 两个类，下面是部分代码：
+```
+class DataImporter {
+    /*
+    DataImporter 是一个负责将外部文件中的数据导入的类。
+    这个类的初始化会消耗不少时间。
+    */
+    var fileName = "data.txt"
+    // 这里会提供数据导入功能
+}
+
+class DataManager {
+    lazy var importer = DataImporter()
+    var data = [String]()
+    // 这里会提供数据管理功能
+}
+
+let manager = DataManager()
+manager.data.append("Some data")
+manager.data.append("Some more data")
+// DataImporter 实例的 importer 属性还没有被创建
+```
+DataManager 类包含一个名为 data 的存储属性，初始值是一个空的字符串数组。这里没有给出全部代码，只需知道 DataManager 类的目的是管理和提供对这个字符串数组的访问即可。
+
+由于使用了 lazy，DataImporter 的实例 importer 属性只有在第一次被访问的时候才被创建。
+#### 存储属性和实例变量
+### 计算属性
+#### 简化Setter声明
+#### 简化 Getter 声明
+#### 只读计算属性
+### 属性观察器
+### 属性包装器
+#### 设置被包装属性的初始值
+#### 从属性包装器中呈现一个值
+### 全局变量和局部变量
+### 类型属性
+#### 类型属性语法
+#### 获取和设置类型属性的值
+
+
+
+
+
+
 ## protocol（协议）
 * 协议可以要求遵循协议的类型提供特定名称和类型的实例属性或类型属性。
 * 协议不指定属性是存储属性还是计算属性，它只指定属性的名称和类型。
