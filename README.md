@@ -1333,7 +1333,12 @@ struct GraphCapsule: View {
 * 通过苹果SwiftUI教程第三节的Section 4：了解此节使用ObservableObject的方式与bilibili教程的区别异同（重要）
 * 通过苹果SwiftUI教程第三节的Section 6: 了解父子视图的ObservableObject类型数据传递（重要）
 * 苹果SwiftUI教程第5节3.2使用extension自定义一个静态静态属性并使用（了解此用法，目的是为了保持代码清洁可读）对比4.2的用法
+* 6.2.1了解Dictionary 结构的作用，和使用场合
+* 6.4.3 .listRowInsets(EdgeInsets())将内容就可以展开到显示的边缘。
+* 6.5.2 通过应用 renderingMode(_:) 和 color(_:) 修饰符改变分类项的导航外观。
+* 7.4 使用 onAppear(perform:) 和 onDisappear(perform:),延迟编辑的传递,使编辑在用户退出编辑模式之后才生效，我们需要在编辑期间使用信息的草稿副本，然后仅在用户确认编辑时将草稿副本分配给真实副本。
+* SwiftUI官方教程涉及swift语法过多，先大概过一遍功能和模块，再针对性研究swift语法，再回头一遍一遍过SwiftUI官方教程
+* UIKit和SwiftUI联合开发未研究，暂不研究，只需看懂苹果官方教程的实例即可
 
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
-
 SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=article&id=87003
