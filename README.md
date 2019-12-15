@@ -388,6 +388,10 @@ print(languages)  // 输出[:]
 print(languages.count)  // 输出0
 ```
 ## 函数
+* 每个函数参数都有一个参数标签（argument label）以及一个参数名称（parameter name）
+* 默认情况下，函数参数使用参数名称来作为它们的参数标签。
+* 如果一个参数有一个标签，那么在调用的时候必须使用标签来标记这个参数。
+* 如果你不希望为某个参数添加一个标签，可以使用一个下划线（_）来代替一个明确的参数标签。
 * 函数可以作为另一个函数的返回值，也可以当做参数传入另一个函数
 使用`func`来声明一个函数，使用名字和参数来调用函数。使用`->`来指定函数返回值的类型。
 ```
@@ -871,18 +875,321 @@ DataManager 类包含一个名为 data 的存储属性，初始值是一个空�
 
 由于使用了 lazy，DataImporter 的实例 importer 属性只有在第一次被访问的时候才被创建。
 #### 存储属性和实例变量
+Swift中的属性没有对应的实例变量，属性的备份存储也无法直接访问。这避免了不同场景下访问方式的困扰，同时也将属性的定义简化成一个语句。属性的全部信息——包括命名、类型和内存管理特征——作为类型定义的一部分，都定义在一个地方。
 ### 计算属性
+* 除存储属性外，类、结构体和枚举可以定义计算属性。
+* 计算属性不直接存储值，而是提供一个 getter 和一个可选的 setter，来间接获取和设置其他属性或变量的值。
+```
+struct Point {
+    var x = 0.0, y = 0.0
+}
+struct Size {
+    var width = 0.0, height = 0.0
+}
+struct Rect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            let centerX = origin.x + (size.width / 2)
+            let centerY = origin.y + (size.height / 2)
+            return Point(x: centerX, y: centerY)
+        }
+        set(newCenter) {
+            origin.x = newCenter.x - (size.width / 2)
+            origin.y = newCenter.y - (size.height / 2)
+        }
+    }
+}
+
+//创建了一个名为 square 的 Rect 实例，初始值原点是 (0, 0)，宽度高度都是 10
+var square = Rect(origin: Point(x: 0.0, y: 0.0),size: Size(width: 10.0, height: 10.0))
+
+//创建了initialSquareCenter等于square.center，此时调用了center计算属性的getter获取他的值
+let initialSquareCenter = square.center
+
+//center属性被设置了一个新的值 (15, 15)，此时调用了center计算属性的setter来修改属性 origin 的 x 和 y 的值
+square.center = Point(x: 15.0, y: 15.0)
+print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+// 打印“square.origin is now at (10.0, 10.0)”
+```
+上面的例子定义了三个结构体描述几何形状`Point`封装了起点坐标，`Size`封装了长宽信息，`Rect`表示一个有原点尺寸和中心点的矩形；
+`Rect`提供了`center`的计算属性，一个`Rect`的中心点可以从`origin`（原点）和 `size`（大小）算出，所以不需要将中心点以`Point`类型的值来保存。
+`Rect`的计算属性`center`提供了自定义的`getter`和`setter`来获取和设置矩形的中心点，就像它有一个存储属性一样。
 #### 简化Setter声明
+如果计算属性的 setter 没有定义表示新值的参数名，则可以使用默认名称 newValue。下面是使用了简化 setter 声明的 Rect 结构体代码：
+```
+struct AlternativeRect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            let centerX = origin.x + (size.width / 2)
+            let centerY = origin.y + (size.height / 2)
+            return Point(x: centerX, y: centerY)
+        }
+        set {
+            origin.x = newValue.x - (size.width / 2)
+            origin.y = newValue.y - (size.height / 2)
+        }
+    }
+}
+```
 #### 简化 Getter 声明
+如果整个 getter 是单一表达式，getter 会隐式地返回这个表达式结果。
+```
+struct CompactRect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            Point(x: origin.x + (size.width / 2),
+                  y: origin.y + (size.height / 2))
+        }
+        set {
+            origin.x = newValue.x - (size.width / 2)
+            origin.y = newValue.y - (size.height / 2)
+        }
+    }
+}
+```
 #### 只读计算属性
+>必须使用 var 关键字定义计算属性，包括只读计算属性，因为它们的值不是固定的。let 关键字只用来声明常量属性，表示初始化后再也无法修改的值。
+
+只有 getter 没有 setter 的计算属性叫只读计算属性。只读计算属性总是返回一个值，可以通过点运算符访问，但不能设置新的值。
+
+只读计算属性的声明可以去掉 get 关键字和花括号：
+```
+//定义一个三维空间的立方体，并计算体积
+struct Cuboid {
+    var width = 0.0, height = 0.0, depth = 0.0
+    var volume: Double {
+        return width * height * depth
+    }
+}
+let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
+print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
+// 打印“the volume of fourByFiveByTwo is 40.0”
+```
 ### 属性观察器
+* 属性观察器监控和响应属性值的变化，每次属性被设置值的时候都会调用属性观察器，即使新值和当前值相同的时候也不例外。
+* 可以为除了延时加载存储属性之外的其他存储属性添加属性观察器
+* 可以在子类中通过重写属性的方式为继承的属性（包括存储属性和计算属性）添加属性观察器
+* 不必为非重写的计算属性添加属性观察器，因为你可以直接通过它的 setter 监控和响应值的变化。
+
+为属性添加其中一个或两个观察器：
+* willSet 在新的值被设置之前调用
+* didSet 在新的值被设置之后调用
+willSet 观察器会将新的属性值作为常量参数传入，在 willSet 的实现代码中可以为这个参数指定一个名称，如果不指定则参数仍然可用，这时使用默认名称 newValue 表示。
+同样，didSet 观察器会将旧的属性值作为参数传入，可以为该参数指定一个名称或者使用默认参数名 oldValue。如果在 didSet 方法中再次对该属性赋值，那么新值会覆盖旧的值。
+
+下面是一个 willSet 和 didSet 实际运用的例子，其中定义了一个名为 StepCounter 的类，用来统计一个人步行时的总步数。这个类可以跟计步器或其他日常锻炼的统计装置的输入数据配合使用。
+```
+class StepCounter {
+    var totalSteps: Int = 0 {
+        willSet(newTotalSteps) {
+            print("将 totalSteps 的值设置为 \(newTotalSteps)")
+        }
+        didSet {
+            if totalSteps > oldValue  {
+                print("增加了 \(totalSteps - oldValue) 步")
+            }
+        }
+    }
+}
+let stepCounter = StepCounter()
+stepCounter.totalSteps = 200
+// 将 totalSteps 的值设置为 200
+// 增加了 200 步
+stepCounter.totalSteps = 360
+// 将 totalSteps 的值设置为 360
+// 增加了 160 步
+stepCounter.totalSteps = 896
+// 将 totalSteps 的值设置为 896
+// 增加了 536 步
+```
+`StepCounter`类定义了一个叫`totalSteps`的Int类型的属性。它是一个存储属性，包含`willSet`和`didSet`观察器。
+当 totalSteps 被设置新值的时候，它的 willSet 和 didSet 观察器都会被调用;
+例子中的 willSet 观察器将表示新值的参数自定义为 newTotalSteps，这个观察器只是简单的将新的值输出。
+didSet 观察器在 totalSteps 的值改变后被调用，它把新值和旧值进行对比，如果总步数增加了，就输出一个消息表示增加了多少步。didSet 没有为旧值提供自定义名称，所以默认值 oldValue 表示旧值的参数名。
 ### 属性包装器
-#### 设置被包装属性的初始值
-#### 从属性包装器中呈现一个值
+* 属性包装器在管理属性如何存储和定义属性的代码之间添加了一个分隔层
+* 属性包装器的作用时为了让传入的数据满足特定需求
+
+定义一个属性包装器，你需要创建一个定义 wrappedValue 属性的结构体、枚举或者类。在下面的代码中，TwelveOrLess 结构体确保它包装的值始终是小于等于 12 的数字。如果要求它存储一个更大的数字，它则会存储 12 这个数字。
+```
+@propertyWrapper
+struct TwelveOrLess {
+    private var number = 0
+    var wrappedValue: Int {
+        get { return number }
+        set { number = min(newValue, 12) }
+    }
+}
+```
+>以 private 的方式声明 number 变量，这使得 number 仅在 TwelveOrLess 的实现中使用。写在其他地方的代码通过使用 wrappedValue 的 getter 和 setter 来获取这个值，但不能直接使用 number。
+
+通过在属性之前写上包装器名称作为特性的方式，你可以把一个包装器应用到一个属性上去。这里有个存储小矩形的结构体。通过 TwelveOrLess 属性包装器实现类似（挺随意的）对“小”的定义。
+```
+struct SmallRectangle {
+    @TwelveOrLess var height: Int
+    @TwelveOrLess var width: Int
+}
+
+var rectangle = SmallRectangle()
+print(rectangle.height)
+// 打印 "0"
+
+rectangle.height = 10
+print(rectangle.height)
+// 打印 "10"
+
+//尝试存储 24 的操作实际上存储的值为 12，这是因为对于这个属性的 setter 的规则来说，24 太大了。
+rectangle.height = 24
+print(rectangle.height)
+// 打印 "12"
+```
+当你把一个包装器应用到一个属性上时，编译器将合成提供包装器存储空间和通过包装器访问属性的代码。（属性包装器只负责存储被包装值，所以没有合成这些代码。）
+（待整理）
+#### 设置被包装属性的初始值（待整理）
+#### 从属性包装器中呈现一个值（待整理）
 ### 全局变量和局部变量
-### 类型属性
-#### 类型属性语法
-#### 获取和设置类型属性的值
+* 计算属性和观察属性所描述的功能也可以用于全局变量和局部变量。
+* 全局变量是在函数、方法、闭包或任何类型之外定义的变量。
+* 局部变量是在函数、方法或闭包内部定义的变量。
+* 前面章节提到的全局或局部变量都属于存储型变量，跟存储属性类似，它为特定类型的值提供存储空间，并允许读取和写入。
+* 另外，在全局或局部范围都可以定义计算型变量和为存储型变量定义观察器。计算型变量跟计算属性一样，返回一个计算结果而不是存储值，声明格式也完全一样。
+### 类型属性（待整理）
+实例属性属于一个特定类型的实例，每创建一个实例，实例都拥有属于自己的一套属性值，实例之间的属性相互独立。
+#### 类型属性语法（待整理）
+#### 获取和设置类型属性的值（待整理）
+
+## 方法
+* 方法是函数（与某些特定类型相关联的函数）。
+* 类、结构体、枚举都可以定义实例方法；
+* 实例方法为给定类型的实例封装了具体的任务与功能。
+* 类、结构体、枚举也可以定义类型方法；
+* 类型方法与类型本身相关联。
+* 结构体和枚举能够定义方法是 Swift 与 C/Objective-C 的主要区别之一。
+* 在 Objective-C 中，类是唯一能定义方法的类型。但在 Swift 中，你不仅能选择是否要定义一个类/结构体/枚举，还能灵活地在你创建的类型（类/结构体/枚举）上定义方法。
+
+### 实例方法（Instance Methods）
+* 实例方法是属于某个特定类、结构体或者枚举类型实例的方法。
+* 实例方法提供访问和修改实例属性的方法或提供与实例目的相关的功能，并以此来支撑实例的功能。
+* 实例方法的语法与函数完全一致
+* 实例方法要写在它所属的类型的前后大括号之间。
+* 实例方法能够隐式访问它所属类型的所有的其他实例方法和属性。
+* 实例方法只能被它所属的类的某个特定实例调用。
+* 实例方法不能脱离于现存的实例而被调用。
+
+下面的例子，定义一个很简单的 Counter 类，Counter 能被用来对一个动作发生的次数进行计数：
+```
+class Counter {
+    var count = 0
+    func increment() {
+        count += 1
+    }
+    func increment(by amount: Int) {
+        count += amount
+    }
+    func reset() {
+        count = 0
+    }
+}
+```
+Counter 类定义了三个实例方法：
+* increment 让计数器按一递增；
+* increment(by: Int) 让计数器按一个指定的整数值递增；
+* reset 将计数器重置为0。
+Counter 这个类还声明了一个可变属性 count，用它来保持对当前计数器值的追踪。
+
+和调用属性一样，用`.`调用实例方法：
+```
+let counter = Counter()
+// 初始计数值是0
+counter.increment()
+// 计数值现在是1
+counter.increment(by: 5)
+// 计数值现在是6
+counter.reset()
+// 计数值现在是0
+```
+#### self 属性
+* 类型的每一个实例都有一个隐含属性叫做 self，self 完全等同于该实例本身。
+* 你可以在一个实例的实例方法中使用这个隐含的 self 属性来引用当前实例。
+
+上面例子中的 increment 方法还可以这样写：
+```
+func increment() {
+    self.count += 1
+}
+```
+实际上，你不必在你的代码里面经常写 self。不论何时，只要在一个方法中使用一个已知的属性或者方法名称，如果你没有明确地写 self，Swift 假定你是指当前实例的属性或者方法。这种假定在上面的 Counter 中已经示范了：Counter 中的三个实例方法中都使用的是 count（而不是 self.count）。
+##### 使用self的场景
+使用这条规则的主要场景是实例方法的某个参数名称与实例的某个属性名称相同的时候。在这种情况下，参数名称享有优先权，并且在引用属性时必须使用一种更严格的方式。这时你可以使用 self 属性来区分参数名称和属性名称。
+
+下面的例子中，self 消除方法参数 x 和实例属性 x 之间的歧义：
+```
+struct Point {
+    var x = 0.0, y = 0.0
+    func isToTheRightOf(x: Double) -> Bool {
+        return self.x > x
+    }
+}
+let somePoint = Point(x: 4.0, y: 5.0)
+if somePoint.isToTheRightOf(x: 1.0) {
+    print("This point is to the right of the line where x == 1.0")
+}
+// 打印“This point is to the right of the line where x == 1.0”
+```
+如果不使用 self 前缀，Swift会认为 x 的两个用法都引用了名为 x 的方法参数。
+#### 在实例方法中修改值类型
+结构体和枚举是值类型。默认情况下，值类型的属性不能在它的实例方法中被修改。
+但是，如果你确实需要在某个特定的方法中修改结构体或者枚举的属性，你可以为这个方法选择 可变（mutating）行为，然后就可以从其方法内部改变它的属性；
+(未用到暂不研究)
+
+### 类型方法
+* 实例方法是被某个类型的实例调用的方法。
+* 定义在类型本身上调用的方法，这种方法就叫做类型方法。
+* 在方法的 func 关键字之前加上关键字 static，来指定类型方法。类还可以用关键字 class 来指定，从而允许子类重写父类该方法的实现。
+
+类型方法和实例方法一样用点语法调用。但是，你是在类型上调用这个方法，而不是在实例上调用。下面是如何在 SomeClass 类上调用类型方法的例子：
+```
+class SomeClass {
+    class func someTypeMethod() {
+        // 在这里实现类型方法
+    }
+}
+SomeClass.someTypeMethod()
+```
+(没看懂待整理)
+
+## 扩展
+>扩展可以给一个类型添加新的功能，但是不能重写已经存在的功能。
+* 扩展可以给一个现有的类，结构体，枚举，还有协议添加新的功能。
+* 它还拥有不需要访问被扩展类型源代码就能完成扩展的能力（即逆向建模）
+
+Swift 中的扩展可以：
+* 添加计算型实例属性和计算型类属性
+* 定义实例方法和类方法
+* 提供新的构造器
+* 定义下标
+* 定义和使用新的嵌套类型
+* 使已经存在的类型遵循（conform）一个协议
+### 扩展的语法
+使用 extension 关键字声明扩展：
+```
+extension SomeType {
+  // 在这里给 SomeType 添加新的功能
+}
+```
+扩展可以扩充一个现有的类型，给它添加一个或多个协议。协议名称的写法和类或者结构体一样：
+```
+extension SomeType: SomeProtocol, AnotherProtocol {
+  // 协议所需要的实现写在这里
+}
+```
+(暂时了解扩展的概念即可)
 
 ## protocol（协议）
 * 协议可以要求遵循协议的类型提供特定名称和类型的实例属性或类型属性。
@@ -1506,6 +1813,8 @@ struct GraphCapsule: View {
 * 7.4 使用 onAppear(perform:) 和 onDisappear(perform:),延迟编辑的传递,使编辑在用户退出编辑模式之后才生效，我们需要在编辑期间使用信息的草稿副本，然后仅在用户确认编辑时将草稿副本分配给真实副本。
 * SwiftUI官方教程涉及swift语法过多，先大概过一遍功能和模块，再针对性研究swift语法，再回头一遍一遍过SwiftUI官方教程
 * UIKit和SwiftUI联合开发未研究，暂不研究，只需看懂苹果官方教程的实例即可
+* swift语法中的属性后面一些内容待整理：https://swiftgg.gitbook.io/swift/swift-jiao-cheng/10_properties
+* 
 
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
 SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=article&id=87003
