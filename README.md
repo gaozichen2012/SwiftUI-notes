@@ -37,6 +37,13 @@ https://www.bilibili.com/video/av61957676/
 ## 博客1：SwiftUI 的一些初步探索 (一)
 https://onevcat.com/2019/06/swift-ui-firstlook/
 
+# 账号系统搭建
+## 微信登陆：
+https://developers.weixin.qq.com/doc/oplatform/Mobile_App/WeChat_Login/Development_Guide.html
+## Sign In with Apple介绍1
+https://xiaozhuanlan.com/topic/8675913204
+
+
 # 需求点
 * Mac Windows多终端同步助手
 * 微博朋友圈qq空间insFacebook同步助手
