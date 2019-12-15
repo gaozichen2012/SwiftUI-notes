@@ -1,6 +1,18 @@
 # Swift简介
 * Swift，苹果于2014年WWDC（苹果开发者大会）发布的新开发语言，可与Objective-C共同运行于Mac OS和iOS平台，用于搭建基于苹果平台的应用程序。Swift吸收了众多现代编程语言的优点，尽力的提供简洁的编程语言和强大的功能。
 
+# 记忆点
+* `ctrl+i` 自动格式化代码（先选中一段代码）
+* `shift+command+L` 调出库Library
+* 每个函数参数都有一个参数标签label以及一个参数名称，默认情况下参数名称=参数标签。
+* 如果函数参数有标签，在调用的时候必须使用标签。如果不希望为某个参数添加一个标签，可以使用一个下划线（_）来代替一个明确的参数标签。
+* 定义一个结构体或类时，命名使用首字母大写风格，如`SomeStructure`,`SomeClass`;（和Bool/Int一样属于类型）
+* 定义一个属性或方法命名使用首字母小写风格，以便与类型名区分，如`frameRate`和`incrementCount`；
+* 任何数据类型跟?就是可选类型，比如`var num1:Int? = 3`，可选类型的变量可用于处理“值缺失”
+* 结构体和枚举时值类型，在发生数据传递时只发生值拷贝
+* 类class是引用类型，在发生数据传递时，共用同一个内存地址，class a改变，class b也会改变（类似于C语言中不同的指针指向同一个内存空间）
+
+
 # 相关资源
 ## Swift官网
 https://Swift.org/
@@ -25,10 +37,6 @@ https://www.bilibili.com/video/av61957676/
 ## 博客1：SwiftUI 的一些初步探索 (一)
 https://onevcat.com/2019/06/swift-ui-firstlook/
 
-# 记忆点
-* `ctrl+i` 自动格式化代码（先选中一段代码）
-* `shift+command+L` 调出库Library
-
 # 需求点
 * Mac Windows多终端同步助手
 * 微博朋友圈qq空间insFacebook同步助手
@@ -41,8 +49,6 @@ https://onevcat.com/2019/06/swift-ui-firstlook/
 * 看iPhone MAC app store付费榜以半价策略攻击
 
 # Swift语法
-* 定义一个结构体或类时，命名使用首字母大写风格，如`SomeStructure`,`SomeClass`;（和Bool/Int一样属于类型）
-* 定义一个属性或方法命名使用首字母小写风格，以便与类型名区分，如`frameRate`和`incrementCount`；
 * Swift源文件的第一行可执行的代码就是Swift的程序的入口
 * Swift把每行代码作为了一个语句，无须任何符号作为结束。但是如果2句代码写在同一行需要以`;`分隔。
 * Swift要求所有的变量和常量必须先声明后使用，声明变量需要使用var，声明常量则需要使用let；形如：var 变量名[:类型] =初始值
@@ -392,7 +398,6 @@ print(languages.count)  // 输出0
 * 默认情况下，函数参数使用参数名称来作为它们的参数标签。
 * 如果一个参数有一个标签，那么在调用的时候必须使用标签来标记这个参数。
 * 如果你不希望为某个参数添加一个标签，可以使用一个下划线（_）来代替一个明确的参数标签。
-* 函数可以作为另一个函数的返回值，也可以当做参数传入另一个函数
 使用`func`来声明一个函数，使用名字和参数来调用函数。使用`->`来指定函数返回值的类型。
 ```
 func greet(person: String, day: String) -> String {
@@ -1262,13 +1267,9 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 Starship 类把 fullName 作为只读的计算属性来实现。每一个 Starship 类的实例都有一个名为 name 的非可选属性和一个名为 prefix 的可选属性。 当 prefix 存在时，计算属性 fullName 会将 prefix 插入到 name 之前，从而得到一个带有 prefix 的 fullName。
 （后续内容较多待研究）
 
-
-
 # Playground工具介绍
 ![Xcode截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/1-Xcode%E6%88%AA%E5%9B%BE.jpg)
 Playground是Xcode的一个简单的测试环境，主要是用于快速测试Swift语法功能和验证API功能，并不是用来进行实际开发应用。如果开发者对Swift语法功能不太确定，则可以用Playground来测试代码，其次Playground也可以用来验证某个函数，类的功能。
-
-
 
 ## CocoaPods
 CocoaPods应该是iOS最常用最有名的类库管理工具了，通过CocoaPods工具我们可以为项目添加被称为“Pods”的依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。（基本所有公司都在使用）
