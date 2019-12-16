@@ -1,6 +1,10 @@
 # 苹果开发笔记
 * Swift，苹果于2014年WWDC（苹果开发者大会）发布的新开发语言，可与Objective-C共同运行于Mac OS和iOS平台，用于搭建基于苹果平台的应用程序。Swift吸收了众多现代编程语言的优点，尽力的提供简洁的编程语言和强大的功能。
 
+# Swift语法
+Swift语法单独记录：见swift-notes.md
+https://github.com/gaozichen2012/Swift-notes/blob/master/swift-notes.md
+
 # 记忆点
 * 每个函数参数都有一个参数标签label以及一个参数名称，默认情况下参数名称=参数标签。
 * 如果函数参数有标签，在调用的时候必须使用标签。如果不希望为某个参数添加一个标签，可以使用一个下划线（_）来代替一个明确的参数标签。
@@ -63,9 +67,6 @@ https://xiaozhuanlan.com/topic/8675913204
 * 睡眠钟
 * 时间倒计时（iphone+watch+mac）
 * 看iPhone MAC app store付费榜以半价策略攻击
-
-# Swift语法
-Swift语法单独记录：见swift-notes.md
 
 # Playground工具介绍
 ![Xcode截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/1-Xcode%E6%88%AA%E5%9B%BE.jpg)
