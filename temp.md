@@ -3,7 +3,8 @@ https://www.jianshu.com/p/28623e017445
 # 临时文件
 * 可以自定义包装，但没必要。SwiftUI提供的已经够用了。
 * @State包装的属性通常是设置成私有的，不让外部使用。如果想让外部使用，则应该使用@ObservedObject和@EnvironmentObject，他们能够使外部修改属性后，状态能够得到改变。建议把@State包装的属性都设置成私有：`@State private var username = ""`
-
+* 使用@ObservedObject修饰的变量需要赋值`order = Order()`，使用@EnvironmentObject修饰的变量不需要赋初始值，直接使用`order: Order`
+* 使用@EnvironmentObject需要先把属性放到环境中，否则程序会崩溃
 ## @Published
 @Published是SwiftUI最有用的包装之一，允许我们创建出能够被自动观察的对象属性，SwiftUI会自动监视这个属性，一旦发生了改变，会自动修改与该属性绑定的界面。
 
@@ -177,3 +178,23 @@ final修饰类 不能被继承，也没有子类。
 1.不是专门为继承而设计的类，类的本身方法之间有复杂的调用关系。假如随意创建这些类的子类，子类可能会错误的修改父类的实现细节
 2.出于安全原因，类的实现细节不允许有任何改动
 3.在创建对象模型的时候，确信这个类不会再被扩展
+
+## 关于如何定义一个可操作的数据ObservableObject
+```
+class UpdateStore : ObservableObject {
+    @Published var updates: [Update] = updateData //定义一个updates初始值为updateData
+}
+
+```
+其中`: [Update]`是可以省略的，因为已经直接赋值了，不需要在一定一遍数据类型
+
+## swift package dependencies
+https://www.cnblogs.com/feng9exe/p/10485087.html
+Swift Package Manager（swift包管理器，简称：SPM）就是在swift开发中用来替代CocoaPod的；在swift开发中，SPM完全可以替代CocoaPod的功能，并且速度更快，体验更佳；
+## Lottie-iOS
+Airbnb开源的Lottie，可以让开发者免去写一行一行的代码而非常容易地渲染动画。你可以直接把 Adobe After Effects的动画用在你的Xcode 项目中。并且Android、macOS、React Native都可使用。
+
+什么是Lottie呢？
+由Airbnb开发的[Lottie](https://github.com/airbnb/lottie-ios)是一个将After Effects动画提供给任意一个iOS，macOS，Android还有React Native原生APP的文件库。这些动画通过一个叫[Bodymovin](https://github.com/bodymovin/bodymovin)的开源After Effects插件，以JSON文件的形式进行输出。Lottie通过JSON格式下载动画数据并实时提供给开发者。
+
+Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目和一系列的示例动画
