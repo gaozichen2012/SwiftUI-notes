@@ -70,6 +70,7 @@ https://xiaozhuanlan.com/topic/8675913204
 
 # Playground工具介绍
 ![Xcode截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/1-Xcode%E6%88%AA%E5%9B%BE.jpg)
+
 Playground是Xcode的一个简单的测试环境，主要是用于快速测试Swift语法功能和验证API功能，并不是用来进行实际开发应用。如果开发者对Swift语法功能不太确定，则可以用Playground来测试代码，其次Playground也可以用来验证某个函数，类的功能。
 
 # CocoaPods
@@ -85,8 +86,8 @@ Mockplus（摹客）是一款简洁快速的原型图设计工具
 * asset catalog 本质是一个文件目录。
 
 # SF Symbols
+>SF Symbols中的SF表示San Francisco，Symbols表示符号，SF Symbols对应的是San Francisco system font（苹果设计的一种系统字体应用于mac）
 WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图标库, 大概有 1500 个内置图标, 并且提供了相关的 API 让我们更方便的使用，这些内置图标不仅仅是简单的图片, 他们可以像文字一样, 支持放大缩小加粗操作
-*  SF Symbols中的SF表示San Francisco，Symbols表示符号，SF Symbols对应的是San Francisco system font（苹果设计的一种系统字体应用于mac）
 ## 使用方法
 在程序中直接使用`Image(systemName: house)`调用，其中`house`是从SF Symbols中获取到的icons的名字
 ![SF Symbols](https://github.com/gaozichen2012/Swift-notes/blob/master/img/4-SF-Symbols.jpg)
