@@ -87,6 +87,7 @@ Mockplus（摹客）是一款简洁快速的原型图设计工具
 
 # SF Symbols
 >SF Symbols中的SF表示San Francisco，Symbols表示符号，SF Symbols对应的是San Francisco system font（苹果设计的一种系统字体应用于mac）
+
 WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图标库, 大概有 1500 个内置图标, 并且提供了相关的 API 让我们更方便的使用，这些内置图标不仅仅是简单的图片, 他们可以像文字一样, 支持放大缩小加粗操作
 ## 使用方法
 在程序中直接使用`Image(systemName: house)`调用，其中`house`是从SF Symbols中获取到的icons的名字
@@ -134,7 +135,7 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 * padding():填充，给目标一些填充空间，不至于贴边
 # Property Wrappers（属性包装器）
 属性包装器的概念首先是从 SE-0258 提议中提出的。主要目的是将一些封装属性的逻辑从不同的结构中抽离出来，并复用到整个代码库中。这个提议苹果并未接受，但在 Xcode beta 的 Swift 5.1 快照中就有它了。
-* SwiftUI 提供的属性包装器包括 @State, @Binding, @ObjectBinding, @EnvironmentObject, 和 @Environment 。
+* SwiftUI 提供的属性包装器包括 @State, @Binding, @ObservedObject, @EnvironmentObject, 和 @Environment 。
 ## @State
 通过使用 @State 修饰器我们可以关联出 View 的状态。 SwiftUI 将会把使用过 @State 修饰器的属性存储到一个特殊的内存区域，并且这个区域和 View struct 是隔离的，只有关联的视图及其子视图能够访问它。当@State 属性值改变，SwiftUI 会重构与之相关的视图。
 ![使用State截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/5-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8state.jpg)
@@ -155,7 +156,9 @@ class UpdateStore : ObservableObject {
 
 ```
 class定义了一个UpdateStore类，这个类可以给不同的 View 使用，SwiftUI 会追踪使用 View 里经过 ObservableObject 修饰过的对象里进过 @Published 修饰的属性变换，一旦发生了变换，SwiftUI 会自动更新相关联的 UI
+
 ![ObservedObject的使用](https://github.com/gaozichen2012/Swift-notes/blob/master/img/9-%E8%A2%AB%E8%A7%82%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BD%BF%E7%94%A8.jpg)
+
 在声明时需要用@ObservedObject来修饰store，store.updates相当原来的固定数据updateData，使用方法一样相当于一个二维数组
 
 ## @ObjectBinding 
@@ -563,7 +566,12 @@ struct GraphCapsule: View {
 * SwiftUI官方教程涉及swift语法过多，先大概过一遍功能和模块，再针对性研究swift语法，再回头一遍一遍过SwiftUI官方教程
 * UIKit和SwiftUI联合开发未研究，暂不研究，只需看懂苹果官方教程的实例即可
 * swift语法中的属性后面一些内容待整理：https://swiftgg.gitbook.io/swift/swift-jiao-cheng/10_properties
-* 
 
+# 近期学习计划
+* 再看一遍bili上的SwiftUI教程
+* 对比属性包装器Property Wrappers的@State@Binding@ObservedObject@EnvironmentObject的异同和使用场景，掌握不同的使用场景并列出通用例程供后续使用（@Environment暂时没用到）
+* 掌握@State和$的使用，掌握父子视图和视图之间的数据传递
+* 掌握@ObservedObject父子视图的ObservableObject类型数据传递
+@ObservedObject 的用处和 @State 非常相似，从名字看来它是来修饰一个对象的，这个对象可以给多个独立的 View 使用。如果你用 @ObservedObject 来修饰一个对象，那么那个对象必须要实现ObservableObject
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
 SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=article&id=87003
