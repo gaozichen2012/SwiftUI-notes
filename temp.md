@@ -1,40 +1,11 @@
 参考资料：
 https://www.jianshu.com/p/28623e017445
 # 临时文件
-* 可以自定义包装，但没必要。SwiftUI提供的已经够用了。
-* @State包装的属性通常是设置成私有的，不让外部使用。如果想让外部使用，则应该使用@ObservedObject和@EnvironmentObject，他们能够使外部修改属性后，状态能够得到改变。建议把@State包装的属性都设置成私有：`@State private var username = ""`
-* 使用@ObservedObject修饰的变量需要赋值`order = Order()`，使用@EnvironmentObject修饰的变量不需要赋初始值，直接使用`order: Order`
-* 使用@EnvironmentObject需要先把属性放到环境中，否则程序会崩溃
-## @Published
-@Published是SwiftUI最有用的包装之一，允许我们创建出能够被自动观察的对象属性，SwiftUI会自动监视这个属性，一旦发生了改变，会自动修改与该属性绑定的界面。
 
-1.首先需要遵循ObservableObject属性
-```
-class Bag: ObservableObject {
-    var items = [String]()
-}
-```
-2.包装属性
-```
-class Bag: ObservableObject {
-    @Published var items = [String]()
-}
-```
-这样就完成了。@Published包装会自动添加willSet方法监视属性的改变。
+
 ## 关于ObservedObject的补充说明
-@ObservedObject告诉SwiftUI，这个对象是可以被观察的，里面含有被@Published包装了的属性。
-```
-class Order: ObservableObject {
-    @Published var items = [String]()
-}
 
-struct ContentView: View {
-    @ObservedObject var order = Order()
 
-    var body: some View {
-    }
-}
-```
 @ObservedObject包装的对象，必须遵循ObservableObject协议。也就是说必须是class对象，不能是struct。
 
 @ObservedObject允许外部进行访问和修改。

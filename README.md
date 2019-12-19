@@ -136,6 +136,10 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 # Property Wrappers（属性包装器）
 属性包装器的概念首先是从 SE-0258 提议中提出的。主要目的是将一些封装属性的逻辑从不同的结构中抽离出来，并复用到整个代码库中。这个提议苹果并未接受，但在 Xcode beta 的 Swift 5.1 快照中就有它了。
 * SwiftUI 提供的属性包装器包括 @State, @Binding, @ObservedObject, @EnvironmentObject, 和 @Environment 。
+* 可以自定义包装，但没必要。SwiftUI提供的已经够用了。
+* @State包装的属性通常是设置成私有的，不让外部使用。如果想让外部使用，则应该使用@ObservedObject和@EnvironmentObject，他们能够使外部修改属性后，状态能够得到改变。建议把@State包装的属性都设置成私有：`@State private var username = ""`
+* 使用@ObservedObject修饰的变量需要赋值`order = Order()`，使用@EnvironmentObject修饰的变量不需要赋初始值，直接使用`order: Order`
+* 使用@EnvironmentObject需要先把属性放到环境中，否则程序会崩溃
 ## @State
 通过使用 @State 修饰器我们可以关联出 View 的状态。 SwiftUI 将会把使用过 @State 修饰器的属性存储到一个特殊的内存区域，并且这个区域和 View struct 是隔离的，只有关联的视图及其子视图能够访问它。当@State 属性值改变，SwiftUI 会重构与之相关的视图。
 ![使用State截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/5-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8state.jpg)
@@ -144,7 +148,11 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 * 在子视图中使用@Binding修饰，在父视图中使用关键字`$`传递一个绑定引用
 ![使用Binding截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/6-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8Binding.jpg)
 ## @ObservedObject （被观测的对象）（用于实现可操作数据，修改、添加、删除）
+>@ObservedObject告诉SwiftUI，这个对象是可以被观察的，里面含有被@Published包装了的属性。
+
 @ObservedObject 的用处和 @State 非常相似，从名字看来它是来修饰一个对象的，这个对象可以给多个独立的 View 使用。如果你用 @ObservedObject 来修饰一个对象，那么那个对象必须要实现ObservableObject协议，然后用 @Published 修饰对象里属性，表示这个属性是需要被 SwiftUI 监听的
+
+### ObservedObject 例子1
 ```
 import SwiftUI
 import Combine  //结合，Combine允许我们创建储存数据，并且进行数据操作的框架
@@ -161,10 +169,39 @@ class定义了一个UpdateStore类，这个类可以给不同的 View 使用，S
 
 在声明时需要用@ObservedObject来修饰store，store.updates相当原来的固定数据updateData，使用方法一样相当于一个二维数组
 
+### ObservedObject 例子2
+```
+class Order: ObservableObject {
+    @Published var items = [String]()
+}
+
+struct ContentView: View {
+    @ObservedObject var order = Order()
+
+    var body: some View {
+    }
+}
+```
 ## @ObjectBinding 
 ## @EnvironmentObject
 ## @Environment
 未用到暂时不管
+## 其他包装器：@Published
+@Published是SwiftUI最有用的包装之一，允许我们创建出能够被自动观察的对象属性，SwiftUI会自动监视这个属性，一旦发生了改变，会自动修改与该属性绑定的界面。
+
+1.首先需要遵循ObservableObject属性
+```
+class Bag: ObservableObject {
+    var items = [String]()
+}
+```
+2.包装属性
+```
+class Bag: ObservableObject {
+    @Published var items = [String]()
+}
+```
+这样就完成了。@Published包装会自动添加willSet方法监视属性的改变。
 详细参考：
 1. https://blog.csdn.net/kmyhy/article/details/97176972
 2. 英文原版：https://swiftwithmajid.com/2019/06/12/understanding-property-wrappers-in-swiftui/
