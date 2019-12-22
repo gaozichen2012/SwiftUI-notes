@@ -764,10 +764,13 @@ Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目�
 * swift语法中的属性后面一些内容待整理：https://swiftgg.gitbook.io/swift/swift-jiao-cheng/10_properties
 
 # 近期学习计划
-* 再看一遍bili上的SwiftUI教程
-* 对比属性包装器Property Wrappers的@State@Binding@ObservedObject@EnvironmentObject的异同和使用场景，掌握不同的使用场景并列出通用例程供后续使用（@Environment暂时没用到）
-* 掌握@State和$的使用，掌握父子视图和视图之间的数据传递
-* 掌握@ObservedObject父子视图的ObservableObject类型数据传递
-@ObservedObject 的用处和 @State 非常相似，从名字看来它是来修饰一个对象的，这个对象可以给多个独立的 View 使用。如果你用 @ObservedObject 来修饰一个对象，那么那个对象必须要实现ObservableObject
+* 关注MengTo的SwiftUI教程
+* 测试数据的储存，在app里修改，下次打开依旧有数据
+* 学习播放音乐所需要的组件（VedioCtroller）
+* 研究github上的例子app：https://github.com/gaozichen2012/SwiftUI
+* 当觉得无项目或者无目标时到github搜SwiftUI，找一些好项目学习
+* 学习账号系统的搭建
+
+
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
 SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=article&id=87003
