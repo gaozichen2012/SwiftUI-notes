@@ -69,7 +69,7 @@ https://xiaozhuanlan.com/topic/8675913204
 * 看iPhone MAC app store付费榜以半价策略攻击
 
 # Playground工具介绍
-![Xcode截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/1-Xcode%E6%88%AA%E5%9B%BE.jpg)
+![Xcode截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/1-Xcode%E6%88%AA%E5%9B%BE.jpg?raw=true)
 
 Playground是Xcode的一个简单的测试环境，主要是用于快速测试Swift语法功能和验证API功能，并不是用来进行实际开发应用。如果开发者对Swift语法功能不太确定，则可以用Playground来测试代码，其次Playground也可以用来验证某个函数，类的功能。
 
@@ -81,7 +81,7 @@ Mockplus（摹客）是一款简洁快速的原型图设计工具
 
 # asset catalog（资源目录）
 * asset catalog是 iOS app 开发必不可少的组成部分。我们一般将图片存放其中，但其用途远不止于此。
-![asset catalog截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/3-asset%20catalog.jpg)
+![asset catalog截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/3-asset%20catalog.jpg?raw=true)
 * asset catalog是 Xcode 提供的项目资源管理工具，其核心理念在于：以设备特征（traits）为单位配置资源，包括但不限于图片，颜色，材质，数据。既让开发者免于代码配置资源的烦恼，也让苹果能够更好的控制 .ipa 包。
 * asset catalog 本质是一个文件目录。
 
@@ -91,7 +91,7 @@ Mockplus（摹客）是一款简洁快速的原型图设计工具
 WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图标库, 大概有 1500 个内置图标, 并且提供了相关的 API 让我们更方便的使用，这些内置图标不仅仅是简单的图片, 他们可以像文字一样, 支持放大缩小加粗操作
 ## 使用方法
 在程序中直接使用`Image(systemName: house)`调用，其中`house`是从SF Symbols中获取到的icons的名字
-![SF Symbols](https://github.com/gaozichen2012/Swift-notes/blob/master/img/4-SF-Symbols.jpg)
+![SF Symbols](https://github.com/gaozichen2012/Swift-notes/blob/master/img/4-SF-Symbols.jpg?raw=true)
 
 # Combine（先了解概念，后续继续研究）
 * Combine是SwiftUI中处理数据的本体，响应式框架
@@ -142,11 +142,11 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 * 使用@EnvironmentObject需要先把属性放到环境中，否则程序会崩溃
 ## @State
 通过使用 @State 修饰器我们可以关联出 View 的状态。 SwiftUI 将会把使用过 @State 修饰器的属性存储到一个特殊的内存区域，并且这个区域和 View struct 是隔离的，只有关联的视图及其子视图能够访问它。当@State 属性值改变，SwiftUI 会重构与之相关的视图。
-![使用State截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/5-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8state.jpg)
+![使用State截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/5-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8state.jpg?raw=true)
 ## @Binding （捆绑）
 有时候我们会把一个视图的属性传至子节点中，但是又不能直接的传递给子节点，因为在 Swift 中值的传递形式是值类型传递方式，也就是传递给子节点的是一个拷贝过的值。但是通过 @Binding 修饰器修饰后，属性变成了一个引用类型，传递变成了引用传递，这样父子视图的状态就能关联起来了。
 * 在子视图中使用@Binding修饰，在父视图中使用关键字`$`传递一个绑定引用
-![使用Binding截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/6-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8Binding.jpg)
+![使用Binding截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/6-%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8Binding.jpg?raw=true)
 ## @ObservedObject （被观测的对象）（用于实现可操作数据，修改、添加、删除）
 * @ObservedObject告诉SwiftUI，这个对象是可以被观察的，里面含有被@Published包装了的属性。
 * @ObservedObject 包装的对象，必须遵循ObservableObject协议。也就是说必须是class对象，不能是struct。
@@ -166,7 +166,7 @@ class UpdateStore : ObservableObject {
 ```
 class定义了一个UpdateStore类，这个类可以给不同的 View 使用，SwiftUI 会追踪使用 View 里经过 ObservableObject 修饰过的对象里进过 @Published 修饰的属性变换，一旦发生了变换，SwiftUI 会自动更新相关联的 UI
 
-![ObservedObject的使用](https://github.com/gaozichen2012/Swift-notes/blob/master/img/9-%E8%A2%AB%E8%A7%82%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BD%BF%E7%94%A8.jpg)
+![ObservedObject的使用](https://github.com/gaozichen2012/Swift-notes/blob/master/img/9-%E8%A2%AB%E8%A7%82%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BD%BF%E7%94%A8.jpg?raw=true)
 
 在声明时需要用@ObservedObject来修饰store，store.updates相当原来的固定数据updateData，使用方法一样相当于一个二维数组
 
@@ -375,7 +375,7 @@ struct LandmarkList_Previews: PreviewProvider {
 }
 ```
 多设备预览效果如下图：
-![多设备预览](https://github.com/gaozichen2012/Swift-notes/blob/master/img/16-%E5%A4%9A%E8%AE%BE%E5%A4%87%E9%A2%84%E8%A7%88.jpg)
+![多设备预览](https://github.com/gaozichen2012/Swift-notes/blob/master/img/16-%E5%A4%9A%E8%AE%BE%E5%A4%87%E9%A2%84%E8%A7%88.jpg?raw=true)
 ## 滚动视图
 ```
 //horizontal是让view水平滚动，showsIndicators=false是为了不显示滚动条 
@@ -498,7 +498,7 @@ Settings列表用到了导航列表NavigationView框架，以表格Form作为载
 * 比如Settings这种列表总数量固定的用Form，涉及添加或删除选项的用List
 * 各个小控件都用了@State修饰的数据，使用$符号是因为需要向小控件传递数据
 * TextField用到了Section作为载体，Section相当于一个集合，目的是与上下文区分，见下图
-![Settings截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/11-Settings%E6%88%AA%E5%9B%BE.jpg)
+![Settings截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/11-Settings%E6%88%AA%E5%9B%BE.jpg?raw=true)
 ```
 import SwiftUI
 
@@ -553,11 +553,11 @@ struct Settings: View {
                 .pickerStyle(SegmentedPickerStyle())
             }
 ```
-![另一种Picker使用](https://github.com/gaozichen2012/Swift-notes/blob/master/img/17-%E5%8F%A6%E4%B8%80%E7%A7%8DPicker%E4%BD%BF%E7%94%A8.jpg)
+![另一种Picker使用](https://github.com/gaozichen2012/Swift-notes/blob/master/img/17-%E5%8F%A6%E4%B8%80%E7%A7%8DPicker%E4%BD%BF%E7%94%A8.jpg?raw=true)
 
 ## ForEach历询
 * 在Xcode中按住`cmd`+指定View或元素，调出选择框，选择repeat，即可添加ForEach语法
-![foreach](https://github.com/gaozichen2012/Swift-notes/blob/master/img/8-ForEach.jpg)
+![foreach](https://github.com/gaozichen2012/Swift-notes/blob/master/img/8-ForEach.jpg?raw=true)
 
 ## 设置图片步骤
 ```
@@ -577,7 +577,7 @@ Button(action: { self.show.toggle() }){
     }
     .sheet(isPresented: self.$show) { ContentView() } //ContentView为要跳出来的目标视图
 ```
-![Button-sheet实例1](https://github.com/gaozichen2012/Swift-notes/blob/master/img/7-Button-sheet1.jpg)
+![Button-sheet实例1](https://github.com/gaozichen2012/Swift-notes/blob/master/img/7-Button-sheet1.jpg?raw=true)
 
 ## 模糊视图BlurView和Dark模式
 SwiftUI中暂时无模糊视图的方法，所以使用Uikit做了一个模糊的方法在`BlurView.swift`文件中，不需细研究，直接调用即可
@@ -591,7 +591,7 @@ SwiftUI中暂时无模糊视图的方法，所以使用Uikit做了一个模糊�
  .foregroundColor(.primary)//primary对白天模式是黑色，对于dark模式为白色
  .foregroundColor(.clear)//与primary相反
 ```
-![BlurView](https://github.com/gaozichen2012/Swift-notes/blob/master/img/10-BlurView.jpg)
+![BlurView](https://github.com/gaozichen2012/Swift-notes/blob/master/img/10-BlurView.jpg?raw=true)
 
 ## TabBar（底部栏）
 ```
@@ -630,13 +630,13 @@ struct TabBar: View {
 ## 使用模拟器或手机调试
 * 使用模拟器调试点击RUN即可模拟器调试，见下图
 * 使用手机调试，需要先将手机连写mac，在Xcode中选中手机设备，再点RUN
-![使用模拟器调试](https://raw.githubusercontent.com/gaozichen2012/Swift-notes/master/img/12-%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%B0%83%E8%AF%95.jpg)
+![使用模拟器调试](https://raw.githubusercontent.com/gaozichen2012/Swift-notes/master/img/12-%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%B0%83%E8%AF%95.jpg?raw=true)
 ## 设置APP默认界面
 在`SceneDelegate.swift`文件中修改`UIHostingController()`中的视图设置为进入app默认显示的界面
-![设置APP默认界面](https://github.com/gaozichen2012/Swift-notes/blob/master/img/13-%E8%AE%BE%E7%BD%AEAPP%E9%BB%98%E8%AE%A4%E7%95%8C%E9%9D%A2.jpg)
+![设置APP默认界面](https://github.com/gaozichen2012/Swift-notes/blob/master/img/13-%E8%AE%BE%E7%BD%AEAPP%E9%BB%98%E8%AE%A4%E7%95%8C%E9%9D%A2.jpg?raw=true)
 
 ## Swift注释支持markdown语法（待测试）
-![MARK-TODO](https://github.com/gaozichen2012/Swift-notes/blob/master/img/14-%E6%B3%A8%E9%87%8A.jpg)
+![MARK-TODO](https://github.com/gaozichen2012/Swift-notes/blob/master/img/14-%E6%B3%A8%E9%87%8A.jpg?raw=true)
 ```
      /**
      # 支持markdown
@@ -665,7 +665,7 @@ struct TabBar: View {
     }
 ```
 ## 创建自定义代码段（code snippets）
-![自定义代码段](https://github.com/gaozichen2012/Swift-notes/blob/master/img/15-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81%E6%AE%B5.jpg)
+![自定义代码段](https://github.com/gaozichen2012/Swift-notes/blob/master/img/15-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81%E6%AE%B5.jpg?raw=true)
 https://help.apple.com/xcode/mac/current/#/dev2b24f6f93
 
 ## Codable和JSON数据格式
