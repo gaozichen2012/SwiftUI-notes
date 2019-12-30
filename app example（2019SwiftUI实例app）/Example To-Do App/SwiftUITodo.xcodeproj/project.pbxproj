@@ -306,14 +306,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "SwiftUITodo/Preview\\ Content";
-				DEVELOPMENT_TEAM = N2C267LBVY;
+				DEVELOPMENT_TEAM = 686APR3L4Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUITodo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kr.xoul.SwiftUITodo;
+				PRODUCT_BUNDLE_IDENTIFIER = TOMTWOS.SwiftUITodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -326,14 +326,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "SwiftUITodo/Preview\\ Content";
-				DEVELOPMENT_TEAM = N2C267LBVY;
+				DEVELOPMENT_TEAM = 686APR3L4Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUITodo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kr.xoul.SwiftUITodo;
+				PRODUCT_BUNDLE_IDENTIFIER = TOMTWOS.SwiftUITodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

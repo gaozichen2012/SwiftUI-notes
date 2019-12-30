@@ -356,14 +356,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FlipClock/Preview Content\"";
-				DEVELOPMENT_TEAM = H5QFB36W2F;
+				DEVELOPMENT_TEAM = 686APR3L4Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/FlipClock/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.elpassion.FlipClock;
+				PRODUCT_BUNDLE_IDENTIFIER = TOMTWOS.FlipClock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
