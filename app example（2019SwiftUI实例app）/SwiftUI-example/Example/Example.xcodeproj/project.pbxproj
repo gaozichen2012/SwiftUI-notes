@@ -47,6 +47,7 @@
 		41FE99E922AAD7B0008135A0 /* EditButtonPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE99E822AAD7B0008135A0 /* EditButtonPage.swift */; };
 		41FE99F022AADF9F008135A0 /* DatePickerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE99EF22AADF9F008135A0 /* DatePickerPage.swift */; };
 		BD99734E23B49BB800A3E3F0 /* FormPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD99734D23B49BB800A3E3F0 /* FormPage.swift */; };
+		D060BD1323BA51E700F29E0F /* SFSymbolsViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */; };
 		D74985BC231634DA00C4D46D /* Window+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74985BB231634DA00C4D46D /* Window+Ext.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		41FE99E822AAD7B0008135A0 /* EditButtonPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonPage.swift; sourceTree = "<group>"; };
 		41FE99EF22AADF9F008135A0 /* DatePickerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPage.swift; sourceTree = "<group>"; };
 		BD99734D23B49BB800A3E3F0 /* FormPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPage.swift; sourceTree = "<group>"; };
+		D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsViewPage.swift; sourceTree = "<group>"; };
 		D74985BB231634DA00C4D46D /* Window+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,6 +225,7 @@
 		4196ABE522AA24B4008B8FD2 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				D060BD1123BA515E00F29E0F /* TomPage1 */,
 				4160444F22B2985D0052CAFC /* SpecialPage */,
 				41FE99ED22AADF7C008135A0 /* Text */,
 				41FE99EE22AADF8E008135A0 /* Image */,
@@ -274,6 +277,14 @@
 				41977FF422ACA74600FD47FE /* WebImagePage.swift */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		D060BD1123BA515E00F29E0F /* TomPage1 */ = {
+			isa = PBXGroup;
+			children = (
+				D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */,
+			);
+			path = TomPage1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +382,7 @@
 				41F36F0C22AA87AF00B9172D /* TableViewPage.swift in Sources */,
 				4132A46B22B00E6100A8DBBE /* PickerPage.swift in Sources */,
 				4196ABCC22A97AB1008B8FD2 /* ContentView.swift in Sources */,
+				D060BD1323BA51E700F29E0F /* SFSymbolsViewPage.swift in Sources */,
 				4132A46622AD70D400A8DBBE /* View+Ext.swift in Sources */,
 				415F044F22ABA1E3003E59FC /* TogglePage.swift in Sources */,
 				BD99734E23B49BB800A3E3F0 /* FormPage.swift in Sources */,
@@ -522,13 +534,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Example/Preview\\ Content";
+				DEVELOPMENT_TEAM = 686APR3L4Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jinxiansen.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = TOMTWOS.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -541,13 +554,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Example/Preview\\ Content";
+				DEVELOPMENT_TEAM = 686APR3L4Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jinxiansen.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = TOMTWOS.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

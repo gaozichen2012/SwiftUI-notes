@@ -59,14 +59,12 @@ struct VideoRow : View {
     }
 }
 
-#if DEBUG
 struct VideoRow_Previews : PreviewProvider {
     static var previews: some View {
         VideoRow(video: videoList[0])
             .environmentObject(UserData())
     }
 }
-#endif
 
 struct TitleText: View {
     let text: String

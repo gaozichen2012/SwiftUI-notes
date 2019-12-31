@@ -14,7 +14,7 @@ struct WebViewPage : UIViewRepresentable {
         return WKWebView()
     }
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        let req = URLRequest(url: URL(string: "https://www.apple.com")!)
+        let req = URLRequest(url: URL(string: "https://www.map.baidu.com")!)
         uiView.load(req)
     }
 }

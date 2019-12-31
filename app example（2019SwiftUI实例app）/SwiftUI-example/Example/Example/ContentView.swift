@@ -13,6 +13,11 @@ struct ContentView : View {
     var body: some View {
         NavigationView {
             List {
+                Section(header: Text("tom添加的视图")) {
+                    NavigationLink(destination: SFSymbolsViewPage()) {
+                        PageRow(title: "SF Symbols", subTitle: "系统图标的展示和使用")
+                    }
+                }
                 Section(header: Text("特殊视图")) {
                     NavigationLink(destination: WebViewPage()) {
                         PageRow(title: "WebView", subTitle: "用于展示一个打开的网页")
@@ -125,13 +130,12 @@ struct ContentView : View {
                 }
             }
             .listStyle(GroupedListStyle())
-            .navigationBarTitle(Text("Example"), displayMode: .large)
+            .navigationBarTitle(Text("TOM的实例APP"), displayMode: .large)
             .navigationBarItems(trailing: Button(action: {
                 print("Tap")
             }, label: {
                 Text("Right").foregroundColor(.orange)
             }))
-
         }
     }
     
@@ -141,7 +145,8 @@ struct ContentView : View {
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView().colorScheme(.dark)
+        ContentView()
+//            .colorScheme(.dark)
     }
 }
 #endif

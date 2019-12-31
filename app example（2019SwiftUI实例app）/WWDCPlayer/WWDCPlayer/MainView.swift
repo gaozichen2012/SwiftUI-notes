@@ -30,14 +30,12 @@ struct MainView: View {
     }
 }
 
-#if DEBUG
 struct MainView_Previews : PreviewProvider {
     static var previews: some View {
         MainView()
             .environmentObject(UserData())
     }
 }
-#endif
 
 struct FavoriteToggleView: View {
     
