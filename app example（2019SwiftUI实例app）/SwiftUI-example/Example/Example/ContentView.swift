@@ -17,6 +17,13 @@ struct ContentView : View {
                     NavigationLink(destination: SFSymbolsViewPage()) {
                         PageRow(title: "SF Symbols", subTitle: "系统图标的展示和使用")
                     }
+                    NavigationLink(destination: ListStyleViewPage()) {
+                        PageRow(title: "list两种样式", subTitle: "plain默认样式和grouped样式")
+                    }
+                    NavigationLink(destination: TabBarStyleViewPage()) {
+                        PageRow(title: "TabBar样式", subTitle: "几种TabBar类型")
+                    }
+                    
                 }
                 Section(header: Text("特殊视图")) {
                     NavigationLink(destination: WebViewPage()) {

@@ -48,6 +48,8 @@
 		41FE99F022AADF9F008135A0 /* DatePickerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE99EF22AADF9F008135A0 /* DatePickerPage.swift */; };
 		BD99734E23B49BB800A3E3F0 /* FormPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD99734D23B49BB800A3E3F0 /* FormPage.swift */; };
 		D060BD1323BA51E700F29E0F /* SFSymbolsViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */; };
+		D0B5EDF923BCEA49009B343E /* ListStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */; };
+		D0B5EDFB23BCF2B1009B343E /* TabBarStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */; };
 		D74985BC231634DA00C4D46D /* Window+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74985BB231634DA00C4D46D /* Window+Ext.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,8 @@
 		41FE99EF22AADF9F008135A0 /* DatePickerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPage.swift; sourceTree = "<group>"; };
 		BD99734D23B49BB800A3E3F0 /* FormPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPage.swift; sourceTree = "<group>"; };
 		D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsViewPage.swift; sourceTree = "<group>"; };
+		D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStyleViewPage.swift; sourceTree = "<group>"; };
+		D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarStyleViewPage.swift; sourceTree = "<group>"; };
 		D74985BB231634DA00C4D46D /* Window+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -283,6 +287,8 @@
 			isa = PBXGroup;
 			children = (
 				D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */,
+				D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */,
+				D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */,
 			);
 			path = TomPage1;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				4161B32922AB695A00CD5A1B /* VStackPage.swift in Sources */,
 				415F044B22AB9A96003E59FC /* AlertPage.swift in Sources */,
 				41F36F1022AA915300B9172D /* ListPage.swift in Sources */,
+				D0B5EDFB23BCF2B1009B343E /* TabBarStyleViewPage.swift in Sources */,
 				41F36F0A22AA84D600B9172D /* ButtonPage.swift in Sources */,
 				41FE99E722AAD08A008135A0 /* NavigationButtonPage.swift in Sources */,
 				4160444C22B291000052CAFC /* UIKitController.swift in Sources */,
@@ -376,6 +383,7 @@
 				4160445122B2987A0052CAFC /* ControllerPage.swift in Sources */,
 				4196ABCA22A97AB1008B8FD2 /* SceneDelegate.swift in Sources */,
 				4161B32B22AB696300CD5A1B /* ZStackPage.swift in Sources */,
+				D0B5EDF923BCEA49009B343E /* ListStyleViewPage.swift in Sources */,
 				4161B33022AB6D2900CD5A1B /* ScrollViewPage.swift in Sources */,
 				41FE99F022AADF9F008135A0 /* DatePickerPage.swift in Sources */,
 				4161B33422AB83B700CD5A1B /* StepperPage.swift in Sources */,
