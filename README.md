@@ -765,15 +765,19 @@ Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目�
 * SwiftUI官方教程涉及swift语法过多，先大概过一遍功能和模块，再针对性研究swift语法，再回头一遍一遍过SwiftUI官方教程
 * UIKit和SwiftUI联合开发未研究，暂不研究，只需看懂苹果官方教程的实例即可
 * swift语法中的属性后面一些内容待整理：https://swiftgg.gitbook.io/swift/swift-jiao-cheng/10_properties
-
-# 近期学习计划
-* 关注MengTo的SwiftUI教程
-* 测试数据的储存，在app里修改，下次打开依旧有数据
-* 学习播放音乐所需要的组件（VedioCtroller）
 * 研究github上的例子app：https://github.com/gaozichen2012/SwiftUI
 * 当觉得无项目或者无目标时到github搜SwiftUI，找一些好项目学习
 * 学习账号系统的搭建
+* 学习播放音乐所需要的组件（VedioCtroller）
+* 关注MengTo的SwiftUI教程
 
+# 近期学习计划
+* 在example APP中添加数据储存，在app里修改，下次打开依旧有数据
+* 在example APP中添加小控件
+* 在example APP中添加滚动视图（水平滚动和垂直滚动）
+* 在example APP中添加Button-sheet组合，实现点击按钮跳出指定View
+* 在example APP中添加导航列表NavigationView-NavigationLink通用组件
+* 在example APP中添加animation常用动画效果
 
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
 SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=article&id=87003
