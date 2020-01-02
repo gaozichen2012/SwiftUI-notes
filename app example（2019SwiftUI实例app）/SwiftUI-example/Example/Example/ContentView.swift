@@ -23,7 +23,9 @@ struct ContentView : View {
                     NavigationLink(destination: TabBarStyleViewPage()) {
                         PageRow(title: "TabBar样式", subTitle: "几种TabBar类型")
                     }
-                    
+                    NavigationLink(destination: ToggleStyleViewPage()) {
+                        PageRow(title: "TabBar样式", subTitle: "几种TabBar类型")
+                    }
                 }
                 Section(header: Text("特殊视图")) {
                     NavigationLink(destination: WebViewPage()) {

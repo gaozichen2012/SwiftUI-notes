@@ -494,7 +494,8 @@ struct UpdateList: View {
 }
 ```
 ## Settings列表小控件
-Settings列表用到了导航列表NavigationView框架，以表格Form作为载体，用到的小控件有开关Toggle、步进Stepper、选择器Picker、日期选择器DatePicker、文本输入TextField、警报Alert
+Settings列表用到了导航列表NavigationView框架，以表格Form作为载体，用到的小控件有开关Toggle、步进Stepper、选择器Picker、日期选择器DatePicker、文本输入TextField、警报 Alert
+* `SecureField ` 一般作为密码输入时使用，使用方式与 `TextField` 并无差别，示例与运行效果同上 `TextField`。
 * 比如Settings这种列表总数量固定的用Form，涉及添加或删除选项的用List
 * 各个小控件都用了@State修饰的数据，使用$符号是因为需要向小控件传递数据
 * TextField用到了Section作为载体，Section相当于一个集合，目的是与上下文区分，见下图

@@ -48,6 +48,7 @@
 		41FE99F022AADF9F008135A0 /* DatePickerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE99EF22AADF9F008135A0 /* DatePickerPage.swift */; };
 		BD99734E23B49BB800A3E3F0 /* FormPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD99734D23B49BB800A3E3F0 /* FormPage.swift */; };
 		D060BD1323BA51E700F29E0F /* SFSymbolsViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */; };
+		D080E27C23BE35F00056C382 /* ToggleStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D080E27B23BE35F00056C382 /* ToggleStyleViewPage.swift */; };
 		D0B5EDF923BCEA49009B343E /* ListStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */; };
 		D0B5EDFB23BCF2B1009B343E /* TabBarStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */; };
 		D74985BC231634DA00C4D46D /* Window+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74985BB231634DA00C4D46D /* Window+Ext.swift */; };
@@ -97,6 +98,7 @@
 		41FE99EF22AADF9F008135A0 /* DatePickerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPage.swift; sourceTree = "<group>"; };
 		BD99734D23B49BB800A3E3F0 /* FormPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPage.swift; sourceTree = "<group>"; };
 		D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsViewPage.swift; sourceTree = "<group>"; };
+		D080E27B23BE35F00056C382 /* ToggleStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyleViewPage.swift; sourceTree = "<group>"; };
 		D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStyleViewPage.swift; sourceTree = "<group>"; };
 		D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarStyleViewPage.swift; sourceTree = "<group>"; };
 		D74985BB231634DA00C4D46D /* Window+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+Ext.swift"; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */,
 				D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */,
 				D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */,
+				D080E27B23BE35F00056C382 /* ToggleStyleViewPage.swift */,
 			);
 			path = TomPage1;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				4161B33022AB6D2900CD5A1B /* ScrollViewPage.swift in Sources */,
 				41FE99F022AADF9F008135A0 /* DatePickerPage.swift in Sources */,
 				4161B33422AB83B700CD5A1B /* StepperPage.swift in Sources */,
+				D080E27C23BE35F00056C382 /* ToggleStyleViewPage.swift in Sources */,
 				41F36F0C22AA87AF00B9172D /* TableViewPage.swift in Sources */,
 				4132A46B22B00E6100A8DBBE /* PickerPage.swift in Sources */,
 				4196ABCC22A97AB1008B8FD2 /* ContentView.swift in Sources */,
