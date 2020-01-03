@@ -6,6 +6,8 @@ Swift语法单独记录：见swift-notes.md
 https://github.com/gaozichen2012/Swift-notes/blob/master/swift-notes.md
 
 # 记忆点
+* Container Views容器视图包含`From`、`Group`、`GroupBox`、`Section`
+* Divider()：分割线，在两个内容中间添加`Divider()`
 * 每个函数参数都有一个参数标签label以及一个参数名称，默认情况下参数名称=参数标签。
 * 如果函数参数有标签，在调用的时候必须使用标签。如果不希望为某个参数添加一个标签，可以使用一个下划线（_）来代替一个明确的参数标签。
 * 定义一个结构体或类时，命名使用首字母大写风格，如`SomeStructure`,`SomeClass`;（和Bool/Int一样属于类型）
@@ -25,37 +27,22 @@ https://github.com/gaozichen2012/Swift-notes/blob/master/swift-notes.md
 * 苹果基于Swift开发出的一套通用UI，SwiftUI 原生支持“动态字体”、“深色模式”、本地化和辅助功能
 * SwiftUI在Xcode11中可以使用图形化界面拖拽，并实时在代码中更改
 * SwiftUI支持所有苹果设备ios/pados/watch os
+* Stack包括 `VStack`、`HStack`、`ZStack`。其中VStack将视图垂直排列；HStack将视图水平排列；ZStack将视图叠加排列
+* Spacer()：是一个灵活的空间视图，它可以沿着包含堆栈布局的主轴进行扩展，从而实现不同尺寸屏幕自适应，在两个内容中间添加`Spacer()`
+* padding()：填充，给目标一些填充空间，不至于贴边
 
 # 相关资源
-## Swift官网
-https://Swift.org/
-## Xcode官方介绍（英文）
-https://help.apple.com/xcode/mac/current/#/devc8c2a6be1
-## Swift编程语言文档（英文，官方参考文档）
-https://swift.org/documentation/#the-swift-programming-language
-## Swift编程语言文档（中文，官方中文参考文档）
-https://github.com/SwiftGGTeam/the-swift-programming-language-in-chinese
-## Swift教程（不了解Swift语法概念可查阅此文档）
-https://swiftgg.gitbook.io/swift/swift-jiao-cheng
-## SwiftUI官网首页（英文原版）
-https://developer.apple.com/documentation/swiftui/
-## SwiftUI官方开发教程（英文原版）
-https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
-## SwiftUI官方开发教程（中文）
-https://github.com/WillieWangWei/SwiftUI-Tutorials
-## 哔哩视频1：用SwiftUI构建完整应用
-https://www.bilibili.com/video/av64681507/
-## 哔哩视频2：从零开发苹果手机App
-https://www.bilibili.com/video/av61957676/
-## 博客1：SwiftUI 的一些初步探索 (一)
-https://onevcat.com/2019/06/swift-ui-firstlook/
-
-# 账号系统搭建
-## 微信登陆：
-https://developers.weixin.qq.com/doc/oplatform/Mobile_App/WeChat_Login/Development_Guide.html
-## Sign In with Apple介绍1
-https://xiaozhuanlan.com/topic/8675913204
-
+* [Swift官网](https://Swift.org/)
+* [Xcode官方介绍（英文）](https://help.apple.com/xcode/mac/current/#/devc8c2a6be1)
+* [Swift编程语言文档（英文，官方参考文档）](https://swift.org/documentation/#the-swift-programming-language)
+* [Swift编程语言文档（中文，官方中文参考文档）](https://github.com/SwiftGGTeam/the-swift-programming-language-in-chinese)
+* [Swift教程（不了解Swift语法概念可查阅此文档）](https://swiftgg.gitbook.io/swift/swift-jiao-cheng)
+* [SwiftUI官网首页（英文原版）](https://developer.apple.com/documentation/swiftui/)
+* [SwiftUI官方开发教程（英文原版）](https://developer.apple.com/tutorials/swiftui/creating-and-combining-views)
+* [SwiftUI官方开发教程（中文）](https://github.com/WillieWangWei/SwiftUI-Tutorials)
+* [哔哩视频1：用SwiftUI构建完整应用](https://www.bilibili.com/video/av64681507/)
+* [哔哩视频2：从零开发苹果手机App](https://www.bilibili.com/video/av61957676/)
+* [博客1：SwiftUI 的一些初步探索 (一)](https://onevcat.com/2019/06/swift-ui-firstlook/)
 
 # 需求点
 * Mac Windows多终端同步助手
@@ -67,6 +54,12 @@ https://xiaozhuanlan.com/topic/8675913204
 * 睡眠钟
 * 时间倒计时（iphone+watch+mac）
 * 看iPhone MAC app store付费榜以半价策略攻击
+
+# 账号系统搭建
+* 账号系统搭建的前提是有自己的服务器和数据库，这一块需要LNMP，所以先尝试发布不带账号系统的工具类APP，确定熟练SwiftUI以后，再开始搭建服务器：阿里云 + Linux + Nginx + MySQL + PHP
+
+* [微信登陆API](https://developers.weixin.qq.com/doc/oplatform/Mobile_App/WeChat_Login/Development_Guide.html)
+* [Sign In with Apple介绍](https://xiaozhuanlan.com/topic/8675913204)
 
 # Playground工具介绍
 ![Xcode截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/1-Xcode%E6%88%AA%E5%9B%BE.jpg?raw=true)
@@ -81,6 +74,7 @@ Mockplus（摹客）是一款简洁快速的原型图设计工具
 
 # asset catalog（资源目录）
 * asset catalog是 iOS app 开发必不可少的组成部分。我们一般将图片存放其中，但其用途远不止于此。
+
 ![asset catalog截图](https://github.com/gaozichen2012/Swift-notes/blob/master/img/3-asset%20catalog.jpg?raw=true)
 * asset catalog是 Xcode 提供的项目资源管理工具，其核心理念在于：以设备特征（traits）为单位配置资源，包括但不限于图片，颜色，材质，数据。既让开发者免于代码配置资源的烦恼，也让苹果能够更好的控制 .ipa 包。
 * asset catalog 本质是一个文件目录。
@@ -104,36 +98,6 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 * Operator：负责转换事件和数据
 * subscribe：负责订阅事件
 
-# Views and Controls（视图和控件）
-视图`Views `用于显示自定义的内容`content`，控件`Controls`负责处理用户交互。
-视图`Views`包含文本`text`，图像`images`，形状`shapes`，自定义工程图`custom drawings`等。
-## 视图和控件实现
-* 控制视图的大小，位置和外观属性。
-* 响应点击，手势和其他用户交互。
-* 支持拖放操作。
-* 自定义动画和过渡。
-* 设置样式首选项和其他环境数据。
-
-
-# Stack
-使用`Stack`来组合和嵌入多个视图`Views`，让它们以水平、垂直或从后到前的顺序组合在一起。堆叠视图提供了不论是以栏或者以列为布局方式的集合视图。可以在另一个堆叠视图来嵌入一个堆叠视图
-* Stack包括struct`VStack`、struct`HStack`、struct`ZStack`。其中VStack将视图垂直排列；HStack将视图水平排列；ZStack将视图叠加排列
-
-# Lists and Scroll Views（列表和滚动视图）
-列表和滚动视图包含struct`List`、protocol`DynamicViewContent`、protocol`Identifiable`、struct`ForEach`、struct`ScrollView`、enum`Axis`
-## list
-## DynamicViewContent
-## Identifiable
-## ForEach
-## ScrollView
-## Axis
-
-# Container Views（容器视图）
-容器视图包含struct`From`、struct`Group`、struct`GroupBox`、struct`Section`
-
-# Spacers and Dividers（空格和分割线）
-* Spacer()：是一个灵活的空间视图，它可以沿着包含堆栈布局的主轴进行扩展，从而实现不同尺寸屏幕自适应，在两个内容中间添加`Spacer()`
-* padding():填充，给目标一些填充空间，不至于贴边
 # Property Wrappers（属性包装器）
 属性包装器的概念首先是从 SE-0258 提议中提出的。主要目的是将一些封装属性的逻辑从不同的结构中抽离出来，并复用到整个代码库中。这个提议苹果并未接受，但在 Xcode beta 的 Swift 5.1 快照中就有它了。
 * SwiftUI 提供的属性包装器包括 @State, @Binding, @ObservedObject, @EnvironmentObject, 和 @Environment 。
@@ -377,25 +341,8 @@ struct LandmarkList_Previews: PreviewProvider {
 ```
 多设备预览效果如下图：
 ![多设备预览](https://github.com/gaozichen2012/Swift-notes/blob/master/img/16-%E5%A4%9A%E8%AE%BE%E5%A4%87%E9%A2%84%E8%A7%88.jpg?raw=true)
-## 滚动视图
-```
-//horizontal是让view水平滚动，showsIndicators=false是为了不显示滚动条 
-ScrollView (.horizontal,showsIndicators: false) {
-    HStack(spacing: 30) {
-        ForEach(courses) { item in
-            CourceView(
-                titile: item.title,
-                image: item.image,
-                color: item.color,
-                shadowColor: item.shadowColor)
-        }
-        .padding(.leading, 40)
-        .padding(.trailing,40)//让滚动视图最左和最右的视图离边框的距离是40
-    }
-}
-```
 
-## 创建和使用结构体
+# 创建和使用结构体
 声明结构体要遵循Identifiable协议，此协议中只有一个必须的属性：id，它用来让SwiftUI区分不同的item
 * 一般默认`id=UUID()`，UUID是Swift用来标识协议类型、接口和一些其他item
 ```
@@ -444,7 +391,25 @@ struct HomeList: View {
 ## 创建可操作的数据（添加、删除）
 见：ObservedObject （被观测的对象）
 
-## 导航列表NavigationView-NavigationLink通用组件
+# 滚动视图ScrollView
+```
+//horizontal是让view水平滚动，showsIndicators=false是为了不显示滚动条 
+ScrollView (.horizontal,showsIndicators: false) {
+    HStack(spacing: 30) {
+        ForEach(courses) { item in
+            CourceView(
+                titile: item.title,
+                image: item.image,
+                color: item.color,
+                shadowColor: item.shadowColor)
+        }
+        .padding(.leading, 40)
+        .padding(.trailing,40)//让滚动视图最左和最右的视图离边框的距离是40
+    }
+}
+```
+
+# 导航列表NavigationView-NavigationLink通用组件
 苹果提供NavigationView-NavigationLink框架让列表及列表相关操作变得简单
 ```
 import SwiftUI
@@ -494,7 +459,7 @@ struct UpdateList: View {
     }
 }
 ```
-## Settings列表小控件
+# Settings列表小控件
 Settings列表用到了导航列表NavigationView框架，以表格Form作为载体，用到的小控件有开关Toggle、步进Stepper、选择器Picker、日期选择器DatePicker、文本输入TextField、警报 Alert
 * `SecureField ` 一般作为密码输入时使用，使用方式与 `TextField` 并无差别，示例与运行效果同上 `TextField`。
 * 比如Settings这种列表总数量固定的用Form，涉及添加或删除选项的用List
@@ -557,11 +522,11 @@ struct Settings: View {
 ```
 ![另一种Picker使用](https://github.com/gaozichen2012/Swift-notes/blob/master/img/17-%E5%8F%A6%E4%B8%80%E7%A7%8DPicker%E4%BD%BF%E7%94%A8.jpg?raw=true)
 
-## ForEach历询
+# ForEach历询
 * 在Xcode中按住`cmd`+指定View或元素，调出选择框，选择repeat，即可添加ForEach语法
 ![foreach](https://github.com/gaozichen2012/Swift-notes/blob/master/img/8-ForEach.jpg?raw=true)
 
-## 设置图片步骤
+# 设置图片步骤
 ```
 Image(item.image)
     .resizable() //让图像尺寸可调 
@@ -570,7 +535,7 @@ Image(item.image)
     .background(Color("background")) //设置图片背景
     .cornerRadius(20) //设置圆角
 ```
-## Button-sheet组合，实现点击按钮跳出指定View
+# Button-sheet组合，实现点击按钮跳出指定View
 ```
 @State var show = false
 
@@ -581,7 +546,7 @@ Button(action: { self.show.toggle() }){
 ```
 ![Button-sheet实例1](https://github.com/gaozichen2012/Swift-notes/blob/master/img/7-Button-sheet1.jpg?raw=true)
 
-## 模糊视图BlurView和Dark模式
+# 模糊视图BlurView和Dark模式
 SwiftUI中暂时无模糊视图的方法，所以使用Uikit做了一个模糊的方法在`BlurView.swift`文件中，不需细研究，直接调用即可
 * Dark模式和BlurView放在一起讲，是因为dark模式中大量用到模糊视角，有一些设置是重复的
 * 模糊视图BlurView的背景选为系统材料systemMaterial，为了用于兼容dark 
@@ -595,7 +560,7 @@ SwiftUI中暂时无模糊视图的方法，所以使用Uikit做了一个模糊�
 ```
 ![BlurView](https://github.com/gaozichen2012/Swift-notes/blob/master/img/10-BlurView.jpg?raw=true)
 
-## TabBar（底部栏）
+# TabBar（底部栏）
 ```
 添加底部栏使用`TabView()`,下面例子中Home、contentView、UpdateList为各个View
 import SwiftUI
@@ -629,15 +594,15 @@ struct TabBar: View {
 }
 ```
 
-## 使用模拟器或手机调试
+# 使用模拟器或手机调试
 * 使用模拟器调试点击RUN即可模拟器调试，见下图
 * 使用手机调试，需要先将手机连写mac，在Xcode中选中手机设备，再点RUN
 ![使用模拟器调试](https://raw.githubusercontent.com/gaozichen2012/Swift-notes/master/img/12-%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%B0%83%E8%AF%95.jpg?raw=true)
-## 设置APP默认界面
+# 设置APP默认界面
 在`SceneDelegate.swift`文件中修改`UIHostingController()`中的视图设置为进入app默认显示的界面
 ![设置APP默认界面](https://github.com/gaozichen2012/Swift-notes/blob/master/img/13-%E8%AE%BE%E7%BD%AEAPP%E9%BB%98%E8%AE%A4%E7%95%8C%E9%9D%A2.jpg?raw=true)
 
-## Swift注释支持markdown语法（待测试）
+# Swift注释支持markdown语法（待测试）
 ![MARK-TODO](https://github.com/gaozichen2012/Swift-notes/blob/master/img/14-%E6%B3%A8%E9%87%8A.jpg?raw=true)
 ```
      /**
@@ -666,30 +631,29 @@ struct TabBar: View {
         return true
     }
 ```
-## 创建自定义代码段（code snippets）
+# 创建自定义代码段（code snippets）
 ![自定义代码段](https://github.com/gaozichen2012/Swift-notes/blob/master/img/15-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81%E6%AE%B5.jpg?raw=true)
 https://help.apple.com/xcode/mac/current/#/dev2b24f6f93
 
-## Codable和JSON数据格式
+# Codable和JSON数据格式
 * JSON（JavaScript Object Notation，JavaScript对象表示法），是一种轻量级的数据交换语言，该语言以易于让人阅读的文字为基础，用来传输由属性值或者序列性的值组成的数据对象。尽管JSON是JavaScript的一个子集，但JSON是独立于语言的文本格式，并且采用了类似于C语言家族的一些习惯。
 * Codable 是 Swift 4.0 以后推出的一个编解码协议，可以配合 JSONDecoder 和 JSONEncoder 用来进行 JSON 解码和编码。
 * JSONDecoder Apple 官方推出的基于 Codable 的 JSON 解析类
 * Codable提供了简洁的API，使Swift的编码与解析焕然一新。
 * Swift的Enum，Struct和Class都支持Codable
-
-### 对JSON数据的解析使用分析《SwiftUI教程中第三节》
+## 对JSON数据的解析使用分析《SwiftUI教程中第三节》
 1.定义了一个`landmarkData.json`json数据，里面存放了用户数据
 2.在`Data.swift`中定义了函数方法`load`,对json数据进行了解析：`load("landmarkData.json")`,`load`方法内用到了`JSONDecoder()`和`.decode(T.self, from: data)`对json数据进行解码，解码后的数据以`Landmark`格式存在`landmarkData`
 3.在后续调用函数中声明`var landmark : Landmark`，再在预览视图中传入数据：`LandmarkRow(landmark: landmarkData[0])`
 
 菜鸟JSON教程：https://www.runoob.com/json/json-tutorial.html
 
-## List/Form/Group的区别
+# List/Form/Group的区别
 * Form仅用于Picker、toggle这一类数据输入的控件
 * group仅在PreviewProvider预览多个视图时使用
 * 其他的列表都用List（涉及添加或删除选项的也用List）
 
-## 添加动画
+# 添加动画
 给视图添加动画直接使用.animation()和其他一些修饰词即可；要给状态的改变添加动画必须用withAnimation()
 * 比如点击一个按钮跳出一个界面，按钮的动画用.animation()，跳出的界面用withAnimation()
 ```
@@ -732,17 +696,18 @@ struct GraphCapsule: View {
 
 ```
 
-## class声明为final的作用
+# class声明为final的作用
 final修饰类 不能被继承，也没有子类。
 【使用环境】：
 1.不是专门为继承而设计的类，类的本身方法之间有复杂的调用关系。假如随意创建这些类的子类，子类可能会错误的修改父类的实现细节
 2.出于安全原因，类的实现细节不允许有任何改动
 3.在创建对象模型的时候，确信这个类不会再被扩展
 
-## swift package dependencies
+# swift package dependencies
 https://www.cnblogs.com/feng9exe/p/10485087.html
 Swift Package Manager（swift包管理器，简称：SPM）就是在swift开发中用来替代CocoaPod的；在swift开发中，SPM完全可以替代CocoaPod的功能，并且速度更快，体验更佳；
-## Lottie-iOS
+
+# Lottie-iOS
 Airbnb开源的Lottie，可以让开发者免去写一行一行的代码而非常容易地渲染动画。你可以直接把 Adobe After Effects的动画用在你的Xcode 项目中。并且Android、macOS、React Native都可使用。
 
 什么是Lottie呢？
@@ -751,10 +716,6 @@ Airbnb开源的Lottie，可以让开发者免去写一行一行的代码而非�
 Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目和一系列的示例动画
 
 ## extension（扩展）
-
-# APP : SFSymbols
-# APP : Example To-Do App
-# APP : WWDCPlayer
 
 # 学习点：
 * 通过苹果SwiftUI教程第三节的Section 4：了解此节使用ObservableObject的方式与bilibili教程的区别异同（重要）
@@ -773,13 +734,14 @@ Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目�
 * 学习播放音乐所需要的组件（VedioCtroller）
 * 关注MengTo的SwiftUI教程
 
+
 # 近期学习计划
 * 在example APP中添加数据储存，在app里修改，下次打开依旧有数据
-* 在example APP中添加小控件
 * 在example APP中添加滚动视图（水平滚动和垂直滚动）
 * 在example APP中添加Button-sheet组合，实现点击按钮跳出指定View
 * 在example APP中添加导航列表NavigationView-NavigationLink通用组件
 * 在example APP中添加animation常用动画效果
+
 
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
 SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=article&id=87003
