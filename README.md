@@ -114,6 +114,7 @@ WWDC 2019苹果发布SF Symbols，SF Symbols是苹果发布的一套内置的图
 * 自定义动画和过渡。
 * 设置样式首选项和其他环境数据。
 
+
 # Stack
 使用`Stack`来组合和嵌入多个视图`Views`，让它们以水平、垂直或从后到前的顺序组合在一起。堆叠视图提供了不论是以栏或者以列为布局方式的集合视图。可以在另一个堆叠视图来嵌入一个堆叠视图
 * Stack包括struct`VStack`、struct`HStack`、struct`ZStack`。其中VStack将视图垂直排列；HStack将视图水平排列；ZStack将视图叠加排列
