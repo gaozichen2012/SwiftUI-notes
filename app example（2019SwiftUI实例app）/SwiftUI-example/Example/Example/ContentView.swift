@@ -23,8 +23,19 @@ struct ContentView : View {
                     NavigationLink(destination: TabBarStyleViewPage()) {
                         PageRow(title: "TabBar样式", subTitle: "几种TabBar类型")
                     }
-                    NavigationLink(destination: ToggleStyleViewPage()) {
-                        PageRow(title: "TabBar样式", subTitle: "几种TabBar类型")
+                    NavigationLink(destination: SettingsViewPage()) {
+                        PageRow(title: "小控件样式", subTitle: "几种小控件类型")
+                    }
+                    NavigationLink(destination: ScrollStyleViewPage()) {
+                        PageRow(title: "ScrollView两种样式", subTitle: "竖向和横向")
+                    }
+                }
+                Section(header: Text("几种动画视图")) {
+                    NavigationLink(destination: ButtonSheetViewPage()) {
+                        PageRow(title: "Button-Sheet样式", subTitle: "点击按钮从底部跳出View")
+                    }
+                    NavigationLink(destination: ButtonAnimationViewPage()) {
+                        PageRow(title: "Button-Sheet样式", subTitle: "点击按钮从底部跳出View")
                     }
                 }
                 Section(header: Text("特殊视图")) {
@@ -83,7 +94,7 @@ struct ContentView : View {
                     NavigationLink(destination: StepperPage()) {
                         PageRow(title: "Stepper",subTitle: "用以增加或减少数值")
                     }
-
+                    
                 }
                 
                 Section(header: Text("布局")) {
@@ -112,7 +123,7 @@ struct ContentView : View {
                         PageRow(title: "Section",subTitle: "用于创建带头/尾部的视图内容，一般结合 `List` 组件使用")
                     }.frame(height: 80)
                     NavigationLink(destination: FormPage(firstName: "", lastName: "")) {
-                           PageRow(title: "Form",subTitle: "表单视图")
+                        PageRow(title: "Form",subTitle: "表单视图")
                     }
                 }
                 Section(header: Text("导航视图")) {
@@ -155,7 +166,7 @@ struct ContentView : View {
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
         ContentView()
-//            .colorScheme(.dark)
+        //            .colorScheme(.dark)
     }
 }
 #endif

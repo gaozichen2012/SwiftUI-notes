@@ -737,10 +737,9 @@ Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目�
 
 # 近期学习计划
 * 在example APP中添加数据储存，在app里修改，下次打开依旧有数据
-* 在example APP中添加滚动视图（水平滚动和垂直滚动）
-* 在example APP中添加Button-sheet组合，实现点击按钮跳出指定View
-* 在example APP中添加导航列表NavigationView-NavigationLink通用组件
-* 在example APP中添加animation常用动画效果
+* 重新整理的example APP中动画，各种情况下的动画使用
+* 构思并开始整理example APP的内容（不要详细解释，详细解释会在此笔记中解释，只要标出相关名词和动作即可）
+* 针对example app重新整理汇总笔记
 
 
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324

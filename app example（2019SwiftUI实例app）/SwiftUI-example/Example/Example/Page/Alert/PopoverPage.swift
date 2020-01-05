@@ -20,9 +20,10 @@ struct PopoverPage : View {
             }) {
                 Text("Popover").bold().font(.system(.largeTitle, design: .monospaced))
             }
-            .popover(isPresented: $showPop, content: {
-                ImagePage()
-            })
+//            .popover(isPresented: $showPop, content: {
+//                ImagePage()
+//            })
+            .popover(isPresented: self.$showPop) { ImagePage()}
         }
     }
 }

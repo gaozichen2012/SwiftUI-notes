@@ -47,8 +47,11 @@
 		41FE99E922AAD7B0008135A0 /* EditButtonPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE99E822AAD7B0008135A0 /* EditButtonPage.swift */; };
 		41FE99F022AADF9F008135A0 /* DatePickerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE99EF22AADF9F008135A0 /* DatePickerPage.swift */; };
 		BD99734E23B49BB800A3E3F0 /* FormPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD99734D23B49BB800A3E3F0 /* FormPage.swift */; };
+		D03390D923C1E1F8009FF635 /* SettingsViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03390D823C1E1F8009FF635 /* SettingsViewPage.swift */; };
+		D03390DB23C1E576009FF635 /* ScrollStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03390DA23C1E576009FF635 /* ScrollStyleViewPage.swift */; };
+		D03390DD23C1EB69009FF635 /* ButtonSheetViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03390DC23C1EB69009FF635 /* ButtonSheetViewPage.swift */; };
+		D03390DF23C1F11B009FF635 /* ButtonAnimationViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03390DE23C1F11A009FF635 /* ButtonAnimationViewPage.swift */; };
 		D060BD1323BA51E700F29E0F /* SFSymbolsViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */; };
-		D080E27C23BE35F00056C382 /* ToggleStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D080E27B23BE35F00056C382 /* ToggleStyleViewPage.swift */; };
 		D0B5EDF923BCEA49009B343E /* ListStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */; };
 		D0B5EDFB23BCF2B1009B343E /* TabBarStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */; };
 		D74985BC231634DA00C4D46D /* Window+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74985BB231634DA00C4D46D /* Window+Ext.swift */; };
@@ -97,8 +100,11 @@
 		41FE99E822AAD7B0008135A0 /* EditButtonPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonPage.swift; sourceTree = "<group>"; };
 		41FE99EF22AADF9F008135A0 /* DatePickerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPage.swift; sourceTree = "<group>"; };
 		BD99734D23B49BB800A3E3F0 /* FormPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPage.swift; sourceTree = "<group>"; };
+		D03390D823C1E1F8009FF635 /* SettingsViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewPage.swift; sourceTree = "<group>"; };
+		D03390DA23C1E576009FF635 /* ScrollStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollStyleViewPage.swift; sourceTree = "<group>"; };
+		D03390DC23C1EB69009FF635 /* ButtonSheetViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSheetViewPage.swift; sourceTree = "<group>"; };
+		D03390DE23C1F11A009FF635 /* ButtonAnimationViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimationViewPage.swift; sourceTree = "<group>"; };
 		D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsViewPage.swift; sourceTree = "<group>"; };
-		D080E27B23BE35F00056C382 /* ToggleStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyleViewPage.swift; sourceTree = "<group>"; };
 		D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStyleViewPage.swift; sourceTree = "<group>"; };
 		D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarStyleViewPage.swift; sourceTree = "<group>"; };
 		D74985BB231634DA00C4D46D /* Window+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+Ext.swift"; sourceTree = "<group>"; };
@@ -291,7 +297,10 @@
 				D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */,
 				D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */,
 				D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */,
-				D080E27B23BE35F00056C382 /* ToggleStyleViewPage.swift */,
+				D03390D823C1E1F8009FF635 /* SettingsViewPage.swift */,
+				D03390DA23C1E576009FF635 /* ScrollStyleViewPage.swift */,
+				D03390DC23C1EB69009FF635 /* ButtonSheetViewPage.swift */,
+				D03390DE23C1F11A009FF635 /* ButtonAnimationViewPage.swift */,
 			);
 			path = TomPage1;
 			sourceTree = "<group>";
@@ -367,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D03390DB23C1E576009FF635 /* ScrollStyleViewPage.swift in Sources */,
 				41E4DCD022B4B4FF00F78522 /* ActionSheetPage.swift in Sources */,
 				4196ABC822A97AB1008B8FD2 /* AppDelegate.swift in Sources */,
 				4161B33222AB6D3400CD5A1B /* ForEachPage.swift in Sources */,
@@ -390,16 +400,18 @@
 				4161B33022AB6D2900CD5A1B /* ScrollViewPage.swift in Sources */,
 				41FE99F022AADF9F008135A0 /* DatePickerPage.swift in Sources */,
 				4161B33422AB83B700CD5A1B /* StepperPage.swift in Sources */,
-				D080E27C23BE35F00056C382 /* ToggleStyleViewPage.swift in Sources */,
 				41F36F0C22AA87AF00B9172D /* TableViewPage.swift in Sources */,
+				D03390DD23C1EB69009FF635 /* ButtonSheetViewPage.swift in Sources */,
 				4132A46B22B00E6100A8DBBE /* PickerPage.swift in Sources */,
 				4196ABCC22A97AB1008B8FD2 /* ContentView.swift in Sources */,
 				D060BD1323BA51E700F29E0F /* SFSymbolsViewPage.swift in Sources */,
+				D03390DF23C1F11B009FF635 /* ButtonAnimationViewPage.swift in Sources */,
 				4132A46622AD70D400A8DBBE /* View+Ext.swift in Sources */,
 				415F044F22ABA1E3003E59FC /* TogglePage.swift in Sources */,
 				BD99734E23B49BB800A3E3F0 /* FormPage.swift in Sources */,
 				41F36F0E22AA8AEC00B9172D /* WebViewPage.swift in Sources */,
 				4132A46022AD624700A8DBBE /* SectionPage.swift in Sources */,
+				D03390D923C1E1F8009FF635 /* SettingsViewPage.swift in Sources */,
 				41C7E65E22B4A9680074D4F6 /* ModalPage.swift in Sources */,
 				4196ABDC22A97D61008B8FD2 /* PageRow.swift in Sources */,
 				4132A46322AD709300A8DBBE /* Color+Ext.swift in Sources */,

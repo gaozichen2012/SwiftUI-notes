@@ -13,17 +13,13 @@ struct ActionSheetPage : View {
     @State var showSheet = false
     var body: some View {
         VStack {
-            Button(action: {
-                self.showSheet = true
-            }) {
+            Button(action: {self.showSheet = true}) {
                 Text("ActionSheet")
                     .bold()
-                    .font(.system(.largeTitle,
-                                  design: .rounded))
+                    .font(.title)
             }
             .actionSheet(isPresented: $showSheet, content: {sheet})
         }
-
     }
     
     private var sheet: ActionSheet {

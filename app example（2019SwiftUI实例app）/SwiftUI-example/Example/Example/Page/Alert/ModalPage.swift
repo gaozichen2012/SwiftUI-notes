@@ -21,8 +21,8 @@ struct ModalPage : View {
                     .bold()
                     .font(.system(.largeTitle,
                                   design: .serif))
-            }//.presentation(showModal ? modal:nil)
-            //            .sheet(isPresented: $showModal, content: PickerPage())
+            }
+            .sheet(isPresented: self.$showModal) { PickerPage()}
         }
     }
 }

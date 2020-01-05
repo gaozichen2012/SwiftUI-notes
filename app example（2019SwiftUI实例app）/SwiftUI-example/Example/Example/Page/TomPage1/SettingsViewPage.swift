@@ -1,15 +1,15 @@
 //
-//  ToggleStyleViewPage.swift
+//  SettingsViewPage.swift
 //  Example
 //
-//  Created by Tom on 2/1/2020.
+//  Created by Tom on 5/1/2020.
 //  Copyright © 2020 晋先森. All rights reserved.
 //
 
 import SwiftUI
 import Combine
 
-struct ToggleStyleViewPage: View {
+struct SettingsViewPage: View {
     @State var receive = false
     @State var number = 1
     @State var selection = 1
@@ -84,8 +84,9 @@ struct ToggleStyleViewPage: View {
     }
 }
 
-struct ToggleStyleViewPage_Previews: PreviewProvider {
+struct SettingsViewPage_Previews: PreviewProvider {
     static var previews: some View {
-        ToggleStyleViewPage()
+        SettingsViewPage()
     }
 }
+
