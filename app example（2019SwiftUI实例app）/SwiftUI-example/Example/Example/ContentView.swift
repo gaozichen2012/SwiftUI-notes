@@ -30,6 +30,14 @@ struct ContentView : View {
                         PageRow(title: "ScrollView两种样式", subTitle: "竖向和横向")
                     }
                 }
+                Section(header: Text("Botton")) {
+                    NavigationLink(destination: ButtonPresentingAdditionalViewPage()) {
+                        PageRow(title: "Button触发4种特殊窗口", subTitle: "sheet/actionSheet/alert")
+                    }
+                    NavigationLink(destination: ButtonNormalPopupViewPage()) {
+                        PageRow(title: "Button触发普通视图", subTitle: "用到的元素有：@Binding/Zstack/onTapGesture/offset")
+                    }
+                }
                 Section(header: Text("几种动画视图")) {
                     NavigationLink(destination: ButtonSheetViewPage()) {
                         PageRow(title: "Button-Sheet样式", subTitle: "点击按钮从底部跳出View")
@@ -38,6 +46,7 @@ struct ContentView : View {
                         PageRow(title: "Button-Sheet样式", subTitle: "点击按钮从底部跳出View")
                     }
                 }
+
                 Section(header: Text("特殊视图")) {
                     NavigationLink(destination: WebViewPage()) {
                         PageRow(title: "WebView", subTitle: "用于展示一个打开的网页")

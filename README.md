@@ -644,22 +644,180 @@ https://help.apple.com/xcode/mac/current/#/dev2b24f6f93
 * group仅在PreviewProvider预览多个视图时使用
 * 其他的列表都用List（涉及添加或删除选项的也用List）
 
-# 添加动画
-给视图添加动画直接使用.animation()和其他一些修饰词即可；要给状态的改变添加动画必须用withAnimation()
-* 比如点击一个按钮跳出一个界面，按钮的动画用.animation()，跳出的界面用withAnimation()
+
+
+# class声明为final的作用
+final修饰类 不能被继承，也没有子类。
+【使用环境】：
+1.不是专门为继承而设计的类，类的本身方法之间有复杂的调用关系。假如随意创建这些类的子类，子类可能会错误的修改父类的实现细节
+2.出于安全原因，类的实现细节不允许有任何改动
+3.在创建对象模型的时候，确信这个类不会再被扩展
+
+# swift package dependencies
+https://www.cnblogs.com/feng9exe/p/10485087.html
+Swift Package Manager（swift包管理器，简称：SPM）就是在swift开发中用来替代CocoaPod的；在swift开发中，SPM完全可以替代CocoaPod的功能，并且速度更快，体验更佳；
+
+# Lottie-iOS
+Airbnb开源的Lottie，可以让开发者免去写一行一行的代码而非常容易地渲染动画。你可以直接把 Adobe After Effects的动画用在你的Xcode 项目中。并且Android、macOS、React Native都可使用。
+
+什么是Lottie呢？
+由Airbnb开发的[Lottie](https://github.com/airbnb/lottie-ios)是一个将After Effects动画提供给任意一个iOS，macOS，Android还有React Native原生APP的文件库。这些动画通过一个叫[Bodymovin](https://github.com/bodymovin/bodymovin)的开源After Effects插件，以JSON文件的形式进行输出。Lottie通过JSON格式下载动画数据并实时提供给开发者。
+
+Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目和一系列的示例动画
+
+## extension（扩展）
+
+# 点击Button触发4种特殊窗口
+点击Button可以触发四种操作分别为底部Modal模态窗口sheet、底部选择框actionSheet、报警窗口alert和Popover气泡浮出层popover，其中popover气泡弹出层不能在iphone中使用，所以暂时不研究
+
+## Button-sheet，点击Button跳出底部Modal模态窗口sheet
 ```
-Button(action: {
-    withAnimation {
-        self.showDetail.toggle()
+@State var show = false
+
+Button(action: { self.show.toggle() }){
+    //此处为按钮显示的内容或界面
+    }
+    .sheet(isPresented: self.$show) { ContentView() } //ContentView为要跳出来的目标视图
+
+```
+![Button-sheet实例1](https://github.com/gaozichen2012/Swift-notes/blob/master/img/7-Button-sheet1.jpg?raw=true)
+
+## Button-actionSheet，点击Button跳出底部选择框
+```
+    @State var showActionSheet = false
+    var body: some View {
+        Button(action: {self.showActionSheet = true}) {
+            BottonTextSonView(text: "弹出actionSheet选择窗口")
         }
-    }) {
-            Image(systemName: "chevron.right.circle")
-            .imageScale(.large)
-            .rotationEffect(.degrees(showDetail ? 90 : 0))
-            .scaleEffect(showDetail ? 1.5 : 1)
-            .padding()
-            .animation(.default)
+        .actionSheet(isPresented: $showActionSheet, content: {sheet})
+
+    }
+
+    private var sheet: ActionSheet {
+        
+        let action = ActionSheet(title: Text("Title"),
+                                 message: Text("Message"),
+                                 buttons:
+            [.default(Text("Default"), action: { print("Default")
+                self.showActionSheet = false
+            }),.destructive(Text("destructive"), action: {
+                print("destructive")
+                self.showActionSheet = false
+            }),.cancel({
+                print("Cancel")
+                self.showActionSheet = false
+            })])
+        
+        return action
+    }
+```
+
+## Button-alert，点击Button跳出报警窗口
+```
+            Button(action: {self.showAlert = true}) {
+                BottonTextSonView(text: "弹出alert报警窗口")
+            }
+            .alert(isPresented: $showAlert, content: {
+                Alert(title: Text("alert报警窗口"),
+                      message: Text("报警窗口里的内容第一行\n报警窗口里的内容第二行"),
+                      primaryButton: .destructive(Text("确认")) { print("已转出") },
+                      secondaryButton: .cancel())
+            })
+```
+
+![3个跳出界面合并截图]()
+
+1点击按钮从底部弹出
+2点击按钮从底部弹
+3点击按钮跳出显示报警窗口（Botton-alert）
+4点击俺就跳出Popover气泡浮出层（Button-popover）
+### popover气泡浮出层
+>iOS的规范中限定Popover只能作为临时视图在iPad中使用，不能用在iPhone上。
+
+Popover（气泡弹出框/弹出式气泡/气泡）是由一个矩形和三角箭头组成的弹出窗口，箭头指向的地方通常是导致Popover弹出的控件或区域。通过点击Popover内的按钮或非Popover的屏幕其他区域可关闭Popover。
+常用于快捷导航、长按触发、提示引导、临时视图
+![popover四种用法](https://github.com/gaozichen2012/SwiftUI-notes/blob/master/img/18-popover%E7%94%A8%E6%B3%95.jpg?raw=true)
+
+# 点击Button触发普通视图
+* 定义一个Botton子视图，再定义一个跳出界面的子视图，用@Binding分别绑定一个传入参数，再在父视图中用Zstack包含，点击Botton触发绑定的参数，该参数传入跳出界面的子视图改变偏移量实现该视图的显示和移出
+* 点击Button触发普通视图在某种情况下和Button-sheet很相似
+```
+//父视图
+struct ButtonNormalPopupViewPage: View {
+    @State var show = false
+    
+    var body: some View {
+        ZStack {
+            NormalButtonSonView(show: $show)
+            .animation(.spring())//按钮的动画
+            PopupSonView(show: $show)
+            .animation(.easeInOut(duration: 2))//弹出视图的动画
         }
+    }
+}
+
+//Button子视图
+struct NormalButtonSonView: View {
+    @Binding var show : Bool
+    var body: some View {
+        Button(action: { self.show.toggle()}) {
+            VStack {
+                BottonView()
+                .scaleEffect(show ? 1.5 : 1)
+                Spacer()
+            }
+        }
+    }
+}
+
+//弹出的子视图
+struct PopupSonView: View {
+    @Binding var show : Bool
+    var body: some View {
+        VStack {
+            Text("这是一个弹出的子视图")
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .background(Color.yellow)
+        .cornerRadius(30)
+        .offset(y:show ? 50 : UIScreen.main.bounds.height)
+        .onTapGesture {
+            self.show.toggle()
+        }
+    }
+}
+
+//定义一个按钮
+struct BottonView: View {
+    var body: some View {
+        VStack {
+            Text(" 弹出普通视图 ")
+        }
+        .frame(width:150,height: 50)
+        .background(Color.pink)
+        .foregroundColor(.white)
+        .cornerRadius(30)
+    }
+}
+```
+
+# 添加动画
+无论是给按钮自身加动画还是给视图加动画直接使用.animation()即可满足需求，避免使用withAnimation()。
+* 比如点击一个按钮跳出一个界面，按钮的动画用.animation()，跳出的界面也用.animation()
+* 不用withAnimation的原因：比如对按钮使用withAnimation()会自动给按钮和跳出的视图加上动画，但是让跳出的视图返回是没有动画的，所以为了避免逻辑混乱，直接使用.animation()即可
+```
+struct ButtonNormalPopupViewPage: View {
+    @State var show = false
+    
+    var body: some View {
+        ZStack {
+            NormalButtonSonView(show: $show)
+            .animation(.spring())//按钮的动画
+            PopupSonView(show: $show)
+            .animation(.easeInOut(duration: 2))//弹出视图的动画
+        }
+    }
+}
 ```
 ## animation常用动画效果
 ```
@@ -687,64 +845,6 @@ struct GraphCapsule: View {
 
 ```
 
-# class声明为final的作用
-final修饰类 不能被继承，也没有子类。
-【使用环境】：
-1.不是专门为继承而设计的类，类的本身方法之间有复杂的调用关系。假如随意创建这些类的子类，子类可能会错误的修改父类的实现细节
-2.出于安全原因，类的实现细节不允许有任何改动
-3.在创建对象模型的时候，确信这个类不会再被扩展
-
-# swift package dependencies
-https://www.cnblogs.com/feng9exe/p/10485087.html
-Swift Package Manager（swift包管理器，简称：SPM）就是在swift开发中用来替代CocoaPod的；在swift开发中，SPM完全可以替代CocoaPod的功能，并且速度更快，体验更佳；
-
-# Lottie-iOS
-Airbnb开源的Lottie，可以让开发者免去写一行一行的代码而非常容易地渲染动画。你可以直接把 Adobe After Effects的动画用在你的Xcode 项目中。并且Android、macOS、React Native都可使用。
-
-什么是Lottie呢？
-由Airbnb开发的[Lottie](https://github.com/airbnb/lottie-ios)是一个将After Effects动画提供给任意一个iOS，macOS，Android还有React Native原生APP的文件库。这些动画通过一个叫[Bodymovin](https://github.com/bodymovin/bodymovin)的开源After Effects插件，以JSON文件的形式进行输出。Lottie通过JSON格式下载动画数据并实时提供给开发者。
-
-Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目和一系列的示例动画
-
-## extension（扩展）
-
-# 点击Button触发操作（待完善，用example中的例子完善代码部分）
-点击Button可以触发四种操作分别为底部Modal模态窗口sheet、底部选择框actionSheet、报警窗口alert和Popover气泡浮出层popover，其中popover气泡弹出层不能在iphone中使用，所以暂时不研究
-
-## Button-sheet，点击Button跳出底部Modal模态窗口sheet
-```
-@State var show = false
-
-Button(action: { self.show.toggle() }){
-    //此处为按钮显示的内容或界面
-    }
-    .sheet(isPresented: self.$show) { ContentView() } //ContentView为要跳出来的目标视图
-```
-![Button-sheet实例1](https://github.com/gaozichen2012/Swift-notes/blob/master/img/7-Button-sheet1.jpg?raw=true)
-
-## Button-actionSheet，点击Button跳出底部选择框
-```
-
-```
-
-## Button-alert，点击Button跳出报警窗口
-```
-
-```
-
-![3个跳出界面合并截图]()
-
-1点击按钮从底部弹出
-2点击按钮从底部弹
-3点击按钮跳出显示报警窗口（Botton-alert）
-4点击俺就跳出Popover气泡浮出层（Button-popover）
-## popover气泡浮出层
->iOS的规范中限定Popover只能作为临时视图在iPad中使用，不能用在iPhone上。
-
-Popover（气泡弹出框/弹出式气泡/气泡）是由一个矩形和三角箭头组成的弹出窗口，箭头指向的地方通常是导致Popover弹出的控件或区域。通过点击Popover内的按钮或非Popover的屏幕其他区域可关闭Popover。
-常用于快捷导航、长按触发、提示引导、临时视图
-![popover四种用法](https://github.com/gaozichen2012/SwiftUI-notes/blob/master/img/18-popover%E7%94%A8%E6%B3%95.jpg?raw=true)
-
 # 学习点：
 * 通过苹果SwiftUI教程第三节的Section 4：了解此节使用ObservableObject的方式与bilibili教程的区别异同（重要）
 * 通过苹果SwiftUI教程第三节的Section 6: 了解父子视图的ObservableObject类型数据传递（重要）
@@ -768,7 +868,7 @@ Popover（气泡弹出框/弹出式气泡/气泡）是由一个矩形和三角�
 * 重新整理的example APP中动画，各种情况下的动画使用
 * 构思并开始整理example APP的内容（不要详细解释，详细解释会在此笔记中解释，只要标出相关名词和动作即可）
 * 针对example app重新整理汇总笔记
-* 完成example app的Button组合内容和完善此笔记
+* 完成example app的Button组合的3个截图
 * 
 几种动画形式
 * 点击按钮或View，该按钮或View本身出现变化
