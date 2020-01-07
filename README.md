@@ -718,10 +718,18 @@ Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目�
 ## extension（扩展）
 
 # 点击Button触发操作
+
 1点击按钮从底部弹出Modal模态窗口（Button-sheet）
 2点击按钮从底部弹出选择框（Botton-actionSheet）
 3点击按钮跳出显示报警窗口（Botton-alert）
-4点击俺就跳出Popover浮出层（Button-）
+4点击俺就跳出Popover浮出层（Button-popover）
+## popover气泡弹出框
+>iOS的规范中限定Popover只能作为临时视图在iPad中使用，不能用在iPhone上。
+
+Popover（气泡弹出框/弹出式气泡/气泡）是由一个矩形和三角箭头组成的弹出窗口，箭头指向的地方通常是导致Popover弹出的控件或区域。通过点击Popover内的按钮或非Popover的屏幕其他区域可关闭Popover。
+常用于快捷导航、长按触发、提示引导、临时视图
+![popover四种用法]()
+
 # 学习点：
 * 通过苹果SwiftUI教程第三节的Section 4：了解此节使用ObservableObject的方式与bilibili教程的区别异同（重要）
 * 通过苹果SwiftUI教程第三节的Section 6: 了解父子视图的ObservableObject类型数据传递（重要）
@@ -757,7 +765,7 @@ Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目�
 --Button-sheet 底部弹出Modal模态窗口
 --Botton-actionSheet 底部弹出选择框
 --Botton-alert 显示报警窗口
-func popover
+--Botton-popover
 
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
 SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=article&id=87003
