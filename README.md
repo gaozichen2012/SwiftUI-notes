@@ -535,16 +535,7 @@ Image(item.image)
     .background(Color("background")) //设置图片背景
     .cornerRadius(20) //设置圆角
 ```
-# Button-sheet组合，实现点击按钮跳出指定View
-```
-@State var show = false
 
-Button(action: { self.show.toggle() }){
-    //此处为按钮显示的内容或界面
-    }
-    .sheet(isPresented: self.$show) { ContentView() } //ContentView为要跳出来的目标视图
-```
-![Button-sheet实例1](https://github.com/gaozichen2012/Swift-notes/blob/master/img/7-Button-sheet1.jpg?raw=true)
 
 # 模糊视图BlurView和Dark模式
 SwiftUI中暂时无模糊视图的方法，所以使用Uikit做了一个模糊的方法在`BlurView.swift`文件中，不需细研究，直接调用即可
@@ -717,18 +708,42 @@ Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目�
 
 ## extension（扩展）
 
-# 点击Button触发操作
+# 点击Button触发操作（待完善，用example中的例子完善代码部分）
+点击Button可以触发四种操作分别为底部Modal模态窗口sheet、底部选择框actionSheet、报警窗口alert和Popover气泡浮出层popover，其中popover气泡弹出层不能在iphone中使用，所以暂时不研究
 
-1点击按钮从底部弹出Modal模态窗口（Button-sheet）
-2点击按钮从底部弹出选择框（Botton-actionSheet）
+## Button-sheet，点击Button跳出底部Modal模态窗口sheet
+```
+@State var show = false
+
+Button(action: { self.show.toggle() }){
+    //此处为按钮显示的内容或界面
+    }
+    .sheet(isPresented: self.$show) { ContentView() } //ContentView为要跳出来的目标视图
+```
+![Button-sheet实例1](https://github.com/gaozichen2012/Swift-notes/blob/master/img/7-Button-sheet1.jpg?raw=true)
+
+## Button-actionSheet，点击Button跳出底部选择框
+```
+
+```
+
+## Button-alert，点击Button跳出报警窗口
+```
+
+```
+
+![3个跳出界面合并截图]()
+
+1点击按钮从底部弹出
+2点击按钮从底部弹
 3点击按钮跳出显示报警窗口（Botton-alert）
-4点击俺就跳出Popover浮出层（Button-popover）
-## popover气泡弹出框
+4点击俺就跳出Popover气泡浮出层（Button-popover）
+## popover气泡浮出层
 >iOS的规范中限定Popover只能作为临时视图在iPad中使用，不能用在iPhone上。
 
 Popover（气泡弹出框/弹出式气泡/气泡）是由一个矩形和三角箭头组成的弹出窗口，箭头指向的地方通常是导致Popover弹出的控件或区域。通过点击Popover内的按钮或非Popover的屏幕其他区域可关闭Popover。
 常用于快捷导航、长按触发、提示引导、临时视图
-![popover四种用法]()
+![popover四种用法](https://github.com/gaozichen2012/SwiftUI-notes/blob/master/img/18-popover%E7%94%A8%E6%B3%95.jpg?raw=true)
 
 # 学习点：
 * 通过苹果SwiftUI教程第三节的Section 4：了解此节使用ObservableObject的方式与bilibili教程的区别异同（重要）
@@ -753,19 +768,27 @@ Popover（气泡弹出框/弹出式气泡/气泡）是由一个矩形和三角�
 * 重新整理的example APP中动画，各种情况下的动画使用
 * 构思并开始整理example APP的内容（不要详细解释，详细解释会在此笔记中解释，只要标出相关名词和动作即可）
 * 针对example app重新整理汇总笔记
-
+* 完成example app的Button组合内容和完善此笔记
+* 
 几种动画形式
 * 点击按钮或View，该按钮或View本身出现变化
 * 拖动按钮或View，该按钮或View出现变化
 * 点击按钮或View，跳出（button-sheet）
 * 点击按钮或View，跳出其他View
 
-1基础元素（文字+）
-2Button组合
+# example APP规划
+## 3种Button呈现其他视图(Presenting Additional Views)
 --Button-sheet 底部弹出Modal模态窗口
 --Botton-actionSheet 底部弹出选择框
 --Botton-alert 显示报警窗口
 --Botton-popover
+## button处理视图事件Handling View Events
+## button处理视图水龙头和笔势Handling View Taps and Gestures
+## button向视图添加动画
+
+1基础元素（文字+）
+
+
 
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
 SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=article&id=87003
