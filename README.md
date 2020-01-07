@@ -717,6 +717,11 @@ Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目�
 
 ## extension（扩展）
 
+# 点击Button触发操作
+1点击按钮从底部弹出Modal模态窗口（Button-sheet）
+2点击按钮从底部弹出选择框（Botton-actionSheet）
+3点击按钮跳出显示报警窗口（Botton-alert）
+4点击俺就跳出Popover浮出层（Button-）
 # 学习点：
 * 通过苹果SwiftUI教程第三节的Section 4：了解此节使用ObservableObject的方式与bilibili教程的区别异同（重要）
 * 通过苹果SwiftUI教程第三节的Section 6: 了解父子视图的ObservableObject类型数据传递（重要）
@@ -741,6 +746,18 @@ Lottie现在不仅在GitHub上已经开源，而且还提供一个示例项目�
 * 构思并开始整理example APP的内容（不要详细解释，详细解释会在此笔记中解释，只要标出相关名词和动作即可）
 * 针对example app重新整理汇总笔记
 
+几种动画形式
+* 点击按钮或View，该按钮或View本身出现变化
+* 拖动按钮或View，该按钮或View出现变化
+* 点击按钮或View，跳出（button-sheet）
+* 点击按钮或View，跳出其他View
+
+1基础元素（文字+）
+2Button组合
+--Button-sheet 底部弹出Modal模态窗口
+--Botton-actionSheet 底部弹出选择框
+--Botton-alert 显示报警窗口
+func popover
 
 iOS接入 Lottie 动画过程详解（使用lottie）：http://www.cocoachina.com/articles/23324
 SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=article&id=87003
