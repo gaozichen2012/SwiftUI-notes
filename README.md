@@ -534,6 +534,11 @@ Image(item.image)
     .frame(width: 80 ,height: 80) //设置图片框架大小
     .background(Color("background")) //设置图片背景
     .cornerRadius(20) //设置圆角
+
+Image("Card1")
+    .resizable()
+    .aspectRatio(contentMode: .fill)
+    .frame(width:300, height: 110, alignment: .top)
 ```
 
 
