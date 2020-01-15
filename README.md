@@ -901,3 +901,7 @@ SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=a
 * 整理关于点按onTapGesture和gesture拖动的使用
 * 在高动画状态使用clipShape代替cornerRadius，实现不同圆角的动画
 * 多重动画在.animation中再调用Animation
+* Color可以作为框架直接使用
+* 渐变色LinearGradient
+* 颜色图形化代码colorLiteral,双击切换颜色
+* .edgesIgnoringSafeArea(.all)忽略安全区域
