@@ -904,4 +904,8 @@ SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=a
 * Color可以作为框架直接使用
 * 渐变色LinearGradient
 * 颜色图形化代码colorLiteral,双击切换颜色
+* 和color图形化界面类似显示，图片图形化预览Image(uiImage: imageLiteral)
 * .edgesIgnoringSafeArea(.all)忽略安全区域
+* let screen = UIScreen.main.bounds //声明一个屏幕的常量，为了不同设备的自适应
+* 让系统图标变黑色.renderingMode(.original)；切割图片成圆的.clipShape(Circle())
+* 在ScrollView中使用GeometryReader+frame+rotation3DEffect实现3D滚动
