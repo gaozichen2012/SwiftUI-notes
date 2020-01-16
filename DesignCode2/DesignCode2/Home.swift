@@ -55,3 +55,18 @@ struct Home_Previews: PreviewProvider {
         Home()
     }
 }
+
+struct AvatarView: View {
+    @Binding var showProfile: Bool
+    var body: some View {
+        Button(action: {self.showProfile.toggle()}) {
+            Image("Avatar")
+                .renderingMode(.original)
+                .resizable()
+                .frame(width: 36, height: 36)
+                .clipShape(Circle())
+        }
+    }
+}
+
+let screen = UIScreen.main.bounds //声明一个屏幕的常量，为了不同设备的自适应
