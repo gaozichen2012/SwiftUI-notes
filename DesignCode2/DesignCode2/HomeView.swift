@@ -31,7 +31,7 @@ struct HomeView: View {
                     .shadow(radius: 10)
                 }
                 .sheet(isPresented: $showUpdate) {
-                    ContentView()
+                    UpdateList()
                 }
             }
             .padding(.horizontal)

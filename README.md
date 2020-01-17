@@ -909,3 +909,5 @@ SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=a
 * let screen = UIScreen.main.bounds //声明一个屏幕的常量，为了不同设备的自适应
 * 让系统图标变黑色.renderingMode(.original)；切割图片成圆的.clipShape(Circle())
 * 在ScrollView中使用GeometryReader+frame+rotation3DEffect实现3D滚动
+* addUpdate实现添加项目，配合navigationBarItems+button，在列表中显示一个加号
+* .lineLimit(2)//最多2行，多的省略号隐藏
