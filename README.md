@@ -911,3 +911,8 @@ SwiftUI 和 Flutter开发对比：http://www.cocoachina.com/cms/wap.php?action=a
 * 在ScrollView中使用GeometryReader+frame+rotation3DEffect实现3D滚动
 * addUpdate实现添加项目，配合navigationBarItems+button，在列表中显示一个加号
 * .lineLimit(2)//最多2行，多的省略号隐藏
+* 列出几种常用的字体形式在example app中（Text("82%").font(.subheadline).fontWeight(.bold)）
+* 列出以后可能用到的几种进度圆Circle
+* MengTo的24节说了关于自定义Modifier的内容，有需要是先看
+* 了解transition的作用
+* @binding和constant(true)的使用
