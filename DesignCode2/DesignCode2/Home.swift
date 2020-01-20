@@ -11,14 +11,16 @@ import SwiftUI
 struct Home: View {
     @State var showProfile = false
     @State var viewState = CGSize.zero
+    @State var showContent = false
+    
     var body: some View {
         ZStack {
             Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
                 .edgesIgnoringSafeArea(.all)//忽略安全区域
             
-            HomeView(showProfile: $showProfile)
+            HomeView(showProfile: $showProfile, showCentent: $showContent)
                 .padding(.top,44)
-                .background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                .background(Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)))
                 .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 .shadow(radius: 20)
                 .offset(y: showProfile ? -450 : 0)
@@ -46,6 +48,31 @@ struct Home: View {
                         self.viewState = .zero
                 }
             )
+            if showContent {
+                Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+                    .edgesIgnoringSafeArea(.all)
+                
+                ContentView()
+                
+                VStack {
+                    HStack {
+                        Spacer()
+                        
+                        Image(systemName: "xmark")
+                            .frame(width: 36, height:36)
+                            .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                            .background(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
+                            .clipShape(Circle())
+                    }
+                    Spacer()
+                }
+                .offset(x: -16, y: 16)
+                .transition(.move(edge: .top))
+                .animation(.spring())
+                    .onTapGesture {
+                        self.showContent = false
+                }
+            }
         }
     }
 }

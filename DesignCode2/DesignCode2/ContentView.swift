@@ -29,7 +29,7 @@ struct ContentView: View {
                     //                    .repeatCount(3)//让动画重复几次
             )
             BackCardView()
-                .frame(width: showCard ? 300 : 340.0, height: 220.0)
+                .frame(width: showCard ? 300 : 340, height: 220)
                 .background(Color("card4"))
                 .cornerRadius(20)
                 .shadow(radius: 20)
@@ -80,7 +80,7 @@ struct ContentView: View {
                 }
             )
             Text("\(ButtonState.height)").offset(y: -300)
-            ButtonCardView()
+            ButtonCardView(show: $showCard)
                 .offset(x: 0, y: showCard ? 300 : 1000)
                 .offset( y: ButtonState.height)
                 .blur(radius: show ? 20 : 0)
@@ -169,6 +169,8 @@ struct TitleView: View {
 }
 
 struct ButtonCardView: View {
+    @Binding var show: Bool
+    
     var body: some View {
         VStack(spacing: 20.0) {
             Rectangle()
@@ -179,6 +181,21 @@ struct ButtonCardView: View {
                 .multilineTextAlignment(.center)
                 .font(.subheadline)
                 .lineSpacing(4)
+            HStack(spacing: 20.0) {
+                RingView(color: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), width: 88, height: 88, percent: 78, show: $show)
+                    .animation(Animation.easeInOut.delay(0.3))
+                VStack {
+                    Text("SwiftUI").fontWeight(.bold)
+                    Text("12 of 12 sections completed\n10 hours spent so far")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                    .lineSpacing(4)
+                }
+            .padding(20)
+            .background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+            .cornerRadius(20)
+            .shadow(radius: 20)
+            }
             Spacer()
         }
         .padding(.horizontal, 20)
