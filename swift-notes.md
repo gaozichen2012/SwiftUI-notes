@@ -1,3 +1,7 @@
+
+# 下面学习2.6继承
+https://www.php.cn/code/17074.html
+
 # Swift语法笔记
 * 在for-in结构中的循环变量不需要使用var声明，无需定义即可使用，swift会自动推断类型；如果循环内没用到该循环变量直接使用下划线代替`_`，如`for _ in 1...10 {...}`
 * Swift的Switch语句不需要写break，因为swift默认case自带break退出
@@ -687,7 +691,10 @@ print(evaluate(product))
 该函数如果遇到纯数字，就直接返回该数字的值。如果遇到的是加法或乘法运算，则分别计算左边表达式和右边表达式的值，然后相加或相乘。
 ## 结构体和类 Structures and Classes
 * 与其他编程语言所不同的是，Swift 不要求你为自定义的结构体和类的接口与实现代码分别创建文件。你只需在单一的文件中定义一个结构体或者类，系统将会自动生成面向其它代码的外部接口。
+* 一个类可以没有父类（super class）
 * 结构体的实例为结构体实例，类的实例被称为对象
+* 类class在定义的时候可以直接在类中声明函数func
+
 ### 结构体和类对比
 * 定义属性用于存储值
 * 定义方法用于提供功能
@@ -940,6 +947,25 @@ let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
 print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 // 打印“the volume of fourByFiveByTwo is 40.0”
 ```
+
+### 类型属性
+Swift可以为类添加类型属性，即在class中定义一个class
+* 类型属性本质上属于计算属性
+```
+class Human {
+    //定义类型属性时，必须使用计算属性，不能使用储存属性
+    class var planet: String {
+        return "earth"
+    }
+}
+
+//下面是使用储存属性定义的错误例子
+class Human {
+    class var planet: String = "earth"
+}
+```
+
+
 ### 属性观察器
 * 属性观察器监控和响应属性值的变化，每次属性被设置值的时候都会调用属性观察器，即使新值和当前值相同的时候也不例外。
 * 可以为除了延时加载存储属性之外的其他存储属性添加属性观察器
@@ -1032,8 +1058,10 @@ print(rectangle.height)
 实例属性属于一个特定类型的实例，每创建一个实例，实例都拥有属于自己的一套属性值，实例之间的属性相互独立。
 #### 类型属性语法（待整理）
 #### 获取和设置类型属性的值（待整理）
+
 ## 方法
-* 方法是函数（与某些特定类型相关联的函数）。
+方法包括实例方法、类型方法、下标方法
+* 方法是函数（在类class内部定义的函数被称为方法）。
 * 类、结构体、枚举都可以定义实例方法；
 * 实例方法为给定类型的实例封装了具体的任务与功能。
 * 类、结构体、枚举也可以定义类型方法；
@@ -1120,6 +1148,7 @@ if somePoint.isToTheRightOf(x: 1.0) {
 * 实例方法是被某个类型的实例调用的方法。
 * 定义在类型本身上调用的方法，这种方法就叫做类型方法。
 * 在方法的 func 关键字之前加上关键字 static，来指定类型方法。类还可以用关键字 class 来指定，从而允许子类重写父类该方法的实现。
+* 不能再类型方法内访问实例属性，但可以访问类型属性（不能访问class中var定义的实例属性，但可以访问class中class类型属性）
 
 类型方法和实例方法一样用点语法调用。但是，你是在类型上调用这个方法，而不是在实例上调用。下面是如何在 SomeClass 类上调用类型方法的例子：
 ```
@@ -1131,6 +1160,31 @@ class SomeClass {
 SomeClass.someTypeMethod()
 ```
 (没看懂待整理)
+
+### 下标方法（Subsript）
+下标方法仅用于实例。是实例方法的一种，其目的是简化元素的访问形式
+```
+class FriendsBook {
+    var friendsArry : [Int:string] = [:]
+    var name : String
+    subscript(number:Int)->String? {
+        get {
+            return friendsArry[number]
+        }
+        set {
+            friendArray[number] = newValue
+        }
+    }
+}
+var book = FriendsBook()
+book.name ="Dancer"
+
+//使用下标法传入数据或者访问数据
+book[1] = "lili1"
+book[2] = "lili2"
+
+```
+
 
 ## 扩展
 >扩展可以给一个类型添加新的功能，但是不能重写已经存在的功能。
@@ -1229,4 +1283,3 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 ```
 Starship 类把 fullName 作为只读的计算属性来实现。每一个 Starship 类的实例都有一个名为 name 的非可选属性和一个名为 prefix 的可选属性。 当 prefix 存在时，计算属性 fullName 会将 prefix 插入到 name 之前，从而得到一个带有 prefix 的 fullName。
 （后续内容较多待研究）
-
