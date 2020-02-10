@@ -6,6 +6,8 @@ Swift语法单独记录：见swift-notes.md
 https://github.com/gaozichen2012/Swift-notes/blob/master/swift-notes.md
 
 # 记忆点
+* 按住option，点击鼠标左键即可查看该好函数或变量的简介定义
+* swift的`import UIKit`相当于C语言中的`#include <UIKit.h>`
 * Container Views容器视图包含`From`、`Group`、`GroupBox`、`Section`
 * Divider()：分割线，在两个内容中间添加`Divider()`
 * 每个函数参数都有一个参数标签label以及一个参数名称，默认情况下参数名称=参数标签。
