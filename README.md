@@ -47,15 +47,7 @@ https://github.com/gaozichen2012/Swift-notes/blob/master/swift-notes.md
 * [博客1：SwiftUI 的一些初步探索 (一)](https://onevcat.com/2019/06/swift-ui-firstlook/)
 
 # 需求点
-* Mac Windows多终端同步助手
-* 微博朋友圈qq空间insFacebook同步助手
-* 照片滤镜，摄影模板助手
-* 单词本助手
-* gif转换助手
-* 番茄钟（mac+iphone+watch）
-* 睡眠钟
-* 时间倒计时（iphone+watch+mac）
-* 看iPhone MAC app store付费榜以半价策略攻击
+
 
 # 账号系统搭建
 * 账号系统搭建的前提是有自己的服务器和数据库，这一块需要LNMP，所以先尝试发布不带账号系统的工具类APP，确定熟练SwiftUI以后，再开始搭建服务器：阿里云 + Linux + Nginx + MySQL + PHP
