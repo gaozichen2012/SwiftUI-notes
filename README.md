@@ -1,4 +1,7 @@
-# 苹果开发笔记
+
+# 新笔记记录已转Notion
+如需笔记请联系邮箱：gaozichen2012@outlook.com
+# 苹果开发笔记（已转Notion）
 * Swift，苹果于2014年WWDC（苹果开发者大会）发布的新开发语言，可与Objective-C共同运行于Mac OS和iOS平台，用于搭建基于苹果平台的应用程序。Swift吸收了众多现代编程语言的优点，尽力的提供简洁的编程语言和强大的功能。
 
 # Swift语法
