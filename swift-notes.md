@@ -1,6 +1,7 @@
 
-# 下面学习2.6继承
-https://www.php.cn/code/17074.html
+
+# 新笔记记录已转Notion
+如需笔记请联系邮箱：gaozichen2012@outlook.com
 
 # Swift语法笔记
 * 在for-in结构中的循环变量不需要使用var声明，无需定义即可使用，swift会自动推断类型；如果循环内没用到该循环变量直接使用下划线代替`_`，如`for _ in 1...10 {...}`
