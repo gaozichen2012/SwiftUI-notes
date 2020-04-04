@@ -1,4 +1,5 @@
-
+//此playground介绍如何兼容编解码简化的数据
+//我们预先定义了一个模型Employee，Employee是一个嵌套结构。如果传入一个普通的无嵌套结构的JSON数据给Employee，该如何兼容接收
 import Foundation
 
 struct Toy: Codable {
@@ -35,10 +36,7 @@ extension Employee: Decodable {
 let toy = Toy(name: "Teddy Bear")
 let employee = Employee(name: "John Appleseed", id: 7, favoriteToy: toy)
 
-let encoder = JSONEncoder()
-let decoder = JSONDecoder()
-
-let data = try encoder.encode(employee)
+let data = try JSONEncoder().encode(employee)
 let string = String(data: data, encoding: .utf8)!
 
-let sameEmployee = try decoder.decode(Employee.self, from: data)
+let sameEmployee = try JSONDecoder().decode(Employee.self, from: data)
