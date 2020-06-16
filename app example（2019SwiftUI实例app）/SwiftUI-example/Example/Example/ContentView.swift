@@ -13,6 +13,11 @@ struct ContentView : View {
     var body: some View {
         NavigationView {
             List {
+                Section(header: Text("收集箱")) {
+                    NavigationLink(destination: CircleBackgrandPage()) {
+                        PageRow(title: "通用小圆圈背景", subTitle: "用于快速创建一些小按钮")
+                    }
+                }
                 Section(header: Text("tom添加的视图")) {
                     NavigationLink(destination: SFSymbolsViewPage()) {
                         PageRow(title: "SF Symbols", subTitle: "系统图标的展示和使用")
@@ -28,6 +33,12 @@ struct ContentView : View {
                     }
                     NavigationLink(destination: ScrollStyleViewPage()) {
                         PageRow(title: "ScrollView两种样式", subTitle: "竖向和横向")
+                    }
+                    NavigationLink(destination: WebViewPage()) {
+                        PageRow(title: "WebView", subTitle: "用于展示一个打开的网页")
+                    }
+                    NavigationLink(destination: ControllerPage<UIKitController>()) {
+                        PageRow(title: "UIViewController", subTitle: "打开 UIViewController")
                     }
                 }
                 Section(header: Text("Botton")) {
@@ -47,14 +58,6 @@ struct ContentView : View {
                     }
                 }
 
-                Section(header: Text("特殊视图")) {
-                    NavigationLink(destination: WebViewPage()) {
-                        PageRow(title: "WebView", subTitle: "用于展示一个打开的网页")
-                    }
-                    NavigationLink(destination: ControllerPage<UIKitController>()) {
-                        PageRow(title: "UIViewController", subTitle: "打开 UIViewController")
-                    }
-                }
                 Section(header: Text("基础控件")) {
                     NavigationLink(destination: TextPage()) {
                         PageRow(title: "Text",subTitle: "显示一行或多行只读文本")

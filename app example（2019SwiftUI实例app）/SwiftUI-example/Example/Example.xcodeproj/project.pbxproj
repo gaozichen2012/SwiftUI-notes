@@ -51,6 +51,7 @@
 		D03390DB23C1E576009FF635 /* ScrollStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03390DA23C1E576009FF635 /* ScrollStyleViewPage.swift */; };
 		D03390DD23C1EB69009FF635 /* ButtonSheetViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03390DC23C1EB69009FF635 /* ButtonSheetViewPage.swift */; };
 		D03390DF23C1F11B009FF635 /* ButtonAnimationViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03390DE23C1F11A009FF635 /* ButtonAnimationViewPage.swift */; };
+		D05243A4249923E700023679 /* CircleBackgrandPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05243A3249923E700023679 /* CircleBackgrandPage.swift */; };
 		D060BD1323BA51E700F29E0F /* SFSymbolsViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */; };
 		D0B5EDF923BCEA49009B343E /* ListStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */; };
 		D0B5EDFB23BCF2B1009B343E /* TabBarStyleViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */; };
@@ -106,6 +107,7 @@
 		D03390DA23C1E576009FF635 /* ScrollStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollStyleViewPage.swift; sourceTree = "<group>"; };
 		D03390DC23C1EB69009FF635 /* ButtonSheetViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSheetViewPage.swift; sourceTree = "<group>"; };
 		D03390DE23C1F11A009FF635 /* ButtonAnimationViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimationViewPage.swift; sourceTree = "<group>"; };
+		D05243A3249923E700023679 /* CircleBackgrandPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleBackgrandPage.swift; sourceTree = "<group>"; };
 		D060BD1223BA51E700F29E0F /* SFSymbolsViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsViewPage.swift; sourceTree = "<group>"; };
 		D0B5EDF823BCEA49009B343E /* ListStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStyleViewPage.swift; sourceTree = "<group>"; };
 		D0B5EDFA23BCF2B1009B343E /* TabBarStyleViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarStyleViewPage.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		4196ABE522AA24B4008B8FD2 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				D05243A2249923A700023679 /* 收集箱 */,
 				D0C23F2423C4CED7002C36F0 /* BottonPage */,
 				D060BD1123BA515E00F29E0F /* TomPage1 */,
 				4160444F22B2985D0052CAFC /* SpecialPage */,
@@ -294,6 +297,14 @@
 				41977FF422ACA74600FD47FE /* WebImagePage.swift */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		D05243A2249923A700023679 /* 收集箱 */ = {
+			isa = PBXGroup;
+			children = (
+				D05243A3249923E700023679 /* CircleBackgrandPage.swift */,
+			);
+			path = "收集箱";
 			sourceTree = "<group>";
 		};
 		D060BD1123BA515E00F29E0F /* TomPage1 */ = {
@@ -406,6 +417,7 @@
 				D0B5EDFB23BCF2B1009B343E /* TabBarStyleViewPage.swift in Sources */,
 				41F36F0A22AA84D600B9172D /* ButtonPage.swift in Sources */,
 				41FE99E722AAD08A008135A0 /* NavigationButtonPage.swift in Sources */,
+				D05243A4249923E700023679 /* CircleBackgrandPage.swift in Sources */,
 				4160444C22B291000052CAFC /* UIKitController.swift in Sources */,
 				4196ABE222AA1B80008B8FD2 /* TextPage.swift in Sources */,
 				4160445122B2987A0052CAFC /* ControllerPage.swift in Sources */,
