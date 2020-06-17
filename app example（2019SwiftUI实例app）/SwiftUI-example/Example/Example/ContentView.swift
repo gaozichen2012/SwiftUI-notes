@@ -17,6 +17,24 @@ struct ContentView : View {
                     NavigationLink(destination: CircleBackgrandPage()) {
                         PageRow(title: "通用小圆圈背景", subTitle: "用于快速创建一些小按钮")
                     }
+                    NavigationLink(destination: CircleBackgrandPage()) {
+                        PageRow(title: "按钮样式", subTitle: "使用ButtonStyle协议 创建的按钮风格CircleStyle()")
+                    }
+                    NavigationLink(destination: BadgeView()) {
+                        PageRow(title: "角标View", subTitle: "比如图标右上角的小红点")
+                    }
+                    NavigationLink(destination: PathAndShapePage()) {
+                        PageRow(title: "Path & Shape", subTitle: "自定义的三角形和系统定义的正方形")
+                    }
+                    NavigationLink(destination: ClipAndMaskPage()) {
+                        PageRow(title: "Clip & Mask", subTitle: "3种提供遮挡和裁剪的方法clipped/mask/clipShape")
+                    }
+                    NavigationLink(destination: GraphWithAnimationPage()) {
+                        PageRow(title: "路径动画", subTitle: "显示折线图graph并显示动画")
+                    }
+                    NavigationLink(destination: DecodeJSONImagePage()) {
+                        PageRow(title: "解码JSON数据并显示图片", subTitle: "创建DataModel+获取JSON数据+显示列表+显示图片")
+                    }
                 }
                 Section(header: Text("tom添加的视图")) {
                     NavigationLink(destination: SFSymbolsViewPage()) {
